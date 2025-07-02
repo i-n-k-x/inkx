@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inkx Gráfica - Solapas, Blocos e Talões</title>
+    <meta name="description" content="Solapas coloridas, blocos numerados e talões com os melhores preços. Entrega rápida e qualidade garantida.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Reset e configurações básicas */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .btn-whatsapp-header {
+            background: #25d366;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-whatsapp-header:hover {
+            background: #128c7e;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #000000 0%, #333333 50%, #666666 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero-logo {
+            max-width: 300px;
+            height: auto;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .feature i {
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #333333 0%, #666666 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid #666666;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #666666 0%, #999999 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #000000;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #000000 0%, #666666 100%);
+            border-radius: 2px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-icon {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .product-title h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-title p {
+            color: #666666;
+            font-size: 0.95rem;
+        }
+
+        .product-features {
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .feature-item i {
+            color: #333333;
+            font-size: 1rem;
+        }
+
+        .pricing {
+            margin-bottom: 2rem;
+        }
+
+        .price-option {
+            background: #f8f9fa;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .price-option:hover {
+            border-color: #333333;
+            transform: translateY(-2px);
+        }
+
+        .price-option.featured {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: white;
+            border-color: #000000;
+        }
+
+        .price-option.featured:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .quantity {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .unit-price {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .badge {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #666666;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .other-sizes {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .other-sizes h4 {
+            margin-bottom: 1rem;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .sizes {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .size {
+            background: #333333;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .price-note {
+            color: #666666;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background: #128c7e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp i {
+            font-size: 1.3rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-title::after {
+            background: #25d366;
+        }
+
+        .contact-content {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .contact-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 500;
+        }
+
+        .contact-feature i {
+            color: #25d366;
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .btn-whatsapp-large {
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp-large:hover {
+            background: #128c7e;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp-large i {
+            font-size: 2rem;
+        }
+
+        .btn-whatsapp-large span {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .btn-whatsapp-large strong {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .btn-whatsapp-large small {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-info h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-info p {
+            opacity: 0.8;
+        }
+
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .footer-contact i {
+            color: #25d366;
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #333333;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .btn-whatsapp-float {
+            background: #25d366;
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-whatsapp-float:hover {
+            background: #128c7e;
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive Design - Tablet */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 40px;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .hero-features {
+                gap: 3rem;
+            }
+            
+            .product-card {
+                padding: 2.5rem;
+            }
+            
+            .pricing {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+            
+            .contact-features {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+            
+            .footer-content {
+                flex-wrap: nowrap;
+            }
+        }
+
+        /* Responsive Design - Desktop */
+        @media (min-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .product-card {
+                padding: 3rem;
+            }
+            
+            .pricing {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .btn-whatsapp-header {
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+            }
+            
+            .whatsapp-float {
+                bottom: 30px;
+                right: 30px;
+            }
+            
+            .btn-whatsapp-float {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+        }
+
+        /* Responsive Design - Mobile pequeno */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-features {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .product-card {
+                padding: 1.5rem;
+            }
+            
+            .product-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .pricing {
+                gap: 0.75rem;
+            }
+            
+            .price-option {
+                padding: 1.25rem;
+            }
+            
+            .sizes {
+                justify-content: center;
+            }
+            
+            .contact-features {
+                gap: 1rem;
+            }
+            
+            .btn-whatsapp-large {
+                padding: 1.25rem 1.5rem;
+                font-size: 1.1rem;
+            }
+            
+            .btn-whatsapp-large i {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+        }
+
+        .price-option.selected {
+            border-color: #25d366 !important;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
+            color: white !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3) !important;
+        }
+        
+        .price-option.selected .badge {
+            background: #666666 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://i.ibb.co/6RwHMYwq/ink-transparente.png" alt="Inkx Gráfica" class="logo-img">
+                    <span class="logo-text">Gráfica</span>
+                </div>
+                <a href="#contato" class="btn-whatsapp-header">
+                    <i class="fab fa-whatsapp"></i>
+                    Fale Conosco
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="https://i.ibb.co/6RwHMYwq/ink-transparente.png" alt="Inkx Gráfica" class="hero-logo">
+                <h2 class="hero-title">Produtos Gráficos de Qualidade</h2>
+                <p class="hero-subtitle">Solapas coloridas, blocos numerados e talões com os melhores preços do mercado</p>
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-shipping-fast"></i>
+                        <span>Entrega Rápida</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-medal"></i>
+                        <span>Qualidade Premium</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Melhor Preço</span>
+                    </div>
+                </div>
+                <a href="#produtos" class="btn-primary">Ver Produtos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produtos" class="products">
+        <div class="container">
+            <h2 class="section-title">Nossos Produtos</h2>
+            
+            <!-- Solapas Coloridas -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="product-title">
+                        <h3>Solapas Coloridas</h3>
+                        <p>Com verniz total - Tamanho 9x10</p>
+                    </div>
+                </div>
+                
+                <div class="product-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Verniz total para proteção</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Cores vibrantes e duradouras</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Outros tamanhos disponíveis</span>
+                    </div>
+                </div>
+
+                <div class="pricing">
+                    <div class="price-option">
+                        <div class="quantity">500 unidades</div>
+                        <div class="price">R$ 200,00</div>
+                        <div class="unit-price">R$ 0,40 cada</div>
+                    </div>
+                    <div class="price-option featured">
+                        <div class="quantity">1000 unidades</div>
+                        <div class="price">R$ 250,00</div>
+                        <div class="unit-price">R$ 0,25 cada</div>
+                        <div class="badge">Mais Popular</div>
+                    </div>
+                </div>
+
+                <div class="other-sizes">
+                    <h4>Outros tamanhos disponíveis:</h4>
+                    <div class="sizes">
+                        <span class="size">18x10</span>
+                        <span class="size">18x20</span>
+                    </div>
+                    <p class="price-note">Preços a combinar</p>
+                </div>
+
+                <button class="btn-whatsapp" data-product="Solapas Coloridas">
+                    <i class="fab fa-whatsapp"></i>
+                    Pedir via WhatsApp
+                </button>
+            </div>
+
+            <!-- Blocos Numerados -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <div class="product-title">
+                        <h3>Blocos Numerados</h3>
+                        <p>7x10 - Papel autocopiativo com 100 folhas</p>
+                    </div>
+                </div>
+                
+                <div class="product-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Impressão preto e branco</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Papel autocopiativo (já tem carbono)</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>2 vias: 50 fls branca + 50 fls verde</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Serrilha na 1ª via</span>
+                    </div>
+                </div>
+
+                <div class="pricing">
+                    <div class="price-option">
+                        <div class="quantity">20 blocos</div>
+                        <div class="price">R$ 430,00</div>
+                        <div class="unit-price">R$ 21,50 por bloco</div>
+                    </div>
+                    <div class="price-option">
+                        <div class="quantity">50 blocos</div>
+                        <div class="price">R$ 630,00</div>
+                        <div class="unit-price">R$ 12,60 por bloco</div>
+                    </div>
+                    <div class="price-option featured">
+                        <div class="quantity">100 blocos</div>
+                        <div class="price">R$ 690,00</div>
+                        <div class="unit-price">R$ 6,90 por bloco</div>
+                        <div class="badge">Melhor Custo</div>
+                    </div>
+                </div>
+
+                <button class="btn-whatsapp" data-product="Blocos Numerados">
+                    <i class="fab fa-whatsapp"></i>
+                    Pedir via WhatsApp
+                </button>
+            </div>
+
+            <!-- Talões Numerados -->
+            <div class="product-card">
+                <div class="product-header">
+                    <div class="product-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <div class="product-title">
+                        <h3>Talões Numerados</h3>
+                        <p>7x10 - Impressão preto e branco com 50 vias</p>
+                    </div>
+                </div>
+                
+                <div class="product-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Impressão preto e branco</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>50 vias por talão</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Numeração sequencial</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Papel de qualidade</span>
+                    </div>
+                </div>
+
+                <div class="pricing">
+                    <div class="price-option">
+                        <div class="quantity">20 talões</div>
+                        <div class="price">R$ 250,00</div>
+                        <div class="unit-price">R$ 12,50 por talão</div>
+                    </div>
+                    <div class="price-option">
+                        <div class="quantity">50 talões</div>
+                        <div class="price">R$ 390,00</div>
+                        <div class="unit-price">R$ 7,80 por talão</div>
+                    </div>
+                    <div class="price-option featured">
+                        <div class="quantity">100 talões</div>
+                        <div class="price">R$ 430,00</div>
+                        <div class="unit-price">R$ 4,30 por talão</div>
+                        <div class="badge">Melhor Custo</div>
+                    </div>
+                </div>
+
+                <button class="btn-whatsapp" data-product="Talões Numerados">
+                    <i class="fab fa-whatsapp"></i>
+                    Pedir via WhatsApp
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Fale Conosco</h3>
+                    <p>Tire suas dúvidas, solicite orçamentos personalizados ou faça seu pedido diretamente pelo WhatsApp.</p>
+                    <div class="contact-features">
+                        <div class="contact-feature">
+                            <i class="fas fa-clock"></i>
+                            <span>Atendimento rápido</span>
+                        </div>
+                        <div class="contact-feature">
+                            <i class="fas fa-calculator"></i>
+                            <span>Orçamento gratuito</span>
+                        </div>
+                        <div class="contact-feature">
+                            <i class="fas fa-handshake"></i>
+                            <span>Atendimento personalizado</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-action">
+                    <button class="btn-whatsapp-large" data-product="Informações Gerais">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>
+                            <strong>Falar no WhatsApp</strong>
+                            <small>(11) 9 5858-8616</small>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Inkx Gráfica</h3>
+                    <p>Qualidade e agilidade em produtos gráficos</p>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fab fa-whatsapp"></i> (11) 9 5858-8616</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Inkx Gráfica. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <div class="whatsapp-float">
+        <button class="btn-whatsapp-float" data-product="Contato Rápido">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+
+    <script>
+        // Configuração do WhatsApp
+        const WHATSAPP_NUMBER = '5511958588616'; // Número formatado para WhatsApp API
+
+        // Função para formatar mensagem do WhatsApp
+        function formatWhatsAppMessage(product, additionalInfo = '') {
+            const baseMessage = `Olá! Tenho interesse em: *${product}*`;
+            
+            if (additionalInfo) {
+                return `${baseMessage}\n\n${additionalInfo}`;
+            }
+            
+            return baseMessage;
+        }
+
+        // Função para abrir WhatsApp
+        function openWhatsApp(product, additionalInfo = '') {
+            const message = formatWhatsAppMessage(product, additionalInfo);
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            
+            // Abrir em nova aba
+            window.open(whatsappURL, '_blank');
+            
+            // Analytics (opcional)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'whatsapp_click', {
+                    'product': product,
+                    'event_category': 'engagement'
+                });
+            }
+        }
+
+        // Event listeners para botões do WhatsApp
+        document.addEventListener('DOMContentLoaded', function() {
+            // Botões de produtos específicos
+            const whatsappButtons = document.querySelectorAll('.btn-whatsapp, .btn-whatsapp-large, .btn-whatsapp-float, .btn-whatsapp-header');
+            
+            whatsappButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const product = this.getAttribute('data-product') || 'Informações sobre produtos';
+                    let additionalInfo = '';
+                    
+                    // Adicionar informações específicas baseadas no produto
+                    switch(product) {
+                        case 'Solapas Coloridas':
+                            additionalInfo = 'Gostaria de mais informações sobre:\n• Solapas coloridas com verniz total\n• Tamanho 9x10\n• Preços para 500 e 1000 unidades\n• Outros tamanhos disponíveis (18x10, 18x20)';
+                            break;
+                            
+                        case 'Blocos Numerados':
+                            additionalInfo = 'Gostaria de mais informações sobre:\n• Blocos numerados 7x10\n• Papel autocopiativo (2 vias)\n• 100 folhas por bloco\n• Preços para 20, 50 e 100 blocos';
+                            break;
+                            
+                        case 'Talões Numerados':
+                            additionalInfo = 'Gostaria de mais informações sobre:\n• Talões numerados 7x10\n• 50 vias por talão\n• Impressão preto e branco\n• Preços para 20, 50 e 100 talões';
+                            break;
+                            
+                        case 'Informações Gerais':
+                            additionalInfo = 'Gostaria de receber informações sobre todos os produtos disponíveis e condições especiais.';
+                            break;
+                            
+                        case 'Contato Rápido':
+                            additionalInfo = 'Gostaria de falar com um atendente.';
+                            break;
+                    }
+                    
+                    openWhatsApp(product, additionalInfo);
+                });
+            });
+            
+            // Smooth scroll para links internos
+            const internalLinks = document.querySelectorAll('a[href^="#"]');
+            internalLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Animação de entrada para cards de produtos
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Aplicar animação aos cards de produtos
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+            
+            // Efeito de hover nos preços
+            const priceOptions = document.querySelectorAll('.price-option');
+            priceOptions.forEach(option => {
+                option.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                option.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('featured')) {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            // Destacar opção de preço ao clicar
+            priceOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remover destaque de outras opções no mesmo produto
+                    const parentCard = this.closest('.product-card');
+                    const siblingOptions = parentCard.querySelectorAll('.price-option');
+                    
+                    siblingOptions.forEach(sibling => {
+                        sibling.classList.remove('selected');
+                    });
+                    
+                    // Adicionar destaque à opção clicada
+                    this.classList.add('selected');
+                    
+                    // Scroll suave para o botão do WhatsApp
+                    const whatsappButton = parentCard.querySelector('.btn-whatsapp');
+                    if (whatsappButton) {
+                        whatsappButton.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest'
+                        });
+                        
+                        // Efeito de destaque no botão
+                        whatsappButton.style.animation = 'pulse 1s ease-in-out';
+                        setTimeout(() => {
+                            whatsappButton.style.animation = '';
+                        }, 1000);
+                    }
+                });
+            });
+            
+            // Mostrar/ocultar botão flutuante do WhatsApp baseado no scroll
+            let lastScrollTop = 0;
+            const floatButton = document.querySelector('.whatsapp-float');
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 300) {
+                    floatButton.style.opacity = '1';
+                    floatButton.style.visibility = 'visible';
+                } else {
+                    floatButton.style.opacity = '0';
+                    floatButton.style.visibility = 'hidden';
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+            
+            // Inicializar estado do botão flutuante
+            floatButton.style.opacity = '0';
+            floatButton.style.visibility = 'hidden';
+            floatButton.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
+        });
+
+        // Função para copiar número do WhatsApp (funcionalidade extra)
+        function copyWhatsAppNumber() {
+            const phoneNumber = '(11) 9 5858-8616';
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(phoneNumber).then(() => {
+                    showNotification('Número copiado para a área de transferência!');
+                });
+            } else {
+                // Fallback para navegadores mais antigos
+                const textArea = document.createElement('textarea');
+                textArea.value = phoneNumber;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('Número copiado para a área de transferência!');
+            }
+        }
+
+        // Função para mostrar notificações
+        function showNotification(message) {
+            // Criar elemento de notificação
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: #25d366;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+                z-index: 10000;
+                font-weight: 500;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animar entrada
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remover após 3 segundos
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
