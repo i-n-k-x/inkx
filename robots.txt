@@ -1,9 +1,9 @@
 User-agent: *
 Allow: /
 
-# Bloqueia rastreamento de arquivos internos
-Disallow: /assets/raw/
-Disallow: /*.json$
+Disallow: /assets/*.js
+Disallow: /assets/*.css
+Disallow: /assets/*.json
+Disallow: /site.webmanifest
 
-# Sitemap
 Sitemap: https://inkx.com.br/sitemap.xml
