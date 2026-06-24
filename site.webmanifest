@@ -1,18 +1,18 @@
 {
-  "name": "Ink X — Gráfica Rápida",
+  "name": "Ink X — Gráfica Rápida e Agência Digital",
   "short_name": "Ink X",
-  "description": "Design, impressão, sites e e-commerce. Tudo para sua empresa em um só lugar.",
+  "description": "Gráfica rápida, design, impressão, sites, e-commerce e marketing digital em Hortolândia/SP.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#facc15",
+  "orientation": "portrait",
   "lang": "pt-BR",
   "icons": [
-    {
-      "src": "/assets/logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
+    { "src": "assets/logo.svg", 
+	  "sizes": "any", 
+	  "type": "image/svg+xml"
+	  "purpose": "any maskable"
+	  }
   ]
 }
