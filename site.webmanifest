@@ -1,0 +1,18 @@
+{
+  "name": "Ink X — Gráfica Rápida",
+  "short_name": "Ink X",
+  "description": "Design, impressão, sites e e-commerce. Tudo para sua empresa em um só lugar.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#facc15",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
