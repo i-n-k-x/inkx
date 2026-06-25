@@ -148,6 +148,14 @@ ul{list-style:none}
   margin-top:14px;
   color:var(--muted);font-size:.88rem;
 }
+ /* HIGHLIGHT TEXT (centralizados) */
+  .centered-text{
+    text-align:center;
+    max-width:680px;
+    margin:0 auto;
+    color:var(--muted);
+    font-size:1.05rem;
+  }
 
 /* ===== SECTIONS ===== */
 .section{padding:72px 0;position:relative}
