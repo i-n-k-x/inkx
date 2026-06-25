@@ -133,6 +133,7 @@ ul{list-style:none}
   background:linear-gradient(180deg,transparent 60%, rgba(250,204,21,.22) 60%);
 }
 .lead{
+  text-align:center;
   font-size:1.05rem;
   color:var(--text);
   max-width:58ch;
