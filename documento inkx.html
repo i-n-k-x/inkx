@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ink X Framework | Caderno de Arquitetura v1.0</title>
+
+<meta name="description" content="Documento oficial do projeto Ink X Barber Premium Framework.">
+
+<style>
+
+:root{
+
+    --primary:#111111;
+    --secondary:#1b1b1b;
+    --accent:#f5c542;
+    --background:#f5f5f5;
+    --surface:#ffffff;
+    --border:#dddddd;
+    --text:#222222;
+    --text-light:#666666;
+
+    --radius:12px;
+    --shadow:0 12px 35px rgba(0,0,0,.08);
+
+    --container:1200px;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    line-height:1.8;
+
+}
+
+.container{
+
+    width:min(92%,var(--container));
+
+    margin:auto;
+
+}
+
+header{
+
+    background:linear-gradient(135deg,#111,#000);
+
+    color:#fff;
+
+    padding:60px 20px;
+
+    border-bottom:5px solid var(--accent);
+
+}
+
+header h1{
+
+    font-size:3rem;
+
+    margin-bottom:10px;
+
+}
+
+header h2{
+
+    color:var(--accent);
+
+    font-weight:400;
+
+    margin-bottom:25px;
+
+}
+
+header p{
+
+    max-width:800px;
+
+    color:#d9d9d9;
+
+}
+
+.info{
+
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.card{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:var(--radius);
+
+    padding:18px;
+
+    backdrop-filter:blur(6px);
+
+}
+
+.card span{
+
+    display:block;
+
+    font-size:.85rem;
+
+    color:#bbbbbb;
+
+    margin-bottom:6px;
+
+}
+
+nav{
+
+    position:sticky;
+
+    top:0;
+
+    background:#fff;
+
+    box-shadow:0 3px 15px rgba(0,0,0,.05);
+
+    z-index:999;
+
+}
+
+nav .container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    padding:18px 0;
+
+}
+
+nav a{
+
+    text-decoration:none;
+
+    color:var(--primary);
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+nav a:hover{
+
+    color:var(--accent);
+
+}
+
+main{
+
+    padding:50px 0;
+
+}
+
+section{
+
+    background:#fff;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:40px;
+
+    margin-bottom:35px;
+
+}
+
+section h2{
+
+    margin-bottom:20px;
+
+    color:var(--primary);
+
+    border-left:6px solid var(--accent);
+
+    padding-left:15px;
+
+}
+
+section h3{
+
+    margin:30px 0 12px;
+
+    color:#333;
+
+}
+
+p{
+
+    margin-bottom:18px;
+
+}
+
+ul{
+
+    margin-left:22px;
+
+}
+
+li{
+
+    margin-bottom:10px;
+
+}
+
+.highlight{
+
+    background:#fff8dd;
+
+    border-left:6px solid var(--accent);
+
+    padding:18px;
+
+    margin:25px 0;
+
+}
+
+pre{
+
+    background:#111;
+
+    color:#f8f8f8;
+
+    padding:20px;
+
+    overflow:auto;
+
+    border-radius:10px;
+
+    margin-top:20px;
+
+    font-size:.92rem;
+
+}
+
+.roadmap{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    margin-top:25px;
+
+}
+
+.step{
+
+    border-left:5px solid var(--accent);
+
+    background:#fafafa;
+
+    padding:20px;
+
+}
+
+footer{
+
+    text-align:center;
+
+    padding:50px 20px;
+
+    color:#666;
+
+    font-size:.9rem;
+
+}
+
+@media(max-width:768px){
+
+header h1{
+
+font-size:2.2rem;
+
+}
+
+section{
+
+padding:25px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container">
+
+<h1>INK X FRAMEWORK</h1>
+
+<h2>Caderno de Arquitetura</h2>
+
+<p>
+
+Documento oficial do projeto <strong>Ink X Barber Premium Framework</strong>,
+criado para definir toda a arquitetura, filosofia, organização e objetivos do
+primeiro ativo digital da Ink X.
+
+</p>
+
+<div class="info">
+
+<div class="card">
+<span>Versão</span>
+<strong>1.0</strong>
+</div>
+
+<div class="card">
+<span>Status</span>
+<strong>Em Desenvolvimento</strong>
+</div>
+
+<div class="card">
+<span>Autor</span>
+<strong>Ink X + ChatGPT</strong>
+</div>
+
+<div class="card">
+<span>Objetivo</span>
+<strong>Framework para Landing Pages Premium</strong>
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<nav>
+
+<div class="container">
+
+<a href="#visao">Visão Geral</a>
+
+<a href="#filosofia">Filosofia</a>
+
+<a href="#tecnologias">Tecnologias</a>
+
+<a href="#objetivos">Objetivos</a>
+
+<a href="#referencias">Referências</a>
+
+<a href="#comercial">Objetivo Comercial</a>
+
+<a href="#proposito">Propósito</a>
+
+<a href="#roadmap">Roadmap</a>
+
+</div>
+
+</nav>
+
+<main class="container">
+
+<section id="visao">
+
+<h2>Visão Geral</h2>
+
+<p>
+
+Este projeto não consiste apenas em desenvolver uma Landing Page.
+
+</p>
+
+<p>
+
+O verdadeiro objetivo é criar um ativo digital reutilizável, altamente profissional,
+que possa ser adaptado para diversos clientes com poucas alterações, reduzindo
+drasticamente o tempo de produção e aumentando significativamente a qualidade
+das entregas.
+
+</p>
+
+<p>
+
+O Template deverá servir futuramente como base para um sistema de montagem
+automática de websites (SaaS).
+
+</p>
+
+<div class="highlight">
+
+<strong>Missão principal:</strong>
+
+Construir um produto digital reutilizável, escalável e preparado para evoluir
+para um Framework e posteriormente para um SaaS.
+
+</div>
+
+</section>
+
+<section id="filosofia">
+
+<h2>Filosofia do Projeto</h2>
+
+<p>
+
+Todo código produzido deverá obedecer rigorosamente aos seguintes princípios:
+
+</p>
+
+<ul>
+
+<li>Mobile First verdadeiro.</li>
+
+<li>HTML semântico.</li>
+
+<li>CSS puro.</li>
+
+<li>JavaScript Vanilla.</li>
+
+<li>Zero dependências externas pesadas.</li>
+
+<li>Alto desempenho.</li>
+
+<li>Fácil manutenção.</li>
+
+<li>Componentização.</li>
+
+<li>Reutilização máxima.</li>
+
+<li>Excelente SEO.</li>
+
+<li>Excelente acessibilidade.</li>
+
+<li>Compatibilidade total com GitHub Pages.</li>
+
+</ul>
+
+</section>
+
+<section id="tecnologias">
+
+<h2>Tecnologias</h2>
+
+<ul>
+
+<li>HTML5</li>
+
+<li>CSS3</li>
+
+<li>JavaScript ES6</li>
+
+<li>Google Fonts</li>
+
+<li>SVG</li>
+
+<li>WebP</li>
+
+<li>GitHub Pages</li>
+
+<li>Sem Frameworks</li>
+
+<li>Sem Bootstrap</li>
+
+<li>Sem Tailwind</li>
+
+<li>Sem jQuery</li>
+
+<li>Sem React</li>
+
+<li>Sem Vue</li>
+
+<li>Sem Angular</li>
+
+</ul>
+
+</section>
+<section id="objetivos">
+
+<h2>Objetivos do Template</h2>
+
+<p>
+
+O Template deverá transmitir imediatamente os seguintes valores:
+
+</p>
+
+<ul>
+
+<li>Luxo</li>
+
+<li>Sofisticação</li>
+
+<li>Elegância</li>
+
+<li>Profissionalismo</li>
+
+<li>Exclusividade</li>
+
+<li>Confiança</li>
+
+<li>Alto valor percebido</li>
+
+<li>Experiência Premium</li>
+
+</ul>
+
+<div class="highlight">
+
+O usuário deve perceber imediatamente que não se trata de um template
+genérico, mas de um produto desenvolvido com foco em branding,
+experiência do usuário e conversão.
+
+</div>
+
+</section>
+
+<section id="referencias">
+
+<h2>Referências Visuais</h2>
+
+<p>
+
+Toda a identidade visual deverá buscar inspiração em marcas e plataformas
+reconhecidas mundialmente pela excelência em design.
+
+</p>
+
+<ul>
+
+<li>Apple</li>
+
+<li>Tesla</li>
+
+<li>Rolex</li>
+
+<li>Dior</li>
+
+<li>Awwwards</li>
+
+<li>Behance</li>
+
+<li>Dribbble</li>
+
+<li>Luxury UI</li>
+
+<li>Luxury Branding</li>
+
+<li>Neo Classic Barber</li>
+
+<li>Dark Luxury</li>
+
+</ul>
+
+</section>
+
+<section id="comercial">
+
+<h2>Objetivo Comercial</h2>
+
+<p>
+
+O cliente deve olhar para a Landing Page e pensar imediatamente:
+
+</p>
+
+<div class="highlight">
+
+<strong>
+
+"Minha empresa precisa exatamente deste site."
+
+</strong>
+
+</div>
+
+<p>
+
+O objetivo não é apenas vender um website, mas vender uma percepção
+de profissionalismo, autoridade e alto valor para o negócio do cliente.
+
+</p>
+
+</section>
+
+<section id="proposito">
+
+<h2>Propósito da Ink X</h2>
+
+<p>
+
+A Ink X não venderá apenas websites.
+
+</p>
+
+<p>
+
+A proposta da empresa será oferecer uma solução completa de
+<strong>Presença Digital</strong>.
+
+</p>
+
+<h3>Serviços</h3>
+
+<ul>
+
+<li>Logotipos</li>
+
+<li>Identidade Visual</li>
+
+<li>Cartões de Visita</li>
+
+<li>Banners</li>
+
+<li>Landing Pages</li>
+
+<li>Sites Institucionais</li>
+
+<li>Catálogos Online</li>
+
+<li>Google Meu Negócio</li>
+
+<li>WhatsApp Business</li>
+
+<li>Hospedagem</li>
+
+<li>Registro de Domínio</li>
+
+<li>E-mail Profissional</li>
+
+</ul>
+
+</section>
+
+<section id="roadmap">
+
+<h2>Roadmap da Ink X</h2>
+
+<p>
+
+A evolução planejada da empresa deverá seguir as seguintes etapas:
+
+</p>
+
+<div class="roadmap">
+
+<div class="step">
+
+<strong>FASE 1</strong>
+
+<p>Gráfica</p>
+
+</div>
+
+<div class="step">
+
+<strong>FASE 2</strong>
+
+<p>Branding</p>
+
+</div>
+
+<div class="step">
+
+<strong>FASE 3</strong>
+
+<p>Landing Pages Premium</p>
+
+</div>
+
+<div class="step">
+
+<strong>FASE 4</strong>
+
+<p>Templates Reutilizáveis</p>
+
+</div>
+
+<div class="step">
+
+<strong>FASE 5</strong>
+
+<p>Framework Ink X</p>
+
+</div>
+
+<div class="step">
+
+<strong>FASE 6</strong>
+
+<p>SaaS de geração automática de websites</p>
+
+</div>
+
+</div>
+
+</section>
+<section id="estrutura">
+
+<h2>Estrutura do Projeto</h2>
+
+<p>
+
+O projeto deverá possuir uma estrutura simples, organizada e totalmente
+compatível com o GitHub Pages, facilitando manutenção, versionamento e
+reutilização.
+
+</p>
+
+<pre>
+InkX-Barber-Premium/
+
+│
+
+├── index.html
+
+├── styles.css
+
+├── script.js
+
+├── README.md
+
+├── LICENSE
+
+│
+
+└── assets/
+
+    ├── logo/
+
+    ├── hero/
+
+    ├── services/
+
+    ├── gallery/
+
+    ├── team/
+
+    ├── testimonials/
+
+    ├── icons/
+
+    ├── patterns/
+
+    ├── backgrounds/
+
+    ├── favicon/
+
+    └── ui/
+</pre>
+
+</section>
+
+<section id="estrutura-html">
+
+<h2>Estrutura HTML</h2>
+
+<h3>HEAD</h3>
+
+<ul>
+
+<li>SEO</li>
+
+<li>Meta Tags</li>
+
+<li>Open Graph</li>
+
+<li>Twitter Cards</li>
+
+<li>Schema.org</li>
+
+<li>Canonical</li>
+
+<li>Viewport</li>
+
+<li>Favicons</li>
+
+<li>Google Fonts</li>
+
+<li>Stylesheet</li>
+
+</ul>
+
+<h3>BODY</h3>
+
+<ul>
+
+<li>Loader</li>
+
+<li>Header</li>
+
+<li>Menu Mobile</li>
+
+<li>Hero</li>
+
+<li>Estatísticas</li>
+
+<li>Serviços</li>
+
+<li>Diferenciais</li>
+
+<li>Antes e Depois</li>
+
+<li>Galeria</li>
+
+<li>Equipe</li>
+
+<li>Depoimentos</li>
+
+<li>FAQ</li>
+
+<li>CTA</li>
+
+<li>Mapa</li>
+
+<li>Footer</li>
+
+<li>Botão WhatsApp</li>
+
+<li>Botão Voltar ao Topo</li>
+
+<li>Scripts</li>
+
+</ul>
+
+</section>
+
+<section id="hero">
+
+<h2>Estrutura da Hero Section</h2>
+
+<ul>
+
+<li>Logotipo</li>
+
+<li>Headline Principal</li>
+
+<li>Subheadline</li>
+
+<li>CTA Principal</li>
+
+<li>CTA Secundário</li>
+
+<li>Imagem Hero</li>
+
+<li>Overlay</li>
+
+<li>Indicadores</li>
+
+</ul>
+
+</section>
+
+<section id="servicos">
+
+<h2>Estrutura da Seção de Serviços</h2>
+
+<ul>
+
+<li>Cards modernos</li>
+
+<li>Imagem profissional</li>
+
+<li>Título</li>
+
+<li>Descrição</li>
+
+<li>Botão de ação</li>
+
+<li>Efeito Hover</li>
+
+</ul>
+
+</section>
+
+<section id="diferenciais">
+
+<h2>Diferenciais</h2>
+
+<ul>
+
+<li>Ícones minimalistas</li>
+
+<li>Cards elegantes</li>
+
+<li>Animações discretas</li>
+
+</ul>
+
+</section>
+
+<section id="galeria">
+
+<h2>Galeria</h2>
+
+<ul>
+
+<li>Layout Masonry</li>
+
+<li>Efeito Hover</li>
+
+<li>Zoom</li>
+
+<li>Lazy Loading</li>
+
+</ul>
+
+</section>
+
+<section id="antes-depois">
+
+<h2>Antes e Depois</h2>
+
+<ul>
+
+<li>Slider Comparativo</li>
+
+<li>Totalmente Responsivo</li>
+
+</ul>
+
+</section>
+
+<section id="equipe">
+
+<h2>Equipe</h2>
+
+<ul>
+
+<li>Fotografia</li>
+
+<li>Nome</li>
+
+<li>Especialidade</li>
+
+<li>Instagram</li>
+
+</ul>
+
+</section>
+
+<section id="depoimentos">
+
+<h2>Depoimentos</h2>
+
+<ul>
+
+<li>★★★★★</li>
+
+<li>Fotos reais</li>
+
+<li>Visual inspirado no Google</li>
+
+</ul>
+
+</section>
+
+<section id="faq">
+
+<h2>FAQ</h2>
+
+<ul>
+
+<li>Accordion</li>
+
+<li>SEO Friendly</li>
+
+</ul>
+
+</section>
+
+<section id="cta">
+
+<h2>Call To Action</h2>
+
+<ul>
+
+<li>Botão principal</li>
+
+<li>Integração com WhatsApp</li>
+
+</ul>
+
+</section>
+<section id="mapa">
+
+<h2>Mapa</h2>
+
+<ul>
+
+<li>Google Maps</li>
+
+<li>Botão "Como Chegar"</li>
+
+</ul>
+
+</section>
+
+<section id="footer">
+
+<h2>Footer</h2>
+
+<ul>
+
+<li>Logotipo</li>
+
+<li>Telefone</li>
+
+<li>WhatsApp</li>
+
+<li>Instagram</li>
+
+<li>Endereço</li>
+
+<li>Horário de Funcionamento</li>
+
+<li>Copyright</li>
+
+</ul>
+
+</section>
+
+<section id="mobile-first">
+
+<h2>Mobile First</h2>
+
+<p>
+
+Todo o Framework será desenvolvido seguindo a filosofia Mobile First.
+
+</p>
+
+<ul>
+
+<li>375px (Base do Projeto)</li>
+
+<li>480px</li>
+
+<li>576px</li>
+
+<li>768px</li>
+
+<li>992px</li>
+
+<li>1200px</li>
+
+<li>1440px</li>
+
+</ul>
+
+</section>
+
+<section id="performance">
+
+<h2>Performance</h2>
+
+<p>
+
+Todas as páginas deverão atingir excelência nos testes do Google Lighthouse.
+
+</p>
+
+<ul>
+
+<li>Performance: 100</li>
+
+<li>SEO: 100</li>
+
+<li>Accessibility: 100</li>
+
+<li>Best Practices: 100</li>
+
+</ul>
+
+</section>
+
+<section id="acessibilidade">
+
+<h2>Acessibilidade</h2>
+
+<ul>
+
+<li>ARIA Labels</li>
+
+<li>Textos Alternativos (ALT)</li>
+
+<li>Labels em Formulários</li>
+
+<li>Landmarks HTML5</li>
+
+<li>Navegação por Teclado</li>
+
+<li>Contraste Adequado</li>
+
+</ul>
+
+</section>
+
+<section id="seo">
+
+<h2>SEO</h2>
+
+<ul>
+
+<li>Meta Description</li>
+
+<li>Title</li>
+
+<li>Keywords</li>
+
+<li>Open Graph</li>
+
+<li>Twitter Cards</li>
+
+<li>Schema LocalBusiness</li>
+
+<li>Canonical</li>
+
+<li>Robots</li>
+
+</ul>
+
+</section>
+
+<section id="javascript">
+
+<h2>JavaScript</h2>
+
+<p>
+
+Todo o JavaScript deverá ser escrito em JavaScript Vanilla, priorizando
+simplicidade, desempenho e manutenção.
+
+</p>
+
+<ul>
+
+<li>Menu Mobile</li>
+
+<li>Header Inteligente</li>
+
+<li>FAQ Accordion</li>
+
+<li>Reveal on Scroll</li>
+
+<li>Counter</li>
+
+<li>Scroll Progress</li>
+
+<li>Back to Top</li>
+
+<li>WhatsApp Float</li>
+
+<li>Typing Effect</li>
+
+<li>Before / After Slider</li>
+
+</ul>
+
+</section>
+
+<section id="css">
+
+<h2>Estrutura do CSS</h2>
+
+<ul>
+
+<li>Variáveis Globais</li>
+
+<li>Reset</li>
+
+<li>Tipografia</li>
+
+<li>Buttons</li>
+
+<li>Containers</li>
+
+<li>Cards</li>
+
+<li>Grid</li>
+
+<li>Animações</li>
+
+<li>Utilities</li>
+
+<li>Dark Theme</li>
+
+<li>Glassmorphism</li>
+
+</ul>
+
+<h3>Variáveis Globais</h3>
+
+<pre>
+:root{
+
+--primary;
+--secondary;
+--accent;
+--gold;
+
+--background;
+--surface;
+
+--text;
+--muted;
+
+--radius;
+--shadow;
+
+--container;
+
+--transition;
+
+}
+</pre>
+
+</section>
+<section id="principios">
+
+<h2>Princípios do Framework</h2>
+
+<p>
+
+Todo desenvolvimento deverá seguir rigorosamente estes princípios.
+
+Eles serão a base para todas as Landing Pages, Templates e futuros
+produtos da Ink X.
+
+</p>
+
+<ul>
+
+<li>Nunca escrever código duplicado.</li>
+
+<li>Nunca depender de frameworks externos.</li>
+
+<li>Sempre comentar o código quando necessário.</li>
+
+<li>Sempre reutilizar componentes.</li>
+
+<li>Sempre pensar em escalabilidade.</li>
+
+<li>Sempre priorizar performance.</li>
+
+<li>Sempre priorizar SEO.</li>
+
+<li>Sempre priorizar acessibilidade.</li>
+
+<li>Sempre buscar simplicidade.</li>
+
+<li>Sempre desenvolver pensando em manutenção futura.</li>
+
+</ul>
+
+<div class="highlight">
+
+<strong>Regra Nº 1 do Framework Ink X</strong>
+
+<br><br>
+
+Nenhum código deverá ser escrito antes de existir uma arquitetura
+bem definida.
+
+</div>
+
+</section>
+
+<section id="nomenclatura">
+
+<h2>Padrão de Nomenclatura</h2>
+
+<p>
+
+Para manter consistência entre todos os projetos, as classes CSS
+deverão seguir um padrão único.
+
+</p>
+
+<pre>
+section
+
+container
+
+grid
+
+card
+
+button
+
+badge
+
+tag
+
+hero
+
+hero-content
+
+hero-image
+
+service-card
+
+gallery-item
+
+testimonial-card
+
+faq-item
+
+footer-links
+
+stats
+
+cta
+
+overlay
+
+wrapper
+</pre>
+
+</section>
+
+<section id="filosofia-inkx">
+
+<h2>Filosofia da Ink X</h2>
+
+<p>
+
+Cada linha de código deverá responder à seguinte pergunta:
+
+</p>
+
+<div class="highlight">
+
+<strong>
+
+"Este código pode ser reutilizado em mais de cem clientes?"
+
+</strong>
+
+</div>
+
+<p>
+
+Se a resposta for <strong>não</strong>, a implementação deverá ser revista.
+
+</p>
+
+<p>
+
+O objetivo não é apenas desenvolver websites.
+
+O objetivo é construir um patrimônio digital reutilizável para a Ink X.
+
+</p>
+
+</section>
+
+<section id="objetivo-final">
+
+<h2>Objetivo Final</h2>
+
+<p>
+
+Criar um Template Premium para Barbearias que:
+
+</p>
+
+<ul>
+
+<li>Seja referência de qualidade.</li>
+
+<li>Sirva como vitrine comercial da Ink X.</li>
+
+<li>Seja facilmente adaptável para outros segmentos.</li>
+
+<li>Funcione como a base técnica de um futuro Framework.</li>
+
+<li>Evolua naturalmente para um SaaS de geração automática de websites.</li>
+
+</ul>
+
+</section>
+
+<section id="missao">
+
+<h2>Missão do Projeto</h2>
+
+<p>
+
+Não estamos construindo apenas uma Landing Page.
+
+</p>
+
+<p>
+
+Estamos construindo o primeiro ativo digital da Ink X.
+
+</p>
+
+<p>
+
+O sucesso deste projeto será medido não apenas pela beleza visual,
+mas principalmente pela sua capacidade de ser reutilizado,
+evoluído e escalado para centenas de futuros clientes.
+
+</p>
+
+</section>
+
+<section id="manifesto">
+
+<h2>Manifesto da Ink X</h2>
+
+<p>
+
+<strong>Missão:</strong>
+
+Ajudar pequenos negócios a parecerem grandes.
+
+</p>
+
+<p>
+
+A Ink X não vende apenas cartões, logotipos ou websites.
+
+Ela entrega uma identidade profissional capaz de transmitir
+credibilidade, confiança e alto valor percebido desde o primeiro contato.
+
+</p>
+
+<h3>Princípios Fundamentais</h3>
+
+<ul>
+
+<li><strong>Qualidade acima da quantidade.</strong> Melhor produzir poucos projetos extraordinários do que muitos projetos medianos.</li>
+
+<li><strong>Reutilização inteligente.</strong> Cada componente desenvolvido deverá economizar tempo nos próximos projetos.</li>
+
+<li><strong>Simplicidade operacional.</strong> HTML, CSS e JavaScript puros sempre que possível.</li>
+
+<li><strong>Evolução contínua.</strong> O Template de hoje será o Framework de amanhã e o SaaS do futuro.</li>
+
+<li><strong>Valor para o cliente.</strong> O cliente não compra código; compra credibilidade, presença digital e uma ferramenta para gerar novos negócios.</li>
+
+</ul>
+
+<div class="highlight">
+
+Este documento deverá permanecer na raiz do projeto como referência
+oficial para todas as futuras evoluções do Framework Ink X.
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>
+
+<strong>INK X FRAMEWORK</strong>
+
+<br>
+
+Caderno de Arquitetura • Versão 1.0
+
+<br><br>
+
+Primeiro ativo digital oficial da Ink X.
+
+<br>
+
+© 2026 • Ink X + ChatGPT
+
+</p>
+
+</footer>
+
+</body>
+</html>
