@@ -16,8 +16,8 @@
     html, body {
       height: 100%;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #0f0f0f;
-      color: #f5f5f5;
+      background: #ffffff;
+      color: #111;
     }
 
     /* ===== CONTAINER PRINCIPAL ===== */
@@ -53,25 +53,25 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
       flex: 1;
       justify-content: center;
     }
 
-    /* ===== ESTILO BASE DOS BOTÕES ===== */
+    /* ===== ESTILO BASE DOS BOTÕES (mais altos) ===== */
     .btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
       width: 100%;
-      height: 58px;
-      border-radius: 999px;
+      height: 68px;                 /* ← mais gordinho */
+      border-radius: 999px;         /* mantém bem redondo */
       text-decoration: none;
-      font-size: 17px;
+      font-size: 18.5px;            /* ← texto um pouco maior */
       font-weight: 600;
       color: #ffffff;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.13);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
@@ -91,8 +91,8 @@
 
     /* ===== ÍCONES ===== */
     .btn svg {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       fill: #ffffff;
     }
 
@@ -100,7 +100,7 @@
     .footer {
       margin-top: 48px;
       padding-top: 24px;
-      border-top: 1px solid #2a2a2a;
+      border-top: 1px solid #e5e5e5;
       width: 100%;
       text-align: center;
       text-decoration: none;
@@ -111,7 +111,7 @@
       font-size: 22px;
       font-weight: 700;
       letter-spacing: -0.5px;
-      color: #f5f5f5;
+      color: #111;
     }
 
     .footer-link {
@@ -127,13 +127,8 @@
   <div class="container">
 
     <!-- ==================== LOGO ==================== -->
-    <!-- Substitua o SVG abaixo pela sua logo (versão clara/branca recomenda-se no dark mode) -->
     <div class="logo">
-     <img src="assets/logo.png" alt="Ink X">
-      <!-- 
-        Para usar uma imagem:
-        <img src="assets/logo.png" alt="Ink X">
-      -->
+      <img src="assets/logo.png" alt="Ink X">
     </div>
 
     <!-- ==================== BOTÕES ==================== -->
