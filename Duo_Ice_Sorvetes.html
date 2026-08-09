@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>INKX | ZM Grifes</title>
+  <meta name="description" content="Atendimento e redes sociais - INKX / ZM Grifes">
+  <style>
+    /* ===== RESET E BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* ===== CONTAINER PRINCIPAL ===== */
+    .container {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 20px 28px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* ===== LOGO ===== */
+    .logo {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .logo svg {
+      width: 140px;
+      height: auto;
+      filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.25));
+    }
+
+    /* ===== ÁREA DOS BOTÕES ===== */
+    .buttons {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    /* ===== BOTÃO WHATSAPP (destaque) ===== */
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      height: 64px;
+      border-radius: 999px;
+      background: #25D366;
+      color: #ffffff;
+      font-size: 17.5px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 
+        0 0 20px rgba(37, 211, 102, 0.45),
+        0 6px 20px rgba(0, 0, 0, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-whatsapp:active {
+      transform: scale(0.97);
+    }
+
+    .btn-whatsapp svg {
+      width: 26px;
+      height: 26px;
+      fill: #ffffff;
+    }
+
+    /* ===== TÍTULO "SOMOS SOCIÁVEIS" ===== */
+    .social-title {
+      text-align: center;
+      font-size: 15px;
+      font-weight: 500;
+      color: #a3a3a3;
+      letter-spacing: 0.3px;
+      margin: 8px 0 4px;
+    }
+
+    /* ===== GRID 2x2 DAS REDES ===== */
+    .social-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .btn-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 58px;
+      border-radius: 18px;
+      color: #ffffff;
+      font-size: 15.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-social:active {
+      transform: scale(0.96);
+    }
+
+    .btn-social svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    /* ===== CORES + GLOW SUTIL ===== */
+    .btn-instagram {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      box-shadow: 0 0 16px rgba(220, 39, 67, 0.35);
+    }
+
+    .btn-tiktok {
+      background: #000000;
+      border: 1px solid #2a2a2a;
+      box-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-facebook {
+      background: #1877F2;
+      box-shadow: 0 0 16px rgba(24, 119, 242, 0.4);
+    }
+
+    .btn-google {
+      background: linear-gradient(135deg, #4285F4 0%, #34A853 35%, #FBBC05 70%, #EA4335 100%);
+      box-shadow: 0 0 16px rgba(66, 133, 244, 0.35);
+    }
+
+    /* ===== RODAPÉ ===== */
+    .footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid #222;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .footer-brand {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #e5e5e5;
+      background: linear-gradient(90deg, #d4af37, #c9a227);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-link {
+      display: block;
+      margin-top: 3px;
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ==================== LOGO INKX ==================== -->
+    <div class="logo">   
+      <img src="assets/duoice.png" alt="logo DuoIce">
+    </div>
+
+    <!-- ==================== BOTÕES ==================== -->
+    <div class="buttons">
+
+      <!-- Botão WhatsApp (destaque principal) -->
+      <!-- ALTERE O NÚMERO E A MENSAGEM AQUI ↓ -->
+      <a class="btn-whatsapp" 
+         href="https://api.whatsapp.com/send?phone=5519986124019&text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido%20%F0%9F%98%8A&utm_source=ig&utm_medium=socil&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAadxDwr0tA3Of_hvzovhwo6oVcd9vfxY1diYUcMrio4uOAB1ljaKdpIHql22-g_aem_Up6jEnzsq9Uf21TKDKzajg" 
+         target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm.01 18.15c-1.49 0-2.94-.43-4.2-1.24l-.35-.21-3.14.83.84-3.06-.23-.37c-.89-1.31-1.36-2.85-1.36-4.44 0-4.37 3.57-7.95 7.95-7.95 2.12 0 4.1.82 5.58 2.31 1.48 1.48 2.31 3.46 2.31 5.59 0 4.37-3.57 7.94-7.95 7.94zM16.56 14.33c-.25-.13-1.4-.69-1.63-.77-.22-.08-.38-.12-.55.13-.16.25-.63.77-.78.93-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-.99-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.39.11-.51.12-.12.25-.31.38-.47.12-.16.16-.27.25-.45.08-.18.04-.34-.02-.47-.06-.13-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2 0 1.18.86 2.32 1 2.49.12.16 1.68 2.56 4.07 3.59.57.25 1.01.39 1.36.5.57.19 1.09.16 1.5.1.46-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.47-.28z"/>
+        </svg>
+        Atendimento WhatsApp
+      </a>
+
+      <!-- Título da seção -->
+      <p class="social-title">Somos sociáveis</p>
+
+      <!-- Grid 2x2 -->
+      <div class="social-grid">
+
+        <!-- Instagram -->
+        <!-- ALTERE O LINK DO INSTAGRAM AQUI ↓ -->
+        <a class="btn-social btn-instagram" 
+           href="https://www.instagram.com/duoicesorvetes/" 
+           target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+          Instagram
+        </a>
+
+        <!-- TikTok -->
+        <!-- ALTERE O LINK DO TIKTOK AQUI ↓ -->
+        <a class="btn-social btn-tiktok" 
+           href="https://www.tiktok.com/@duoice.sorvetes" 
+           target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003 15.57a6.34 6.34 0 0010.86 4.43v-7.2a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.04-.23z"/>
+          </svg>
+          TikTok
+        </a>
+
+        <!-- Facebook -->
+        <!-- ALTERE O LINK DO FACEBOOK AQUI ↓ -->
+        <a class="btn-social btn-facebook" 
+           href="https://www.facebook.com/duoicesorvetes" 
+           target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          Facebook
+        </a>
+
+        <!-- Google Business -->
+        <!-- ALTERE O LINK DO GOOGLE BUSINESS AQUI ↓ -->
+        <a class="btn-social btn-google" 
+           href="https://maps.app.goo.gl/xX9XniseoN54Mrcs8" 
+           target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/>
+          </svg>
+          Google Business
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <a class="footer" href="https://inkx.com.br" target="_blank" rel="noopener noreferrer">
+      <div class="footer-brand">INKX</div>
+      <div class="footer-link">inkx.com.br</div>
+    </a>
+
+  </div>
+
+  <!-- JS leve (opcional – apenas feedback tátil em dispositivos touch) -->
+  <script>
+    // Adiciona feedback visual extra em dispositivos touch
+    document.querySelectorAll('a[class*="btn"]').forEach(btn => {
+      btn.addEventListener('touchstart', () => {
+        btn.style.opacity = '0.9';
+      }, { passive: true });
+      btn.addEventListener('touchend', () => {
+        btn.style.opacity = '1';
+      }, { passive: true });
+    });
+  </script>
+</body>
+</html>
