@@ -6,7 +6,7 @@
   <title>FDL limp - Limpeza e Impermeabilização de Estofados</title>
   <meta property="og:title" content="FDL limp - Limpeza e Impermeabilização">
   <meta property="og:description" content="Atendimento e redes sociais">
-  <meta property="og:image" content="assets/FDL_limp.png">
+  <meta property="og:image" content="assets/FDL_limp.jpg">
   <meta property="og:url" content="https://inkx.com.br/FDL_limp">
   <meta property="og:type" content="website">
   <meta property="og:image:width" content="200">
@@ -24,8 +24,8 @@
     html, body {
       height: 100%;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #f8f9fa;
-      color: #1a1a1a;
+      background: #0d0d0d;
+      color: #e8e8e8;
       overflow-x: hidden;
     }
 
@@ -51,10 +51,10 @@
     }
     .logo img,
     .logo svg {
-      width: 150%;
-      height: 150%;
+      width: 70%;
+      height: 70%;
       object-fit: contain;
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+      filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.45));
     }
     
     /* ===== ÁREA DOS BOTÕES ===== */
@@ -82,8 +82,8 @@
       font-weight: 600;
       text-decoration: none;
       box-shadow: 
-        0 0 20px rgba(37, 211, 102, 0.35),
-        0 4px 14px rgba(0, 0, 0, 0.12);
+        0 0 24px rgba(37, 211, 102, 0.4),
+        0 4px 16px rgba(0, 0, 0, 0.35);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
@@ -102,7 +102,7 @@
       text-align: center;
       font-size: 14px;
       font-weight: 500;
-      color: #555555;
+      color: #a0a0a0;
       letter-spacing: 0.3px;
       margin: 8px 0 4px;
     }
@@ -142,26 +142,30 @@
     /* ===== CORES + SOMBRA SUTIL ===== */
     .btn-instagram {
       background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      box-shadow: 0 4px 14px rgba(220, 39, 67, 0.25);
+      box-shadow: 0 4px 16px rgba(220, 39, 67, 0.35);
     }
 
     .btn-google-maps {
       background: #ffffff;
       color: #333333;
       border: 1px solid #e0e0e0;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      box-shadow:
+        0 0 18px rgba(255, 255, 255, 0.22),
+        0 4px 14px rgba(0, 0, 0, 0.25);
     }
 
     .btn-facebook {
       background: #1877F2;
-      box-shadow: 0 4px 14px rgba(24, 119, 242, 0.25);
+      box-shadow: 0 4px 16px rgba(24, 119, 242, 0.35);
     }
 
     .btn-avaliar {
       background: #ffffff;
       color: #333333;
       border: 1px solid #e0e0e0;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      box-shadow:
+        0 0 18px rgba(255, 255, 255, 0.22),
+        0 4px 14px rgba(0, 0, 0, 0.25);
     }
 
     /* ===== REVIEW-AREA – seta centralizada ===== */
@@ -170,7 +174,7 @@
       grid-row: 3;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;   /* texto e estrelas à direita */
+      align-items: flex-end;
       gap: 2px;
       padding-top: 4px;
       width: 100%;
@@ -181,13 +185,13 @@
       color: #f4b400;
       line-height: 1;
       animation: bounce 1.6s ease-in-out infinite;
-      align-self: center;      /* seta centralizada – nem esquerda nem direita */
+      align-self: center;
     }
 
     .review-text {
       font-size: 13.5px;
       font-weight: 500;
-      color: #555555;
+      color: #a0a0a0;
       letter-spacing: 0.2px;
     }
 
@@ -197,7 +201,7 @@
       font-size: 22px;
       line-height: 1;
       color: #f4b400;
-      filter: drop-shadow(0 1px 2px rgba(244, 180, 0, 0.35));
+      filter: drop-shadow(0 1px 3px rgba(244, 180, 0, 0.4));
     }
 
     @keyframes bounce {
@@ -209,25 +213,31 @@
     .footer {
       margin-top: 36px;
       padding-top: 20px;
-      border-top: 1px solid #e5e5e5;
+      border-top: 1px solid #2a2a2a;
       width: 100%;
       text-align: center;
       text-decoration: none;
       color: inherit;
+      display: block;
+      cursor: pointer;
     }
 
     .footer-brand {
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.5px;
-      color: #666666;
+      color: #888888;
+    }
+
+    .footer-brand .inkx {
+      letter-spacing: -0.5px;
     }
 
     .footer-link {
       display: block;
       margin-top: 4px;
       font-size: 9px;
-      color: #999999;
+      color: #666666;
       line-height: 1.4;
     }
   </style>
@@ -237,7 +247,7 @@
 
     <!-- ==================== LOGO ==================== -->
     <div class="logo">   
-      <img src="assets/FDL_limp.png" alt="logo FDL limp">
+      <img src="assets/FDL_limp.jpg" alt="logo FDL limp">
     </div>
 
     <!-- ==================== BOTÕES ==================== -->
@@ -318,8 +328,8 @@
 
     </div> <!-- fim .buttons -->
 
-    <a class="footer" href="https://inkx.com.br" target="_blank" rel="noopener noreferrer">
-      <div class="footer-brand">INKX | parcerias</div>
+    <a class="footer" href="https://inkx.com.br/parcerias" target="_blank" rel="noopener noreferrer">
+      <div class="footer-brand"><span class="inkx">INKX</span> | parcerias</div>
       <div class="footer-link">criado e mantido por inkx.com.br • 2026 • todos os direitos reservados</div>
     </a>
 
