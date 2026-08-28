@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ZM Grifes - Moda Masculina </title>
-<meta name="description" content="ZM Grifes - Moda Masculina. Confira nosso catálogo e novidades.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ZM Grifes - Moda Masculina</title>
+  <meta name="description" content="ZM Grifes - Moda Masculina. Confira nosso catálogo e novidades.">
 
-<!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="Ink X" />
-<meta property="og:locale" content="pt_BR" />
-<meta property="og:title" content="ZM Grifes - Moda Masculina" />
-<meta property="og:description" content="ZM Grifes - Moda Masculina. Confira nosso catálogo e novidades." />
-<meta property="og:url" content="https://inkx.com.br/ZM_Grifes" />
-<meta property="og:image" content="https://inkx.com.br/assets/ZMOG.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="ZM Grifes - Moda Masculina" />
+  <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ink X" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="ZM Grifes - Moda Masculina" />
+  <meta property="og:description" content="ZM Grifes - Moda Masculina. Confira nosso catálogo e novidades." />
+  <meta property="og:url" content="https://inkx.com.br/ZM_Grifes" />
+  <meta property="og:image" content="https://inkx.com.br/assets/ZMOG.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ZM Grifes - Moda Masculina" />
+
   <style>
     /* ===== RESET E BASE ===== */
     * {
@@ -26,7 +27,8 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
+    html,
+    body {
       height: 100%;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #000000;
@@ -45,7 +47,7 @@
       max-width: 420px;
       margin: 0 auto;
     }
-    
+
     /* ===== LOGO (topo) – encosta nas margens ===== */
     .logo {
       margin-top: 0;
@@ -63,7 +65,7 @@
       display: block;
       filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.5));
     }
-    
+
     /* ===== ÁREA DOS BOTÕES ===== */
     .buttons {
       width: 100%;
@@ -89,10 +91,10 @@
       font-size: 18px;
       font-weight: 700;
       text-decoration: none;
-		box-shadow: 
-		  0 0 24px rgba(56, 224, 90, 0.4),
-		  0 4px 16px rgba(0, 0, 0, 0.5);
-		transition: transform 0.15s ease, box-shadow 0.15s ease;	
+      box-shadow:
+        0 0 24px rgba(56, 224, 90, 0.4),
+        0 4px 16px rgba(0, 0, 0, 0.5);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .btn-whatsapp:active {
@@ -188,13 +190,25 @@
         0 4px 14px rgba(0, 0, 0, 0.45);
     }
 
-    /* ===== REVIEW-AREA ===== */
+    /* ===== REVIEW-AREA (direita) ===== */
     .review-area {
       grid-column: 2;
       grid-row: 3;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      gap: 2px;
+      padding-top: 4px;
+      width: 100%;
+    }
+
+    /* ===== ENCOMENDE-AREA (esquerda) ===== */
+    .encomende-area {
+      grid-column: 1;
+      grid-row: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 2px;
       padding-top: 4px;
       width: 100%;
@@ -226,8 +240,13 @@
     }
 
     @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-4px);
+      }
     }
 
     /* ===== RODAPÉ ===== */
@@ -269,7 +288,7 @@
   <div class="container">
 
     <!-- ==================== LOGO ==================== -->
-    <div class="logo">   
+    <div class="logo">
       <img src="assets/zm1.png" alt="logo ZM Grifes">
     </div>
 
@@ -277,8 +296,8 @@
     <div class="buttons">
 
       <!-- Botão WhatsApp -->
-      <a class="btn-whatsapp" 
-         href="https://wa.me/5519993575624?text=Ol%C3%A1%2C%0Avim%20aqui%20para%20saber%20mais%20sobre%20seus%20produtos%20em%20promo%C3%A7%C3%A3o.%0AVocê pode me ajudar?" 
+      <a class="btn-whatsapp"
+         href="https://wa.me/5519993575624?text=Ol%C3%A1%2C%0Avim%20aqui%20para%20saber%20mais%20sobre%20seus%20produtos%20em%20promo%C3%A7%C3%A3o.%0AVocê pode me ajudar?"
          target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm.01 18.15c-1.49 0-2.94-.43-4.2-1.24l-.35-.21-3.14.83.84-3.06-.23-.37c-.89-1.31-1.36-2.85-1.36-4.44 0-4.37 3.57-7.95 7.95-7.95 2.12 0 4.1.82 5.58 2.31 1.48 1.48 2.31 3.46 2.31 5.59 0 4.37-3.57 7.94-7.95 7.94zM16.56 14.33c-.25-.13-1.4-.69-1.63-.77-.22-.08-.38-.12-.55.13-.16.25-.63.77-.78.93-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-.99-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.39.11-.51.12-.12.25-.31.38-.47.12-.16.16-.27.25-.45.08-.18.04-.34-.02-.47-.06-.13-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2 0 1.18.86 2.32 1 2.49.12.16 1.68 2.56 4.07 3.59.57.25 1.01.39 1.36.5.57.19 1.09.16 1.5.1.46-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.47-.28z"/>
@@ -293,8 +312,8 @@
       <div class="social-grid">
 
         <!-- Instagram -->
-        <a class="btn-social btn-instagram" 
-           href="https://www.instagram.com/zmgrifes_/" 
+        <a class="btn-social btn-instagram"
+           href="https://www.instagram.com/zmgrifes_/"
            target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
@@ -303,8 +322,8 @@
         </a>
 
         <!-- Localização -->
-        <a class="btn-social btn-google-maps" 
-           href="https://maps.app.goo.gl/xs8vMM1Pkq2qDv599" 
+        <a class="btn-social btn-google-maps"
+           href="https://maps.app.goo.gl/xs8vMM1Pkq2qDv599"
            target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -315,19 +334,19 @@
           Localização
         </a>
 
-        <!-- Catálogo -->
-        <a class="btn-social btn-catalogo" 
-           href="https://drive.google.com/drive/folders/1ZRBsaHEfZvHrPo34hpzjUtzqgr1Dn1ib" 
+        <!-- Catálogo Tênis (texto alterado) -->
+        <a class="btn-social btn-catalogo"
+           href="https://drive.google.com/drive/folders/1ZRBsaHEfZvHrPo34hpzjUtzqgr1Dn1ib"
            target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 7h2v2H7V7zm4 0h6v2h-6V7zM7 11h2v2H7v-2zm4 0h6v2h-6v-2zm-4 4h2v2H7v-2zm4 0h6v2h-6v-2z"/>
           </svg>
-          Catálogo
+          Catálogo Tênis
         </a>
 
         <!-- Avalie no Google -->
-        <a class="btn-social btn-avaliar" 
-           href="#" 
+        <a class="btn-social btn-avaliar"
+           href="#"
            target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -338,7 +357,13 @@
           Avalie no Google
         </a>
 
-        <!-- Área de avaliação -->
+        <!-- Área "Encomende o Seu !" (esquerda) -->
+        <div class="encomende-area">
+          <div class="review-arrow" aria-hidden="true">↑</div>
+          <p class="review-text">Encomende o Seu !</p>
+        </div>
+
+        <!-- Área de avaliação (direita) -->
         <div class="review-area">
           <div class="review-arrow" aria-hidden="true">↑</div>
           <p class="review-text">Avalie-nos com</p>
