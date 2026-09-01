@@ -17,284 +17,300 @@
 <meta property="og:image:width" content="200" />
 <meta property="og:image:height" content="200" />
 <meta property="og:image:alt" content="Duo Ice Sorvetes Artesanais" />
-  <style>
-    /* ===== RESET E BASE ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
 
-    html, body {
-      height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #ff8692;
-      color: #ffffff;
-      overflow-x: hidden;
-    }
+<style>
+  /* ===== RESET E BASE ===== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-    /* ===== BACKGROUND DECORATIVO =====
-       A imagem PNG fica sobre o rosa #ff8692.
-       A transparência da própria PNG é preservada.
-    */
-    body {
-      position: relative;
-      isolation: isolate;
-    }
+  html, body {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #ff8692;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: url("assets/background_duo.png");
-      background-repeat: repeat;
-      background-size: 227px 454px;
-      background-position: center top;
+  /* ===== BACKGROUND DECORATIVO ===== */
+  body {
+    position: relative;
+    isolation: isolate;
+  }
 
-      /* OPACIDADE DA IMAGEM DE FUNDO — ajuste este valor manualmente.
-         Exemplos: 0.10 = 10% | 0.20 = 20% | 0.30 = 30% | 0.50 = 50% */
-      opacity: 0.60;
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("assets/background_duo.png");
+    background-repeat: repeat;
+    background-size: 227px 454px;
+    background-position: center top;
+    opacity: 0.60;
+    pointer-events: none;
+    z-index: -1;
+  }
 
-      pointer-events: none;
-      z-index: -1;
-    }
+  /* ===== CONTAINER PRINCIPAL ===== */
+  .container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0 28px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
 
-    /* ===== CONTAINER PRINCIPAL ===== */
-    .container {
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 0 28px;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-    
-    /* ===== LOGO (topo) – encosta nas margens ===== */
-    .logo {
-      margin-top: 20;
-      margin-bottom: 0px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      padding: 0;
-    }
-    .logo img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.25));
-    }
-    
-    /* ===== ÁREA DOS BOTÕES ===== */
-    .buttons {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      flex: 1;
-      justify-content: center;
-      padding: 0 20px;
-    }
+  /* ===== LOGO (só o texto) ===== */
+  .logo {
+    width: 100%;
+    padding: 12px 0 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    /* ===== BOTÃO WHATSAPP (destaque) ===== */
-    .btn-whatsapp {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 13px;
-      width: 100%;
-      height: 64px;
-      border-radius: 999px;
-      background: #038A06;
-      color: #ffffff;
-      font-size: 18px;
-      font-weight: 700;
-      text-decoration: none;
-		box-shadow: 
-		  0 0 24px rgba(186, 255, 201, 0.5),
-		  0 4px 16px rgba(0, 0, 0, 0.25);
-		transition: transform 0.15s ease, box-shadow 0.15s ease;	
-    }
+  .logo img {
+    width: 80%;                 /* 80% da tela (10% de cada lado) */
+    max-width: 340px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.25));
+  }
 
-    .btn-whatsapp:active {
-      transform: scale(0.97);
-    }
+  /* ===== ÁREA DOS BOTÕES ===== */
+  .buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+    justify-content: center;
+    padding: 0 20px;
+  }
 
-    .btn-whatsapp svg {
-      width: 26px;
-      height: 26px;
-      fill: #ffffff;
-    }
+  /* ===== COPOS (colados no WhatsApp) ===== */
+  .copos {
+    width: 100%;
+    margin: 0 0 -6px;           /* leve sobreposição no botão se quiser */
+    padding: 0;
+    line-height: 0;
+    text-align: center;
+  }
 
-    /* ===== TÍTULO DE DESCRIÇÃO ===== */
-    .social-title {
-      text-align: center;
-      font-size: 15px;
-      font-weight: 600;
-      color: #ffffff;
-      letter-spacing: 0.3px;
-      margin: 8px 0 4px;
-      opacity: 0.95;
-    }
+  .copos img {
+    width: 60%;                 /* 3/5 da largura do botão */
+    max-width: 240px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.18));
+  }
 
-    /* ===== GRID 2x2 DAS REDES + REVIEW ===== */
-    .social-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      width: 100%;
-    }
+  /* ===== BOTÃO WHATSAPP (destaque) ===== */
+  .btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    width: 100%;
+    height: 64px;
+    border-radius: 999px;
+    background: #038A06;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 
+      0 0 24px rgba(186, 255, 201, 0.5),
+      0 4px 16px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
 
-    .btn-social {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      height: 58px;
-      border-radius: 18px;
-      color: #FAEEDE;
-      font-size: 15.5px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
+  .btn-whatsapp:active {
+    transform: scale(0.97);
+  }
 
-    .btn-social:active {
-      transform: scale(0.96);
-    }
+  .btn-whatsapp svg {
+    width: 26px;
+    height: 26px;
+    fill: #ffffff;
+  }
 
-    .btn-social svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
+  /* ===== TÍTULO DE DESCRIÇÃO ===== */
+  .social-title {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+    margin: 8px 0 4px;
+    opacity: 0.95;
+  }
 
-    /* ===== CORES + SOMBRA SUTIL ===== */
-    .btn-instagram {
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      box-shadow:
-        0 0 22px rgba(230, 104, 60, 0.55),
-        0 4px 16px rgba(0, 0, 0, 0.25);
-    }
+  /* ===== GRID 2x2 DAS REDES + REVIEW ===== */
+  .social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+  }
 
-    .btn-ifood {
-      background: #EA1D2C;
-      color: #ffffff;
-      box-shadow:
-        0 0 22px rgba(234, 29, 44, 0.6),
-        0 4px 16px rgba(0, 0, 0, 0.25);
-    }
+  .btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 58px;
+    border-radius: 18px;
+    color: #FAEEDE;
+    font-size: 15.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
 
-    .btn-google-maps {
-      background: #FAEEDE;
-      color: #333333;
-      border: 1px solid #e0e0e0;
-      box-shadow:
-        0 0 18px rgba(255, 255, 255, 0.22),
-        0 4px 14px rgba(0, 0, 0, 0.2);
-    }
+  .btn-social:active {
+    transform: scale(0.96);
+  }
 
-    .btn-avaliar {
-      background: #FAEEDE;
-      color: #333333;
-      border: 1px solid #e0e0e0;
-      box-shadow:
-        0 0 18px rgba(255, 255, 255, 0.22),
-        0 4px 14px rgba(0, 0, 0, 0.2);
-    }
+  .btn-social svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+  }
 
-    /* ===== REVIEW-AREA ===== */
-    .review-area {
-      grid-column: 2;
-      grid-row: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 2px;
-      padding-top: 4px;
-      width: 100%;
-    }
+  /* ===== CORES + SOMBRA SUTIL ===== */
+  .btn-instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow:
+      0 0 22px rgba(230, 104, 60, 0.55),
+      0 4px 16px rgba(0, 0, 0, 0.25);
+  }
 
-    .review-arrow {
-      font-size: 18px;
-      color: #f4b400;
-      line-height: 1;
-      animation: bounce 1.6s ease-in-out infinite;
-      align-self: center;
-    }
+  .btn-ifood {
+    background: #EA1D2C;
+    color: #ffffff;
+    box-shadow:
+      0 0 22px rgba(234, 29, 44, 0.6),
+      0 4px 16px rgba(0, 0, 0, 0.25);
+  }
 
-    .review-text {
-      font-size: 13.5px;
-      font-weight: 500;
-      color: #ffffff;
-      letter-spacing: 0.2px;
-      opacity: 0.95;
-    }
+  .btn-google-maps {
+    background: #FAEEDE;
+    color: #333333;
+    border: 1px solid #e0e0e0;
+    box-shadow:
+      0 0 18px rgba(255, 255, 255, 0.22),
+      0 4px 14px rgba(0, 0, 0, 0.2);
+  }
 
-    .review-stars {
-      display: flex;
-      gap: 4px;
-      font-size: 22px;
-      line-height: 1;
-      color: #f4b400;
-      filter: drop-shadow(0 1px 3px rgba(244, 180, 0, 0.4));
-    }
+  .btn-avaliar {
+    background: #FAEEDE;
+    color: #333333;
+    border: 1px solid #e0e0e0;
+    box-shadow:
+      0 0 18px rgba(255, 255, 255, 0.22),
+      0 4px 14px rgba(0, 0, 0, 0.2);
+  }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
+  /* ===== REVIEW-AREA ===== */
+  .review-area {
+    grid-column: 2;
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    padding-top: 4px;
+    width: 100%;
+  }
 
-    /* ===== RODAPÉ ===== */
-    .footer {
-      margin-top: 36px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.25);
-      width: 100%;
-      text-align: center;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      cursor: pointer;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
+  .review-arrow {
+    font-size: 18px;
+    color: #f4b400;
+    line-height: 1;
+    animation: bounce 1.6s ease-in-out infinite;
+    align-self: center;
+  }
 
-    .footer-brand {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      color: rgba(255, 255, 255, 0.85);
-    }
+  .review-text {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 0.2px;
+    opacity: 0.95;
+  }
 
-    .footer-brand .inkx {
-      letter-spacing: -0.5px;
-    }
+  .review-stars {
+    display: flex;
+    gap: 4px;
+    font-size: 22px;
+    line-height: 1;
+    color: #f4b400;
+    filter: drop-shadow(0 1px 3px rgba(244, 180, 0, 0.4));
+  }
 
-    .footer-link {
-      display: block;
-      margin-top: 4px;
-      font-size: 9px;
-      color: rgba(255, 255, 255, 0.65);
-      line-height: 1.4;
-    }
-  </style>
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  /* ===== RODAPÉ ===== */
+  .footer {
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .footer-brand {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .footer-brand .inkx {
+    letter-spacing: -0.5px;
+  }
+
+  .footer-link {
+    display: block;
+    margin-top: 4px;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.4;
+  }
+</style>
 </head>
 <body>
   <div class="container">
 
-    <!-- ==================== LOGO ==================== -->
-    <div class="logo">   
-      <img src="assets/douice.png" alt="logo Duo Ice Sorvetes Artesanais">
+    <!-- ==================== LOGO (só o texto) ==================== -->
+    <div class="logo">
+      <img src="assets/logo-duo-ice.png" alt="Duo Ice Sorvetes Artesanais">
     </div>
 
     <!-- ==================== BOTÕES ==================== -->
     <div class="buttons">
+
+      <!-- Copos colados no botão WhatsApp -->
+      <div class="copos">
+        <img src="assets/copos-duo-ice.png" alt="Sorvetes Duo Ice">
+      </div>
 
       <!-- Botão WhatsApp -->
       <a class="btn-whatsapp" 
@@ -332,7 +348,7 @@
           iFood
         </a>
 
-        <!-- Localização (antigo lugar do Facebook) -->
+        <!-- Localização -->
         <a class="btn-social btn-google-maps" 
            href="https://maps.app.goo.gl/xX9XniseoN54Mrcs8" 
            target="_blank" rel="noopener noreferrer">
@@ -345,7 +361,7 @@
           Localização
         </a>
 
-        <!-- Avalie no Google (antigo lugar da Localização) -->
+        <!-- Avalie no Google -->
         <a class="btn-social btn-avaliar" 
            href="https://g.page/r/CUzVi-Yjte7bEBM/review" 
            target="_blank" rel="noopener noreferrer">
