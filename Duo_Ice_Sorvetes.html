@@ -97,15 +97,15 @@
   /* ===== COPOS (colados no WhatsApp) ===== */
   .copos {
     width: 100%;
-    margin: 0 0 -6px;           /* leve sobreposição no botão se quiser */
+    margin: 0;
     padding: 0;
     line-height: 0;
     text-align: center;
   }
 
   .copos img {
-    width: 60%;                 /* 3/5 da largura do botão */
-    max-width: 240px;
+    width: 72%;                 /* 20% maior que o tamanho original (60%) */
+    max-width: 288px;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -120,6 +120,9 @@
     gap: 13px;
     width: 100%;
     height: 64px;
+    margin-top: -17px;          /* anula o gap de 16px do flex + 1px de sobreposição sobre os copos */
+    position: relative;
+    z-index: 1;
     border-radius: 999px;
     background: #038A06;
     color: #ffffff;
@@ -232,11 +235,26 @@
   }
 
   .review-arrow {
-    font-size: 18px;
-    color: #f4b400;
-    line-height: 1;
+    width: 28px;
+    height: 28px;
+    fill: #FFD400;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
     animation: bounce 1.6s ease-in-out infinite;
     align-self: center;
+  }
+
+  .review-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .review-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.2px;
+    line-height: 1.05;
   }
 
   .review-text {
@@ -245,6 +263,7 @@
     color: #ffffff;
     letter-spacing: 0.2px;
     opacity: 0.95;
+    line-height: 1.05;
   }
 
   .review-stars {
@@ -376,8 +395,13 @@
 
         <!-- Área de avaliação -->
         <div class="review-area">
-          <div class="review-arrow" aria-hidden="true">↑</div>
-          <p class="review-text">Avalie-nos com</p>
+          <svg class="review-arrow" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4l8 8h-5v8h-6v-8H4z"/>
+          </svg>
+          <div class="review-labels">
+            <p class="review-title">Nos conhece?</p>
+            <p class="review-text">Avalie-nos com</p>
+          </div>
           <div class="review-stars" aria-label="5 estrelas">
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
