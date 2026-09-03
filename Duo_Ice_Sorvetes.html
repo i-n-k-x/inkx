@@ -313,6 +313,74 @@
     color: rgba(255, 255, 255, 0.65);
     line-height: 1.4;
   }
+
+  /* ===== ANIMAÇÕES PREMIUM - SOMENTE MOBILE ===== */
+  @media (max-width: 768px) {
+    /* Estado inicial (invisível + levemente deslocado) */
+    .logo,
+    .copos,
+    .btn-whatsapp,
+    .social-title,
+    .btn-social,
+    .review-area {
+      opacity: 0;
+      transform: translateY(32px) scale(0.96);
+      will-change: transform, opacity;
+    }
+
+    /* Quando a animação de entrada é ativada */
+    .logo.animate-in,
+    .copos.animate-in,
+    .btn-whatsapp.animate-in,
+    .social-title.animate-in,
+    .btn-social.animate-in,
+    .review-area.animate-in {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition: 
+        opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1.15s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Delays sequenciais mais lentos e elegantes */
+    .logo.animate-in            { transition-delay: 0.10s; }
+    .copos.animate-in           { transition-delay: 0.35s; }
+    .btn-whatsapp.animate-in    { transition-delay: 0.55s; }
+    .social-title.animate-in    { transition-delay: 0.75s; }
+    
+    .btn-instagram.animate-in   { transition-delay: 0.90s; }
+    .btn-ifood.animate-in       { transition-delay: 1.05s; }
+    .btn-google-maps.animate-in { transition-delay: 1.20s; }
+    .btn-avaliar.animate-in     { transition-delay: 1.35s; }
+    
+    .review-area.animate-in     { transition-delay: 1.55s; }
+
+    /* ===== LOGO FLUTUANTE CONTÍNUA (efeito porta sutil) ===== */
+    .logo.animate-in {
+      perspective: 900px;
+    }
+
+    .logo.animate-in img {
+      transform-origin: center center;
+      transform-style: preserve-3d;
+      will-change: transform;
+      animation: logoFloat 5.8s ease-in-out infinite;
+      animation-delay: 1.5s; /* começa depois da entrada terminar */
+    }
+  }
+
+  /* Movimento contínuo sutil da logo (eixo central como porta) */
+  @keyframes logoFloat {
+    0% {
+      transform: rotateY(-5.5deg) translateY(0);
+    }
+    50% {
+      transform: rotateY(5.5deg) translateY(-5px);
+    }
+    100% {
+      transform: rotateY(-5.5deg) translateY(0);
+    }
+  }
 </style>
 </head>
 <body>
@@ -419,6 +487,32 @@
   </div>
 
   <script>
+    // Animações premium - somente em dispositivos móveis
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      window.addEventListener('load', () => {
+        // Pequeno delay para garantir que as imagens carregaram
+        setTimeout(() => {
+          const elements = [
+            '.logo',
+            '.copos',
+            '.btn-whatsapp',
+            '.social-title',
+            '.btn-instagram',
+            '.btn-ifood',
+            '.btn-google-maps',
+            '.btn-avaliar',
+            '.review-area'
+          ];
+
+          elements.forEach(selector => {
+            const el = document.querySelector(selector);
+            if (el) el.classList.add('animate-in');
+          });
+        }, 80);
+      });
+    }
+
+    // Feedback de toque nos botões
     document.querySelectorAll('a[class*="btn"]').forEach(btn => {
       btn.addEventListener('touchstart', () => {
         btn.style.opacity = '0.9';
