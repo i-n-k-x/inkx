@@ -76,7 +76,7 @@
   }
 
   .logo img {
-    width: 80%;                 /* 80% da tela (10% de cada lado) */
+    width: 80%;
     max-width: 340px;
     height: auto;
     display: block;
@@ -104,7 +104,7 @@
   }
 
   .copos img {
-    width: 72%;                 /* 20% maior que o tamanho original (60%) */
+    width: 72%;
     max-width: 288px;
     height: auto;
     display: block;
@@ -120,7 +120,7 @@
     gap: 13px;
     width: 100%;
     height: 64px;
-    margin-top: -17px;          /* anula o gap de 16px do flex + 1px de sobreposição sobre os copos */
+    margin-top: -17px;
     position: relative;
     z-index: 1;
     border-radius: 999px;
@@ -503,10 +503,169 @@
     height: 24px;
   }
 
+  /* ===== MODAL DE AVALIAÇÃO (DISCLAIMER) ===== */
+  .review-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    background: rgba(35, 10, 18, 0.58);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+
+  .review-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .review-modal-card {
+    width: min(100%, 340px);
+    padding: 28px 22px 24px;
+    border-radius: 28px;
+    background: rgba(255, 250, 247, 0.97);
+    color: #3a2528;
+    box-shadow:
+      0 24px 70px rgba(40, 8, 16, 0.38),
+      0 5px 24px rgba(255, 255, 255, 0.16);
+    transform: translateY(24px) scale(0.94);
+    opacity: 0;
+    transition:
+      transform 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.35s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .review-modal.is-open .review-modal-card {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  .review-modal-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff8692, #ffb0b8, #ff8692);
+  }
+
+  .review-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 134, 146, 0.12);
+    color: #7c4a50;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .review-modal-close:active {
+    transform: scale(0.9);
+  }
+
+  /* Coração que enche de baixo para cima */
+  .heart-progress {
+    width: 72px;
+    height: 66px;
+    margin: 10px auto 18px;
+    position: relative;
+  }
+
+  .heart-progress svg {
+    width: 72px;
+    height: 66px;
+    display: block;
+  }
+
+  .heart-outline {
+    position: absolute;
+    inset: 0;
+    fill: #ffffff;
+    stroke: #e74c3c;
+    stroke-width: 1.8;
+  }
+
+  .heart-fill-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    overflow: hidden;
+    transition: height 6s linear;
+  }
+
+  .heart-fill-wrapper.is-filling {
+    height: 100%;
+  }
+
+  .heart-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    fill: #e74c3c;
+  }
+
+  .review-modal-title {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #3a2528;
+    line-height: 1.4;
+    margin: 0 0 10px;
+    letter-spacing: -0.2px;
+  }
+
+  .review-modal-stars {
+    font-size: 22px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    line-height: 1;
+  }
+
+  .btn-ir-avaliacao {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #ff8692, #ff5a6a);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(255, 90, 106, 0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn-ir-avaliacao:active {
+    transform: scale(0.97);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .location-modal,
     .location-modal-card,
-    .location-option {
+    .location-option,
+    .review-modal,
+    .review-modal-card,
+    .heart-fill-wrapper {
       transition: none;
     }
   }
@@ -562,7 +721,7 @@
       transform-style: preserve-3d;
       will-change: transform;
       animation: logoFloat 5.8s ease-in-out infinite;
-      animation-delay: 1.5s; /* começa depois da entrada terminar */
+      animation-delay: 1.5s;
     }
   }
 
@@ -727,6 +886,41 @@
       </div>
     </div>
 
+
+    <!-- ==================== MODAL DE AVALIAÇÃO (DISCLAIMER) ==================== -->
+    <div class="review-modal" id="reviewModal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="review-modal-card" role="document">
+        <button class="review-modal-close" id="reviewModalClose" type="button" aria-label="Fechar">×</button>
+
+        <!-- Coração que enche de baixo para cima -->
+        <div class="heart-progress">
+          <!-- Contorno branco -->
+          <svg class="heart-outline" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+
+          <!-- Preenchimento vermelho (sobe de baixo para cima) -->
+          <div class="heart-fill-wrapper" id="heartFill">
+            <svg class="heart-fill" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+        </div>
+
+        <h2 class="review-modal-title">
+          Ajude-nos a continuar fazendo o nosso melhor.<br>
+          Avalie com responsabilidade e, se gostou, nos presenteie com 5 estrelas!
+        </h2>
+
+        <div class="review-modal-stars">⭐⭐⭐⭐⭐</div>
+
+        <button class="btn-ir-avaliacao" id="btnIrAvaliacao" type="button">
+          Ir para avaliação
+        </button>
+      </div>
+    </div>
+
+
     <a class="footer" href="https://inkx.com.br/parcerias" target="_blank" rel="noopener noreferrer">
       <div class="footer-brand"><span class="inkx">INKX</span> | parcerias</div>
       <div class="footer-link">criado e mantido por inkx.com.br • 2026 • todos os direitos reservados</div>
@@ -738,7 +932,6 @@
     // Animações premium - somente em dispositivos móveis
     if (window.matchMedia('(max-width: 768px)').matches) {
       window.addEventListener('load', () => {
-        // Pequeno delay para garantir que as imagens carregaram
         setTimeout(() => {
           const elements = [
             '.logo',
@@ -798,6 +991,82 @@
         }
       });
     })();
+
+
+    // ===== Modal de Avaliação (Disclaimer) =====
+    (() => {
+      const GOOGLE_REVIEW_URL = 'https://g.page/r/CUzVi-Yjte7bEBM/review';
+      const DURATION = 6000; // 5 segundos
+
+      const modal = document.getElementById('reviewModal');
+      const closeBtn = document.getElementById('reviewModalClose');
+      const goBtn = document.getElementById('btnIrAvaliacao');
+      const heartFill = document.getElementById('heartFill');
+      const avaliarBtn = document.querySelector('.btn-avaliar');
+
+      if (!modal || !avaliarBtn) return;
+
+      let timer = null;
+      let hasRedirected = false;
+
+      function openReviewModal(e) {
+        e.preventDefault();
+        hasRedirected = false;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // Reinicia o coração
+        heartFill.classList.remove('is-filling');
+        void heartFill.offsetWidth; // força reflow
+        heartFill.classList.add('is-filling');
+
+        // Timer de 5 segundos
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          goToReview();
+        }, DURATION);
+      }
+
+      function closeReviewModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        clearTimeout(timer);
+        heartFill.classList.remove('is-filling');
+      }
+
+      function goToReview() {
+        if (hasRedirected) return;
+        hasRedirected = true;
+        closeReviewModal();
+        window.location.href = GOOGLE_REVIEW_URL;
+      }
+
+      // Abre o modal ao clicar no botão "Avalie no Google"
+      avaliarBtn.addEventListener('click', openReviewModal);
+
+      // Botão "Ir para avaliação"
+      goBtn.addEventListener('click', goToReview);
+
+      // Fechar pelo X (apenas fecha, sem ir para avaliação)
+      closeBtn.addEventListener('click', closeReviewModal);
+
+      // Clicar fora da modal → vai para a avaliação
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          goToReview();
+        }
+      });
+
+      // ESC fecha a modal (sem ir para avaliação)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+          closeReviewModal();
+        }
+      });
+    })();
+
 
     // Feedback de toque nos botões
     document.querySelectorAll('a[class*="btn"]').forEach(btn => {
