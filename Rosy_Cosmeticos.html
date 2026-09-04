@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Rosy Cosméticos - Loja de Cosméticos | Ink X</title>
 <meta name="description" content="Rosy Cosméticos - sua autoestima sempre em alta. Loja de cosméticos.">
-
-<!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ink X" />
 <meta property="og:locale" content="pt_BR" />
@@ -17,292 +15,116 @@
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Rosy Cosméticos - sua autoestima sempre em alta" />
-  <style>
-    /* ===== RESET E BASE ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html, body {
-      height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #B02220;
-      color: #ffffff;
-      overflow-x: hidden;
-    }
-
-    /* ===== CONTAINER PRINCIPAL ===== */
-    .container {
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 0 28px;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-    
-    /* ===== LOGO (topo) – encosta nas margens ===== */
-    .logo {
-      margin-top: 0;
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      padding: 0;
-    }
-    .logo img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.25));
-    }
-    
-    /* ===== ÁREA DOS BOTÕES ===== */
-    .buttons {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      flex: 1;
-      justify-content: center;
-      padding: 0 20px;
-    }
-
-    /* ===== BOTÃO WHATSAPP (destaque) ===== */
-    .btn-whatsapp {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 13px;
-      width: 100%;
-      height: 64px;
-      border-radius: 999px;
-      background: #038A06;
-      color: #ffffff;
-      font-size: 18px;
-      font-weight: 700;
-      text-decoration: none;
-		box-shadow: 
-		  0 0 24px rgba(186, 255, 201, 0.5),
-		  0 4px 16px rgba(0, 0, 0, 0.25);
-		transition: transform 0.15s ease, box-shadow 0.15s ease;	
-    }
-
-    .btn-whatsapp:active {
-      transform: scale(0.97);
-    }
-
-    .btn-whatsapp svg {
-      width: 26px;
-      height: 26px;
-      fill: #ffffff;
-    }
-
-    /* ===== TÍTULO DE DESCRIÇÃO ===== */
-    .social-title {
-      text-align: center;
-      font-size: 15x;
-      font-weight: 600;
-      color: #ffffff;
-      letter-spacing: 0.3px;
-      margin: 8px 0 4px;
-      opacity: 0.95;
-    }
-
-    /* ===== GRID 2x2 DAS REDES + REVIEW ===== */
-    .social-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      width: 100%;
-    }
-
-    .btn-social {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      height: 58px;
-      border-radius: 18px;
-      color: #FAEEDE;
-      font-size: 15.5px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .btn-social:active {
-      transform: scale(0.96);
-    }
-
-    .btn-social svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
-
-    /* ===== CORES + SOMBRA SUTIL ===== */
-    .btn-instagram {
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      box-shadow: 0 4px 16px rgba(220, 39, 67, 0.35);
-    }
-
-    .btn-google-maps {
-      background: #FAEEDE;
-      color: #333333;
-      border: 1px solid #e0e0e0;
-      box-shadow:
-        0 0 18px rgba(255, 255, 255, 0.22),
-        0 4px 14px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-catalogo {
-      background: #0070f0;
-      color: #ffda32;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow:
-        0 0 18px rgba(255, 255, 255, 0.25),
-        0 4px 14px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-catalogo svg {
-      fill: #ffda32;
-    }
-
-    .btn-avaliar {
-      background: #FAEEDE;
-      color: #333333;
-      border: 1px solid #e0e0e0;
-      box-shadow:
-        0 0 18px rgba(255, 255, 255, 0.22),
-        0 4px 14px rgba(0, 0, 0, 0.2);
-    }
-
-    /* ===== REVIEW-AREA ===== */
-    .review-area {
-      grid-column: 2;
-      grid-row: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 2px;
-      padding-top: 4px;
-      width: 100%;
-    }
-
-    .review-arrow {
-      font-size: 18px;
-      color: #f4b400;
-      line-height: 1;
-      animation: bounce 1.6s ease-in-out infinite;
-      align-self: center;
-    }
-
-    .review-text {
-      font-size: 13.5px;
-      font-weight: 500;
-      color: #ffffff;
-      letter-spacing: 0.2px;
-      opacity: 0.95;
-    }
-
-    .review-stars {
-      display: flex;
-      gap: 4px;
-      font-size: 22px;
-      line-height: 1;
-      color: #f4b400;
-      filter: drop-shadow(0 1px 3px rgba(244, 180, 0, 0.4));
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-
-    /* ===== RODAPÉ ===== */
-    .footer {
-      margin-top: 36px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.25);
-      width: 100%;
-      text-align: center;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      cursor: pointer;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-
-    .footer-brand {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .footer-brand .inkx {
-      letter-spacing: -0.5px;
-    }
-
-    .footer-link {
-      display: block;
-      margin-top: 4px;
-      font-size: 9px;
-      color: rgba(255, 255, 255, 0.65);
-      line-height: 1.4;
-    }
-  </style>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #B02220; color: #ffffff; overflow-x: hidden; }
+  body { position: relative; isolation: isolate; }
+  body::before { content: ""; position: fixed; inset: 0; background-image: url("assets/background_rosy.png"); background-repeat: repeat; background-size: 227px 454px; background-position: center top; opacity: 0.60; pointer-events: none; z-index: -1; }
+  .container { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 24px 0 28px; max-width: 420px; margin: 0 auto; }
+  .logo { width: 100%; padding: 12px 0 8px; display: flex; justify-content: center; align-items: center; }
+  .logo img { width: 100%; max-width: 420px; height: auto; display: block; filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.25)); }
+  .buttons { width: 100%; display: flex; flex-direction: column; gap: 16px; flex: 1; justify-content: center; padding: 0 20px; }
+  .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 13px; width: 100%; height: 64px; border-radius: 999px; background: #038A06; color: #ffffff; font-size: 18px; font-weight: 700; text-decoration: none; box-shadow: 0 0 24px rgba(186, 255, 201, 0.5), 0 4px 16px rgba(0, 0, 0, 0.25); transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .btn-whatsapp:active { transform: scale(0.97); }
+  .btn-whatsapp svg { width: 26px; height: 26px; fill: #ffffff; }
+  .social-title { text-align: center; font-size: 14px; font-weight: 500; color: #ffffff; letter-spacing: -0.3px; margin: 4px 0 2px; opacity: 0.95; }
+  .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+  .btn-social { display: flex; align-items: center; justify-content: center; gap: 10px; height: 58px; border-radius: 18px; color: #FAEEDE; font-size: 15.5px; font-weight: 600; text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease; border: none; cursor: pointer; font-family: inherit; }
+  .btn-social:active { transform: scale(0.96); }
+  .btn-social svg { width: 22px; height: 22px; fill: currentColor; }
+  .btn-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); box-shadow: 0 0 22px rgba(230, 104, 60, 0.55), 0 4px 16px rgba(0, 0, 0, 0.25); }
+  .btn-google-maps { background: #FAEEDE; color: #333333; border: 1px solid #e0e0e0; box-shadow: 0 0 18px rgba(255, 255, 255, 0.22), 0 4px 14px rgba(0, 0, 0, 0.2); }
+  .btn-catalogo { background: #0070f0; color: #ffda32; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 0 18px rgba(0, 112, 240, 0.4), 0 4px 14px rgba(0, 0, 0, 0.2); }
+  .btn-catalogo svg { fill: #ffda32; }
+  .btn-avaliar { background: #FAEEDE; color: #333333; border: 1px solid #e0e0e0; box-shadow: 0 0 18px rgba(255, 255, 255, 0.22), 0 4px 14px rgba(0, 0, 0, 0.2); }
+  .review-area { grid-column: 2; grid-row: 3; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; padding-top: 4px; width: 100%; }
+  .review-arrow { width: 22px; height: 24px; fill: #FFD400; filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35)); animation: bounce 1.6s ease-in-out infinite; align-self: center; }
+  .review-labels { display: flex; flex-direction: column; gap: 0; }
+  .review-title { font-size: 14px; font-weight: 600; color: #ffffff; letter-spacing: 0.2px; line-height: 1.05; }
+  .review-text { font-size: 14px; font-weight: 600; color: #ffffff; letter-spacing: 0.2px; opacity: 0.95; line-height: 1.05; }
+  .review-stars { display: flex; gap: 4px; font-size: 22px; line-height: 1; color: #f4b400; filter: drop-shadow(0 2px 4px rgba(244, 180, 0, 0.6)); }
+  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  .footer { margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.25); width: 100%; text-align: center; text-decoration: none; color: inherit; display: block; cursor: pointer; padding-left: 20px; padding-right: 20px; }
+  .footer-brand { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; color: rgba(255, 255, 255, 0.85); }
+  .footer-brand .inkx { letter-spacing: -0.5px; }
+  .footer-link { display: block; margin-top: 4px; font-size: 9px; color: rgba(255, 255, 255, 0.65); line-height: 1.4; }
+  .location-modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 22px; background: rgba(35, 10, 18, 0.58); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.35s ease, visibility 0.35s ease; }
+  .location-modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+  .location-modal-card { width: min(100%, 370px); padding: 27px 22px 22px; border-radius: 28px; background: rgba(255, 250, 247, 0.97); color: #3a2528; box-shadow: 0 24px 70px rgba(40, 8, 16, 0.38), 0 5px 24px rgba(255, 255, 255, 0.16); transform: translateY(24px) scale(0.94); opacity: 0; transition: transform 0.48s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease; position: relative; overflow: hidden; }
+  .location-modal.is-open .location-modal-card { transform: translateY(0) scale(1); opacity: 1; }
+  .location-modal-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: linear-gradient(90deg, #B02220, #e85a55, #B02220); }
+  .location-modal-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgba(176, 34, 32, 0.12); color: #7c4a50; font-size: 24px; line-height: 1; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease; }
+  .location-modal-close:active { transform: scale(0.9); }
+  .location-modal-icon { width: 58px; height: 58px; margin: 2px auto 12px; display: flex; align-items: center; justify-content: center; border-radius: 18px; background: linear-gradient(145deg, #B02220, #e85a55); color: #fff; box-shadow: 0 8px 22px rgba(176, 34, 32, 0.28); }
+  .location-modal-icon svg { width: 29px; height: 29px; fill: currentColor; }
+  .location-modal-title { text-align: center; font-size: 21px; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 5px; }
+  .location-modal-subtitle { text-align: center; font-size: 13px; color: #806a6d; margin-bottom: 19px; }
+  .location-options { display: flex; flex-direction: column; gap: 12px; }
+  .location-option { width: 100%; min-height: 64px; padding: 12px 18px; display: flex; align-items: center; justify-content: center; gap: 12px; border: none; border-radius: 18px; text-decoration: none; font-size: 16px; font-weight: 700; transition: transform 0.18s ease, box-shadow 0.18s ease; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18); }
+  .location-option:active { transform: scale(0.97); }
+  .location-option svg, .location-option img { display: block; flex-shrink: 0; }
+  .location-option-waze { background: #33CCFF; color: #ffffff; box-shadow: 0 0 22px rgba(51, 204, 255, 0.45), 0 4px 16px rgba(0, 0, 0, 0.2); }
+  .location-option-waze img { width: 36px; height: 36px; object-fit: contain; }
+  .location-option-uber { background: #000000; color: #ffffff; box-shadow: 0 0 18px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(0, 0, 0, 0.25); }
+  .location-option-uber svg { width: 72px; height: 24px; }
+  .location-option-maps { background: #FAEEDE; color: #333333; border: 1px solid #e0e0e0; box-shadow: 0 0 18px rgba(255, 255, 255, 0.22), 0 4px 14px rgba(0, 0, 0, 0.2); }
+  .location-option-maps svg { width: 24px; height: 24px; }
+  .review-modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 22px; background: rgba(35, 10, 18, 0.58); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.35s ease, visibility 0.35s ease; }
+  .review-modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+  .review-modal-card { width: min(100%, 340px); padding: 28px 22px 24px; border-radius: 28px; background: rgba(255, 250, 247, 0.97); color: #3a2528; box-shadow: 0 24px 70px rgba(40, 8, 16, 0.38), 0 5px 24px rgba(255, 255, 255, 0.16); transform: translateY(24px) scale(0.94); opacity: 0; transition: transform 0.48s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease; position: relative; overflow: hidden; text-align: center; }
+  .review-modal.is-open .review-modal-card { transform: translateY(0) scale(1); opacity: 1; }
+  .review-modal-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: linear-gradient(90deg, #B02220, #e85a55, #B02220); }
+  .review-modal-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgba(176, 34, 32, 0.12); color: #7c4a50; font-size: 24px; line-height: 1; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease; }
+  .review-modal-close:active { transform: scale(0.9); }
+  .heart-progress { width: 72px; height: 66px; margin: 10px auto 18px; position: relative; }
+  .heart-progress svg { width: 72px; height: 66px; display: block; }
+  .heart-outline { position: absolute; inset: 0; fill: #ffffff; stroke: #e74c3c; stroke-width: 1.8; }
+  .heart-fill-wrapper { position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; overflow: hidden; transition: height 6s linear; }
+  .heart-fill-wrapper.is-filling { height: 100%; }
+  .heart-fill { position: absolute; bottom: 0; left: 0; fill: #e74c3c; }
+  .review-modal-title { font-size: 16.5px; font-weight: 700; color: #3a2528; line-height: 1.4; margin: 0 0 10px; letter-spacing: -0.2px; }
+  .review-modal-stars { font-size: 22px; letter-spacing: 3px; margin-bottom: 20px; line-height: 1; }
+  .btn-ir-avaliacao { display: block; width: 100%; padding: 15px 20px; border: none; border-radius: 16px; background: linear-gradient(135deg, #B02220, #e85a55); color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 6px 18px rgba(176, 34, 32, 0.4); transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .btn-ir-avaliacao:active { transform: scale(0.97); }
+  @media (prefers-reduced-motion: reduce) { .location-modal, .location-modal-card, .location-option, .review-modal, .review-modal-card, .heart-fill-wrapper { transition: none; } }
+  @media (max-width: 768px) {
+    .logo, .btn-whatsapp, .social-title, .btn-social, .review-area { opacity: 0; transform: translateY(32px) scale(0.96); will-change: transform, opacity; }
+    .logo.animate-in, .btn-whatsapp.animate-in, .social-title.animate-in, .btn-social.animate-in, .review-area.animate-in { opacity: 1; transform: translateY(0) scale(1); transition: opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1), transform 1.15s cubic-bezier(0.16, 1, 0.3, 1); }
+    .logo.animate-in { transition-delay: 0.10s; }
+    .btn-whatsapp.animate-in { transition-delay: 0.35s; }
+    .social-title.animate-in { transition-delay: 0.55s; }
+    .btn-instagram.animate-in { transition-delay: 0.70s; }
+    .btn-google-maps.animate-in { transition-delay: 0.85s; }
+    .btn-catalogo.animate-in { transition-delay: 1.00s; }
+    .btn-avaliar.animate-in { transition-delay: 1.15s; }
+    .review-area.animate-in { transition-delay: 1.35s; }
+    .logo.animate-in { perspective: 900px; }
+    .logo.animate-in img { transform-origin: center center; transform-style: preserve-3d; will-change: transform; animation: logoFloat 5.8s ease-in-out infinite; animation-delay: 1.5s; }
+  }
+  @keyframes logoFloat {
+    0% { transform: rotateY(-5.5deg) translateY(0); }
+    50% { transform: rotateY(5.5deg) translateY(-5px); }
+    100% { transform: rotateY(-5.5deg) translateY(0); }
+  }
+</style>
 </head>
 <body>
   <div class="container">
-
-    <!-- ==================== LOGO ==================== -->
-    <div class="logo">   
-      <img src="assets/rosy2.png" alt="logo Rosy Cosméticos">
+    <div class="logo">
+      <img src="assets/rosy2.png" alt="logo Rosy Cosméticos" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'font-size:28px;font-weight:800;letter-spacing:-0.5px;padding:20px;\\'>Rosy Cosméticos</div>';">
     </div>
-
-    <!-- ==================== BOTÕES ==================== -->
     <div class="buttons">
-
-      <!-- Botão WhatsApp -->
-      <a class="btn-whatsapp" 
-         href="https://wa.me/5519999753788?text=Ol%C3%A1%21%0AEncontrei%20a%20loja%20e%20gostaria%20de%20conhecer%20os%20produtos%20e%20novidades%20dispon%C3%ADveis.%0APoderiam%20me%20ajudar%3F" 
-         target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm.01 18.15c-1.49 0-2.94-.43-4.2-1.24l-.35-.21-3.14.83.84-3.06-.23-.37c-.89-1.31-1.36-2.85-1.36-4.44 0-4.37 3.57-7.95 7.95-7.95 2.12 0 4.1.82 5.58 2.31 1.48 1.48 2.31 3.46 2.31 5.59 0 4.37-3.57 7.94-7.95 7.94zM16.56 14.33c-.25-.13-1.4-.69-1.63-.77-.22-.08-.38-.12-.55.13-.16.25-.63.77-.78.93-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-.99-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.39.11-.51.12-.12.25-.31.38-.47.12-.16.16-.27.25-.45.08-.18.04-.34-.02-.47-.06-.13-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2 0 1.18.86 2.32 1 2.49.12.16 1.68 2.56 4.07 3.59.57.25 1.01.39 1.36.5.57.19 1.09.16 1.5.1.46-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.47-.28z"/>
-        </svg>
+      <a class="btn-whatsapp" href="https://wa.me/5519999753788?text=Ol%C3%A1%21%0AEncontrei%20a%20loja%20e%20gostaria%20de%20conhecer%20os%20produtos%20e%20novidades%20dispon%C3%ADveis.%0APoderiam%20me%20ajudar%3F" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm.01 18.15c-1.49 0-2.94-.43-4.2-1.24l-.35-.21-3.14.83.84-3.06-.23-.37c-.89-1.31-1.36-2.85-1.36-4.44 0-4.37 3.57-7.95 7.95-7.95 2.12 0 4.1.82 5.58 2.31 1.48 1.48 2.31 3.46 2.31 5.59 0 4.37-3.57 7.94-7.95 7.94zM16.56 14.33c-.25-.13-1.4-.69-1.63-.77-.22-.08-.38-.12-.55.13-.16.25-.63.77-.78.93-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-.99-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.39.11-.51.12-.12.25-.31.38-.47.12-.16.16-.27.25-.45.08-.18.04-.34-.02-.47-.06-.13-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42h-.48c-.16 0-.42.06-.64.31-.22.25-.84.82-.84 2 0 1.18.86 2.32 1 2.49.12.16 1.68 2.56 4.07 3.59.57.25 1.01.39 1.36.5.57.19 1.09.16 1.5.1.46-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.47-.28z"/></svg>
         Atendimento WhatsApp
       </a>
-
-      <!-- Título / Descrição -->
       <p class="social-title">Sua Autoestima Sempre em Alta</p>
-
-      <!-- Grid 2x2 -->
       <div class="social-grid">
-
-        <!-- Instagram -->
-        <a class="btn-social btn-instagram" 
-           href="https://www.instagram.com/rosycosmeticos11/" 
-           target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-          </svg>
+        <a class="btn-social btn-instagram" href="https://www.instagram.com/rosycosmeticos11/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           Instagram
         </a>
-
-        <!-- Localização -->
-        <a class="btn-social btn-google-maps" 
-           href="https://maps.app.goo.gl/zcBDU6RkcgBKJh19A" 
-           target="_blank" rel="noopener noreferrer">
+        <button class="btn-social btn-google-maps" id="locationButton" type="button" aria-haspopup="dialog" aria-controls="locationModal">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -310,22 +132,12 @@
             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
           </svg>
           Localização
-        </a>
-
-        <!-- Catálogo (substitui Facebook) -->
-        <a class="btn-social btn-catalogo" 
-           href="https://rosycosmeticos.com.br/" 
-           target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 7h2v2H7V7zm4 0h6v2h-6V7zM7 11h2v2H7v-2zm4 0h6v2h-6v-2zm-4 4h2v2H7v-2zm4 0h6v2h-6v-2z"/>
-          </svg>
+        </button>
+        <a class="btn-social btn-catalogo" href="https://rosycosmeticos.com.br/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 7h2v2H7V7zm4 0h6v2h-6V7zM7 11h2v2H7v-2zm4 0h6v2h-6v-2zm-4 4h2v2H7v-2zm4 0h6v2h-6v-2z"/></svg>
           Catálogo
         </a>
-
-        <!-- Avalie no Google -->
-        <a class="btn-social btn-avaliar" 
-           href="https://g.page/r/CZLj4_vbOT-GEAE/review" 
-           target="_blank" rel="noopener noreferrer">
+        <a class="btn-social btn-avaliar" href="https://g.page/r/CZLj4_vbOT-GEAE/review" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -334,35 +146,110 @@
           </svg>
           Avalie no Google
         </a>
-
-        <!-- Área de avaliação -->
         <div class="review-area">
-          <div class="review-arrow" aria-hidden="true">↑</div>
-          <p class="review-text">Avalie-nos com</p>
-          <div class="review-stars" aria-label="5 estrelas">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          <svg class="review-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l8 8h-5v8h-6v-8H4z"/></svg>
+          <div class="review-labels">
+            <p class="review-title">Nos conhece?</p>
+            <p class="review-text">Avalie-nos com</p>
+          </div>
+          <div class="review-stars" aria-label="5 estrelas"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="location-modal" id="locationModal" role="dialog" aria-modal="true" aria-labelledby="locationModalTitle" aria-hidden="true">
+      <div class="location-modal-card" role="document">
+        <button class="location-modal-close" id="locationModalClose" type="button" aria-label="Fechar">×</button>
+        <div class="location-modal-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2C7.59 2 4 5.59 4 10c0 5.55 7.09 11.34 7.39 11.58a.94.94 0 0 0 1.22 0C12.91 21.34 20 15.55 20 10c0-4.41-3.59-8-8-8zm0 11.1a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2z"/></svg>
+        </div>
+        <h2 class="location-modal-title" id="locationModalTitle">Como você quer chegar?</h2>
+        <p class="location-modal-subtitle">Escolha seu aplicativo de navegação</p>
+        <div class="location-options">
+          <a class="location-option location-option-waze" href="https://waze.com/ul?ll=-22.8822699,-47.1680201&navigate=yes" target="_blank" rel="noopener noreferrer">
+            <img src="assets/waze.png" alt="Waze" onerror="this.style.display='none'"> Waze
+          </a>
+          <a class="location-option location-option-uber" href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff%5Blatitude%5D=-22.8822699&dropoff%5Blongitude%5D=-47.1680201&dropoff%5Bnickname%5D=ROSY%20COSM%C3%89TICOS" target="_blank" rel="noopener noreferrer">
+            <svg width="72" height="24" viewBox="0 0 72 24" aria-hidden="true"><text x="36" y="17.5" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="-0.5" fill="#FFFFFF">Uber</text></svg>
+          </a>
+          <a class="location-option location-option-maps" href="https://maps.app.goo.gl/zcBDU6RkcgBKJh19A" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-modal" id="reviewModal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="review-modal-card" role="document">
+        <button class="review-modal-close" id="reviewModalClose" type="button" aria-label="Fechar">×</button>
+        <div class="heart-progress">
+          <svg class="heart-outline" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <div class="heart-fill-wrapper" id="heartFill">
+            <svg class="heart-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
           </div>
         </div>
-
+        <h2 class="review-modal-title">Ajude-nos a continuar fazendo o nosso melhor.<br>Avalie com responsabilidade e, se gostou, nos presenteie com 5 estrelas!</h2>
+        <div class="review-modal-stars">⭐⭐⭐⭐⭐</div>
+        <button class="btn-ir-avaliacao" id="btnIrAvaliacao" type="button">Ir para avaliação</button>
       </div>
-
     </div>
 
     <a class="footer" href="https://inkx.com.br/parcerias" target="_blank" rel="noopener noreferrer">
       <div class="footer-brand"><span class="inkx">INKX</span> | parcerias</div>
       <div class="footer-link">criado e mantido por inkx.com.br • 2026 • todos os direitos reservados</div>
     </a>
-
   </div>
-
   <script>
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          ['.logo','.btn-whatsapp','.social-title','.btn-instagram','.btn-google-maps','.btn-catalogo','.btn-avaliar','.review-area'].forEach(s => {
+            const el = document.querySelector(s); if (el) el.classList.add('animate-in');
+          });
+        }, 80);
+      });
+    }
+    (() => {
+      const modal = document.getElementById('locationModal');
+      const openButton = document.getElementById('locationButton');
+      const closeButton = document.getElementById('locationModalClose');
+      if (!modal || !openButton || !closeButton) return;
+      let lastFocusedElement = null;
+      function openLocationModal() { lastFocusedElement = document.activeElement; modal.classList.add('is-open'); modal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; setTimeout(() => closeButton.focus(), 80); }
+      function closeLocationModal() { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; if (lastFocusedElement) lastFocusedElement.focus(); }
+      openButton.addEventListener('click', openLocationModal);
+      closeButton.addEventListener('click', closeLocationModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeLocationModal(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeLocationModal(); });
+    })();
+    (() => {
+      const GOOGLE_REVIEW_URL = 'https://g.page/r/CZLj4_vbOT-GEAE/review';
+      const DURATION = 6000;
+      const modal = document.getElementById('reviewModal');
+      const closeBtn = document.getElementById('reviewModalClose');
+      const goBtn = document.getElementById('btnIrAvaliacao');
+      const heartFill = document.getElementById('heartFill');
+      const avaliarBtn = document.querySelector('.btn-avaliar');
+      if (!modal || !avaliarBtn) return;
+      let timer = null; let hasRedirected = false;
+      function openReviewModal(e) { e.preventDefault(); hasRedirected = false; modal.classList.add('is-open'); modal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; heartFill.classList.remove('is-filling'); void heartFill.offsetWidth; heartFill.classList.add('is-filling'); clearTimeout(timer); timer = setTimeout(() => goToReview(), DURATION); }
+      function closeReviewModal() { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; clearTimeout(timer); heartFill.classList.remove('is-filling'); }
+      function goToReview() { if (hasRedirected) return; hasRedirected = true; closeReviewModal(); window.location.href = GOOGLE_REVIEW_URL; }
+      avaliarBtn.addEventListener('click', openReviewModal);
+      goBtn.addEventListener('click', goToReview);
+      closeBtn.addEventListener('click', closeReviewModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) goToReview(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeReviewModal(); });
+    })();
     document.querySelectorAll('a[class*="btn"]').forEach(btn => {
-      btn.addEventListener('touchstart', () => {
-        btn.style.opacity = '0.9';
-      }, { passive: true });
-      btn.addEventListener('touchend', () => {
-        btn.style.opacity = '1';
-      }, { passive: true });
+      btn.addEventListener('touchstart', () => { btn.style.opacity = '0.9'; }, { passive: true });
+      btn.addEventListener('touchend', () => { btn.style.opacity = '1'; }, { passive: true });
     });
   </script>
 </body>
