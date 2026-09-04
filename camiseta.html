@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="description" content="Kit 10 Camisetas Dry Fit Personalizadas — Estampa Frente, Costas e Mangas. Produção própria, qualidade profissional, arte inclusa. Por R$479,80 (de R$598,90).">
+<title>Kit 10 Camisetas Dry Fit Personalizadas | Ink X</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0a;--surface:#141414;--surface2:#1a1a1a;--border:#262626;
+  --amber:#f59e0b;--amber-light:#fbbf24;--amber-dark:#d97706;
+  --green:#22c55e;--green-light:#4ade80;--red:#ef4444;--blue:#3b82f6;
+  --text:#fff;--text2:#a3a3a3;--text3:#737373;--text4:#525252;
+}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.container{max-width:480px;margin:0 auto;padding:0 20px}
+.text-balance{text-wrap:balance}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .3s ease;padding:12px 0}
+.header.scrolled{background:rgba(10,10,10,.95);backdrop-filter:blur(12px);box-shadow:0 4px 20px rgba(0,0,0,.5)}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:8px}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--amber-light),var(--amber-dark));display:flex;align-items:center;justify-content:center;font-weight:900;color:#000;font-size:18px}
+.logo-text{font-weight:800;font-size:18px;letter-spacing:-.02em}
+.logo-text span{color:var(--amber)}
+.header-phone{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--green-light)}
+
+/* HERO */
+.hero{position:relative;padding:80px 0 24px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(120,53,15,.15),var(--bg),var(--bg))}
+.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:384px;height:384px;background:rgba(245,158,11,.08);border-radius:50%;filter:blur(80px)}
+.hero-content{position:relative}
+.badge-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);border-radius:999px;padding:6px 16px;font-size:11px;font-weight:700;color:var(--amber-light);text-transform:uppercase;letter-spacing:.05em}
+.hero-badge-wrap{display:flex;justify-content:center;margin-bottom:16px}
+.hero h1{font-size:38px;font-weight:900;line-height:1.1;text-align:center;margin-bottom:12px}
+.hero h1 .grad{background:linear-gradient(to right,var(--amber-light),var(--amber));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{text-align:center;color:var(--text2);font-size:16px;line-height:1.6;margin-bottom:20px;padding:0 8px}
+.hero-sub strong{color:#fff}
+.hero-img-wrap{position:relative;border-radius:24px;overflow:hidden;margin-bottom:20px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.hero-img-wrap img{width:100%}
+.discount-tag{position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:12px;font-weight:900;padding:6px 12px;border-radius:999px;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+.stars{display:flex;align-items:center;justify-content:center;gap:2px;margin-bottom:8px}
+.stars svg{width:16px;height:16px;fill:var(--amber);color:var(--amber)}
+.stars span{font-size:12px;color:var(--text3);margin-left:4px}
+.price-row{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.price-old{color:var(--text4);text-decoration:line-through;font-size:18px}
+.price-new{font-size:40px;font-weight:900;color:#fff}
+.price-per{text-align:center;font-size:14px;color:var(--text3);margin-top:4px}
+.price-per strong{color:var(--amber)}
+
+/* WHATSAPP BUTTON */
+.wa-btn{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;border-radius:16px;background:var(--green);color:#fff;font-weight:800;transition:all .3s ease;overflow:hidden}
+.wa-btn:hover{background:var(--green-light)}
+.wa-btn:active{transform:scale(.98)}
+.wa-btn.large{padding:18px 24px;font-size:18px;animation:pulseGlow 2s ease-in-out infinite}
+.wa-btn.small{padding:14px 18px;font-size:15px}
+.wa-btn .shimmer{position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);background-size:200% 100%;animation:shimmer 2.5s infinite;pointer-events:none}
+.wa-btn .wa-content{position:relative;display:flex;align-items:center;gap:12px;text-align:left}
+.wa-btn .wa-label{font-size:inherit}
+.wa-btn .wa-sub{font-size:12px;font-weight:500;color:rgba(240,253,244,.9)}
+.wa-btn.large .wa-label{font-size:20px}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5),0 8px 30px rgba(34,197,94,.3)}50%{box-shadow:0 0 0 12px rgba(34,197,94,0),0 8px 30px rgba(34,197,94,.4)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+.trust-badges{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:16px;font-size:12px;color:var(--text3);flex-wrap:wrap}
+.trust-badges span{display:flex;align-items:center;gap:4px}
+.trust-badges svg{width:16px;height:16px}
+
+/* SECTIONS */
+.section{padding:32px 0}
+.section.surface{background:rgba(20,20,20,.5)}
+.section h2{font-size:24px;font-weight:900;text-align:center;margin-bottom:20px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* PROBLEM/SOLUTION */
+.problem-list{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.problem-item{display:flex;align-items:flex-start;gap:12px;background:rgba(127,29,29,.2);border:1px solid rgba(153,27,27,.4);border-radius:12px;padding:12px}
+.problem-item svg{width:20px;height:20px;color:var(--red);flex-shrink:0;margin-top:2px}
+.problem-item p{font-size:14px;color:var(--text2);line-height:1.5}
+.solution-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);border-radius:999px;padding:6px 16px;font-size:14px;font-weight:700;color:var(--green-light);text-transform:uppercase;letter-spacing:.05em}
+.solution-wrap{text-align:center;margin-bottom:8px}
+.solution-text{text-align:center;font-size:18px;font-weight:600;line-height:1.6}
+.solution-text .hl{color:var(--amber)}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.gallery-card{position:relative;border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--border)}
+.gallery-card img{width:100%;height:176px;object-fit:cover;transition:transform .5s ease}
+.gallery-card:hover img{transform:scale(1.05)}
+.gallery-card .overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent,transparent)}
+.gallery-card .label{position:absolute;bottom:0;left:0;right:0;padding:12px;font-size:14px;font-weight:700}
+.kit-suggestion{background:var(--surface);border-radius:16px;border:1px solid var(--border);padding:16px}
+.kit-suggestion h3{font-weight:700;color:var(--amber);margin-bottom:12px;display:flex;align-items:center;gap:8px;font-size:16px}
+.kit-suggestion h3 svg{width:20px;height:20px}
+.kit-row{display:flex;align-items:center;justify-content:space-between;font-size:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.kit-row:last-child{border:0;padding-bottom:0}
+.kit-row .cor{font-weight:500;color:#e5e5e5}
+.kit-row .det{color:var(--text3)}
+.kit-suggestion .note{font-size:12px;color:var(--text4);margin-top:12px}
+
+/* BENEFITS GRID */
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.benefit-card{background:var(--surface);border-radius:16px;border:1px solid var(--border);padding:16px}
+.benefit-icon{width:44px;height:44px;border-radius:12px;background:rgba(245,158,11,.12);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.benefit-icon svg{width:24px;height:24px;color:var(--amber)}
+.benefit-card h3{font-size:14px;font-weight:700;margin-bottom:4px}
+.benefit-card p{font-size:12px;color:var(--text3);line-height:1.5}
+
+/* ESTAMPA AREAS */
+.section-label{display:inline-block;font-size:12px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.area-list{display:flex;flex-direction:column;gap:12px}
+.area-item{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border-radius:12px;border:1px solid var(--border);padding:16px}
+.area-item .left{display:flex;align-items:center;gap:12px}
+.area-check{width:32px;height:32px;border-radius:10px;background:rgba(34,197,94,.12);display:flex;align-items:center;justify-content:center}
+.area-check svg{width:20px;height:20px;color:var(--green-light);stroke-width:3}
+.area-item .area-name{font-weight:700}
+.area-item .area-size{font-size:14px;color:var(--text3)}
+
+/* ARTE INCLUSA STEPS */
+.arte-steps{display:flex;flex-direction:column;gap:12px}
+.arte-step{display:flex;align-items:flex-start;gap:16px}
+.arte-num{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--amber);color:#000;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:18px}
+.arte-step h3{font-size:14px;font-weight:700}
+.arte-step p{font-size:12px;color:var(--text3);margin-top:2px}
+
+/* QUALITY GRID */
+.quality-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.quality-item{display:flex;align-items:center;gap:8px;background:var(--surface);border-radius:12px;border:1px solid var(--border);padding:12px}
+.quality-item svg{width:20px;height:20px;color:var(--green-light);flex-shrink:0;stroke-width:3}
+.quality-item span{font-size:14px;font-weight:500;color:#e5e5e5}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:10px}
+.checklist-item{display:flex;align-items:center;gap:12px}
+.checklist-dot{width:24px;height:24px;border-radius:50%;background:rgba(34,197,94,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.checklist-dot svg{width:16px;height:16px;color:var(--green-light);stroke-width:3}
+.checklist-item span{font-size:14px;color:#e5e5e5}
+
+/* DRYFIT BENEFITS */
+.df-list{display:flex;flex-direction:column;gap:10px}
+.df-item{display:flex;align-items:flex-start;gap:12px}
+.df-dot{width:24px;height:24px;border-radius:50%;background:rgba(245,158,11,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.df-dot svg{width:16px;height:16px;color:var(--amber);stroke-width:3}
+.df-item span{font-size:14px;color:#e5e5e5;line-height:1.5}
+
+/* ALERT BOX */
+.alert-box{display:flex;align-items:flex-start;gap:12px;background:rgba(120,53,15,.2);border:1px solid rgba(180,83,9,.4);border-radius:12px;padding:12px;margin-top:16px}
+.alert-box svg{width:20px;height:20px;color:var(--amber);flex-shrink:0;margin-top:2px}
+.alert-box p{font-size:12px;color:var(--text2);line-height:1.5}
+.alert-box strong{color:var(--amber-light)}
+
+/* COMO FUNCIONA */
+.como-box{background:rgba(127,29,29,.15);border:1px solid rgba(153,27,27,.4);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:16px}
+.como-box p{font-size:14px;color:#e5e5e5;line-height:1.6}
+.como-box p strong{color:#fff}
+.como-warning{background:rgba(127,29,29,.3);border-radius:12px;padding:12px;border:1px solid rgba(153,27,27,.5)}
+.como-warning p{font-size:14px;color:#fecaca;font-weight:500}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--surface);border-radius:12px;border:1px solid var(--border);overflow:hidden}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px;text-align:left}
+.faq-q span{font-weight:700;font-size:14px;padding-right:8px}
+.faq-q svg{width:20px;height:20px;color:var(--text3);flex-shrink:0;transition:transform .3s ease}
+.faq-item.open .faq-q svg{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-item.open .faq-a{max-height:240px}
+.faq-a p{padding:0 16px 16px;font-size:14px;color:var(--text3);line-height:1.6}
+
+/* PRICE RECAP */
+.price-recap{background:linear-gradient(135deg,rgba(245,158,11,.08),var(--surface));border-radius:24px;border:1px solid rgba(245,158,11,.2);padding:24px;text-align:center}
+.price-recap h2{font-size:20px;font-weight:900;margin-bottom:4px}
+.price-recap .desc{font-size:14px;color:var(--text3);margin-bottom:16px}
+.price-recap .old{color:var(--text4);text-decoration:line-through;font-size:18px;display:block}
+.price-recap .new{font-size:48px;font-weight:900;display:block;margin-top:4px}
+.price-recap .save{font-size:14px;color:var(--amber);font-weight:600;display:block;margin-top:4px}
+.price-recap .limited{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:var(--text3);margin:16px 0}
+.price-recap .limited svg{width:16px;height:16px;color:var(--amber)}
+
+/* FOOTER */
+.footer{background:var(--bg);border-top:1px solid var(--border);padding:32px 0}
+.footer{text-align:center}
+.footer .logo{justify-content:center;margin-bottom:12px}
+.footer .tagline{font-size:12px;color:var(--text4);margin-bottom:8px}
+.footer .addr{font-size:12px;color:var(--text4)}
+.footer .phone-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--green-light);margin-top:16px}
+.footer .phone-link svg{width:16px;height:16px}
+.footer .copyright{font-size:12px;color:#404040;margin-top:16px}
+
+/* STICKY CTA */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:100;transform:translateY(100%);transition:transform .3s ease}
+.sticky-cta.show{transform:translateY(0)}
+.sticky-inner{background:rgba(10,10,10,.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:12px 16px;box-shadow:0 -8px 30px rgba(0,0,0,.5)}
+.sticky-row{display:flex;align-items:center;gap:12px;max-width:480px;margin:0 auto}
+.sticky-price{flex-shrink:0}
+.sticky-price .old{color:var(--text4);text-decoration:line-through;font-size:12px;display:block}
+.sticky-price .new{font-size:20px;font-weight:900}
+.sticky-btn-wrap{flex:1}
+
+/* ICONS */
+.icon{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.icon-sm{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.icon-check{stroke-width:3}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <div class="logo">
+      <div class="logo-mark">X</div>
+      <span class="logo-text">INK<span>X</span></span>
+    </div>
+    <a href="https://wa.me/5519982560907" target="_blank" rel="noopener" class="header-phone">
+      <svg class="icon-sm" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Falar agora
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="container hero-content">
+    <div class="hero-badge-wrap reveal">
+      <span class="badge-pill">
+        <svg class="icon-sm" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8a1 1 0 0 0 .3.3L20 11l-5.8 1.9a1 1 0 0 0-.3.3L12 19l-1.9-5.8a1 1 0 0 0-.3-.3L4 11l5.8-1.9a1 1 0 0 0 .3-.3z"/></svg>
+        Kit Exclusivo — 10 Camisetas
+      </span>
+    </div>
+    <h1 class="reveal">Kit 10 Camisetas <span class="grad">Dry Fit</span> Personalizadas</h1>
+    <p class="hero-sub reveal">Estampa na <strong>frente, costas e mangas</strong>. Produção própria, qualidade profissional e <strong>arte inclusa</strong>.</p>
+    <div class="hero-img-wrap reveal">
+      <img src="http://inkx.com.br/assets/estampa.webp" alt="Estampa personalizada frente costas e mangas" loading="eager">
+      <span class="discount-tag">-20% OFF</span>
+    </div>
+    <div class="reveal" style="text-align:center;margin-bottom:20px">
+      <div class="stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        <span>+200 clientes satisfeitos</span>
+      </div>
+      <div class="price-row">
+        <span class="price-old">R$598,90</span>
+        <span class="price-new">R$479,80</span>
+      </div>
+      <p class="price-per">ou <strong>R$47,98</strong> por camiseta</p>
+    </div>
+    <div class="reveal" id="hero-cta"></div>
+    <div class="trust-badges reveal">
+      <span><svg class="icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> Garantia 7 dias</span>
+      <span><svg class="icon-sm" viewBox="0 0 24 24" style="color:var(--blue)"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Envio rápido</span>
+      <span><svg class="icon-sm" viewBox="0 0 24 24" style="color:var(--amber)"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-5-4.5-8.3-10-8.3z"/></svg> Arte inclusa</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM / SOLUTION -->
+<section class="section surface">
+  <div class="container">
+    <h2 class="reveal">Já passou por isso?</h2>
+    <div class="problem-list reveal">
+      <div class="problem-item">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p>Você compra uma camiseta personalizada e a estampa vem pequena, mal posicionada, com qualidade fraca…</p>
+      </div>
+      <div class="problem-item">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p>O vendedor demora pra responder e você fica no escuro.</p>
+      </div>
+      <div class="problem-item">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p>No final, não fica do jeito que você imaginou.</p>
+      </div>
+    </div>
+    <div class="solution-wrap reveal">
+      <span class="solution-pill">
+        <svg class="icon-sm" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Aqui é diferente
+      </span>
+    </div>
+    <p class="solution-text reveal">Você tem <span class="hl">controle</span>, <span class="hl">qualidade</span> e <span class="hl">atendimento rápido</span> para sua ideia sair exatamente como precisa.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section">
+  <div class="container">
+    <h2 class="reveal">Escolha suas cores</h2>
+    <p class="reveal" style="text-align:center;font-size:14px;color:var(--text3);margin-bottom:24px">Monte seu kit com 10 camisetas nas cores e tamanhos que quiser — todas com a mesma estampa.</p>
+    <div class="gallery-grid reveal">
+      <div class="gallery-card"><img src="http://inkx.com.br/assets/camiseta%20preta.webp" alt="Camiseta Preta" loading="lazy"><div class="overlay"></div><div class="label">Preta</div></div>
+      <div class="gallery-card"><img src="http://inkx.com.br/assets/camiseta%20branca.webp" alt="Camiseta Branca" loading="lazy"><div class="overlay"></div><div class="label">Branca</div></div>
+      <div class="gallery-card"><img src="http://inkx.com.br/assets/camiseta%20cinza.webp" alt="Camiseta Cinza" loading="lazy"><div class="overlay"></div><div class="label">Cinza</div></div>
+      <div class="gallery-card"><img src="http://inkx.com.br/assets/camiseta%20amarela.webp" alt="Camiseta Amarela" loading="lazy"><div class="overlay"></div><div class="label">Amarela</div></div>
+      <div class="gallery-card"><img src="http://inkx.com.br/assets/camiseta%20drifit.webp" alt="Camiseta Drifit Premium" loading="lazy"><div class="overlay"></div><div class="label">Drifit Premium</div></div>
+      <div class="gallery-card"><img src="http://inkx.com.br/assets/estampa.webp" alt="Estampa exclusiva" loading="lazy"><div class="overlay"></div><div class="label">Estampa exclusiva</div></div>
+    </div>
+    <div class="kit-suggestion reveal">
+      <h3><svg class="icon" viewBox="0 0 24 24"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg> Sugestão de montagem do kit</h3>
+      <div class="kit-row"><span class="cor">Preta</span><span class="det">2 un. · Tam: G, GG</span></div>
+      <div class="kit-row"><span class="cor">Branca</span><span class="det">2 un. · Tam: M, G</span></div>
+      <div class="kit-row"><span class="cor">Cinza</span><span class="det">2 un. · Tam: G, M</span></div>
+      <div class="kit-row"><span class="cor">Amarela</span><span class="det">2 un. · Tam: M, GG</span></div>
+      <div class="kit-row"><span class="cor">Drifit Premium</span><span class="det">2 un. · Tam: G, GG</span></div>
+      <p class="note">* Você pode personalizar cores e tamanhos — esta é apenas uma sugestão.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section surface">
+  <div class="container">
+    <h2 class="reveal">Por que escolher a InkX?</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg></div>
+        <h3>Estampa em 3 áreas</h3><p>Frente, costas e mangas — sem limitação</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-5-4.5-8.3-10-8.3z"/></svg></div>
+        <h3>Arte inclusa</h3><p>Não tem arte? Criamos para você</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Qualidade profissional</h3><p>Alta definição, fixação e durabilidade</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h3>Despacho rápido</h3><p>Produção interna e estoque próprio</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAL ESTAMPAS -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:20px" class="reveal">
+      <span class="section-label">Diferencial que ninguém faz</span>
+      <h2 style="margin:0">Estampamos em múltiplas áreas da camiseta</h2>
+    </div>
+    <div class="reveal" style="border-radius:16px;overflow:hidden;margin-bottom:20px">
+      <img src="http://inkx.com.br/assets/estampa.webp" alt="Áreas de estampa: frente, costas e mangas" loading="lazy" style="width:100%">
+    </div>
+    <div class="area-list reveal">
+      <div class="area-item">
+        <div class="left"><div class="area-check"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span class="area-name">Frente</span></div>
+        <span class="area-size">até 30x30 cm</span>
+      </div>
+      <div class="area-item">
+        <div class="left"><div class="area-check"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span class="area-name">Costas</span></div>
+        <span class="area-size">até 30x30 cm</span>
+      </div>
+      <div class="area-item">
+        <div class="left"><div class="area-check"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span class="area-name">Mangas</span></div>
+        <span class="area-size">personalização disponível</span>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center;font-size:14px;color:var(--text3);margin-top:16px">Aqui você não fica limitado a estampas pequenas ou padrão.</p>
+  </div>
+</section>
+
+<!-- ARTE INCLUSA -->
+<section class="section" style="background:linear-gradient(to bottom,rgba(120,53,15,.15),var(--bg))">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:20px" class="reveal">
+      <span class="badge-pill" style="margin-bottom:12px;display:inline-flex">
+        <svg class="icon-sm" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-5-4.5-8.3-10-8.3z"/></svg>
+        Criação de arte inclusa
+      </span>
+      <h2 style="margin:0 0 8px">Não tem a arte pronta?</h2>
+      <p style="color:#d4d4d4;font-size:16px">Nós desenvolvemos para você com base na sua ideia.</p>
+    </div>
+    <div class="arte-steps reveal">
+      <div class="arte-step"><div class="arte-num">1</div><div><h3>Você envia sua ideia</h3><p>Texto, referência, rascunho — o que tiver</p></div></div>
+      <div class="arte-step"><div class="arte-num">2</div><div><h3>Criamos a arte</h3><p>Desenvolvemos com base no seu conceito</p></div></div>
+      <div class="arte-step"><div class="arte-num">3</div><div><h3>Ajustamos e refinamos</h3><p>Refinamos até ficar perfeito</p></div></div>
+      <div class="arte-step"><div class="arte-num">4</div><div><h3>Validamos e produzimos</h3><p>Só produzimos após sua aprovação</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALIDADE -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:20px" class="reveal">
+      <span class="badge-pill" style="background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.3);color:#93c5fd;display:inline-flex">
+        <svg class="icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        Qualidade profissional
+      </span>
+      <h2 style="margin:0">Estampa que dura de verdade</h2>
+    </div>
+    <div class="reveal" style="border-radius:16px;overflow:hidden;margin-bottom:20px">
+      <img src="http://inkx.com.br/assets/camiseta%20drifit.webp" alt="Camiseta Dry Fit com estampa de alta definição" loading="lazy" style="width:100%">
+    </div>
+    <div class="quality-grid reveal">
+      <div class="quality-item"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Estampa com alta definição</span></div>
+      <div class="quality-item"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Excelente fixação e durabilidade</span></div>
+      <div class="quality-item"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Ótimo acabamento</span></div>
+      <div class="quality-item"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Processo padronizado</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUÇÃO INTERNA -->
+<section class="section surface">
+  <div class="container">
+    <h2 class="reveal">Produção interna e estoque próprio</h2>
+    <div class="checklist reveal">
+      <div class="checklist-item"><div class="checklist-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Camisetas disponíveis em estoque</span></div>
+      <div class="checklist-item"><div class="checklist-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Produção realizada internamente</span></div>
+      <div class="checklist-item"><div class="checklist-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Controle rigoroso de qualidade</span></div>
+      <div class="checklist-item"><div class="checklist-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Processo profissional e organizado</span></div>
+      <div class="checklist-item"><div class="checklist-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Despacho rápido</span></div>
+    </div>
+    <p class="reveal" style="text-align:center;font-size:14px;color:var(--text3);margin-top:20px;font-style:italic">Isso garante consistência, padrão e agilidade.</p>
+  </div>
+</section>
+
+<!-- SOBRE A CAMISETA -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:20px" class="reveal">
+      <span class="section-label">Sobre a camiseta</span>
+      <h2 style="margin:0">Tecido Dry Fit — Conforto e Performance</h2>
+      <p style="color:#d4d4d4;font-size:14px;margin-top:8px;line-height:1.6">Nossa camiseta é feita em tecido Dry Fit, ideal para quem busca conforto e durabilidade no dia a dia.</p>
+    </div>
+    <div class="reveal" style="border-radius:16px;overflow:hidden;margin-bottom:20px">
+      <img src="http://inkx.com.br/assets/camiseta%20drifit.webp" alt="Tecido Dry Fit — leve e respirável" loading="lazy" style="width:100%">
+    </div>
+    <h3 class="reveal" style="font-weight:700;color:var(--amber);margin-bottom:12px;font-size:14px;text-transform:uppercase;letter-spacing:.05em">Benefícios do Dry Fit</h3>
+    <div class="df-list reveal">
+      <div class="df-item"><div class="df-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Secagem rápida — não fica encharcado de suor</span></div>
+      <div class="df-item"><div class="df-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Tecido leve e respirável</span></div>
+      <div class="df-item"><div class="df-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Não esquenta como algodão comum</span></div>
+      <div class="df-item"><div class="df-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Maior conforto para uso prolongado</span></div>
+      <div class="df-item"><div class="df-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Ideal para trabalho, eventos, academias e uniformes</span></div>
+      <div class="df-item"><div class="df-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Mantém melhor aparência após várias lavagens</span></div>
+      <div class="df-item"><div class="df-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Modelagem confortável com ótimo caimento</span></div>
+      <div class="df-item"><div class="df-dot"><svg class="icon icon-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Material leve e resistente — não desbota fácil</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TABELA DE MEDIDAS -->
+<section class="section surface">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:20px" class="reveal">
+      <span class="badge-pill" style="background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.3);color:#93c5fd;display:inline-flex">
+        <svg class="icon-sm" viewBox="0 0 24 24"><path d="M16 2v8h-6V2M8 2v20M16 2v20M2 10h6V2M2 14h6v8"/></svg>
+        Tabela de medidas
+      </span>
+      <h2 style="margin:0">Confira seu tamanho</h2>
+    </div>
+    <div class="reveal" style="border-radius:16px;overflow:hidden;background:#fff">
+      <img src="http://inkx.com.br/assets/tabela%20medidas.webp" alt="Tabela de medidas das camisetas" loading="lazy" style="width:100%">
+    </div>
+    <div class="alert-box reveal">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p><strong>Atenção:</strong> Pode haver variação de 2 a 3 cm nas medidas. Garantia do vendedor: 7 dias.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:20px" class="reveal">
+      <span class="badge-pill" style="background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.3);color:#fca5a5;display:inline-flex">
+        <svg class="icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Importante — Leia antes de comprar
+      </span>
+      <h2 style="margin:0">Como funciona</h2>
+    </div>
+    <div class="como-box reveal">
+      <p>Após a compra, é <strong>obrigatório abrir o chat do WhatsApp imediatamente</strong> e enviar sua ideia, arte ou instruções.</p>
+      <p>Isso garante alinhamento rápido e cumprimento dos prazos de produção e envio.</p>
+      <div class="como-warning"><p>⚠ Sem esse contato imediato, o prazo pode ser comprometido.</p></div>
+    </div>
+    <div class="reveal" style="margin-top:20px" id="como-cta"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section surface">
+  <div class="container">
+    <h2 class="reveal">Perguntas frequentes</h2>
+    <div class="faq-list" id="faq-list">
+      <div class="faq-item open reveal">
+        <button class="faq-q"><span>Como funciona após a compra?</span><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a"><p>Após a compra, é obrigatório abrir o chat do WhatsApp imediatamente e enviar sua ideia, arte ou instruções. Isso garante alinhamento rápido e o cumprimento dos prazos de produção e envio. Sem esse contato imediato, o prazo pode ser comprometido.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>Não tenho a arte pronta. E agora?</span><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a"><p>Sem problema! A criação de arte está inclusa. Desenvolvemos a arte com base na sua ideia, ajustamos, refinamos e validamos tudo com você antes de produzir.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>Em quais áreas da camiseta posso estampar?</span><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a"><p>Frente (até 30x30 cm), Costas (até 30x30 cm) e Mangas (personalização disponível). Aqui você não fica limitado a estampas pequenas ou padrão.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q"><span>Qual a garantia?</span><svg class="icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a"><p>Garantia do vendedor de 7 dias. Pode haver variação de 2 a 3 cm nas medidas, o que é normal em vestuário.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE RECAP -->
+<section class="section">
+  <div class="container">
+    <div class="price-recap reveal">
+      <h2>Kit 10 Camisetas Dry Fit Personalizadas</h2>
+      <p class="desc">Estampa frente, costas e mangas · Arte inclusa · Produção própria</p>
+      <span class="old">R$598,90</span>
+      <span class="new">R$479,80</span>
+      <span class="save">Economize R$119,10</span>
+      <div class="limited">
+        <svg class="icon-sm" viewBox="0 0 24 24" style="color:var(--amber)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Oferta por tempo limitado
+      </div>
+      <div id="recap-cta"></div>
+      <div class="trust-badges" style="margin-top:16px">
+        <span><svg class="icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> Garantia 7 dias</span>
+        <span><svg class="icon-sm" viewBox="0 0 24 24" style="color:var(--blue)"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Envio rápido</span>
+        <span><svg class="icon-sm" viewBox="0 0 24 24" style="color:var(--amber)"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-5-4.5-8.3-10-8.3z"/></svg> Arte inclusa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="logo">
+      <div class="logo-mark" style="width:32px;height:32px;font-size:16px">X</div>
+      <span class="logo-text" style="font-size:16px">INK<span>X</span></span>
+    </div>
+    <p class="tagline">Design • Impressão • Sites • E-commerce</p>
+    <p class="addr">Avenida Antônio da Costa Santos, Nº 275 — Jardim Nova América</p>
+    <p class="addr">Hortolândia/SP — CEP 13.185-624</p>
+    <a href="https://wa.me/5519982560907" target="_blank" rel="noopener" class="phone-link">
+      <svg class="icon-sm" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (19) 98256-0907
+    </a>
+    <p class="copyright">© Ink X — Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-inner">
+    <div class="sticky-row">
+      <div class="sticky-price">
+        <span class="old">R$598,90</span>
+        <span class="new">R$479,80</span>
+      </div>
+      <div class="sticky-btn-wrap" id="sticky-cta-inner"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var WA_NUMBER = '5519982560907';
+  var WA_MSG = 'Olá! Quero comprar o *Kit 10 Camisetas Dry Fit Personalizadas* por R$479,80 (de R$598,90). Vou enviar minha ideia/arte agora!';
+  var WA_URL = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_MSG);
+
+  // Create WhatsApp buttons
+  function createWAButton(label, sublabel, large) {
+    var btn = document.createElement('a');
+    btn.href = WA_URL;
+    btn.target = '_blank';
+    btn.rel = 'noopener';
+    btn.className = 'wa-btn ' + (large ? 'large' : 'small');
+    btn.innerHTML =
+      '<div class="shimmer"></div>' +
+      '<div class="wa-content">' +
+        '<svg class="' + (large ? 'icon' : 'icon-sm') + '" viewBox="0 0 24 24" style="stroke-width:2.5;flex-shrink:0"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>' +
+        '<div><div class="wa-label">' + label + '</div>' +
+        (sublabel ? '<div class="wa-sub">' + sublabel + '</div>' : '') + '</div>' +
+      '</div>';
+    return btn;
+  }
+
+  // Insert buttons
+  document.getElementById('hero-cta').appendChild(createWAButton('QUERO MEU KIT AGORA', 'R$479,80 — 10 camisetas personalizadas', true));
+  document.getElementById('como-cta').appendChild(createWAButton('COMPRAR E FALAR NO WHATSAPP', 'Abra o chat após a compra — é obrigatório', false));
+  document.getElementById('recap-cta').appendChild(createWAButton('QUERO MEU KIT AGORA', 'R$479,80 — 10 camisetas personalizadas', true));
+  document.getElementById('sticky-cta-inner').appendChild(createWAButton('QUERO O KIT', '10 camisetas · WhatsApp', false));
+
+  // Header scroll
+  var header = document.getElementById('header');
+  var sticky = document.getElementById('sticky-cta');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+    if (window.scrollY > 600) sticky.classList.add('show');
+    else sticky.classList.remove('show');
+  }, { passive: true });
+
+  // Reveal on scroll
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  // FAQ accordion
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function(item) {
+    var btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', function() {
+      var wasOpen = item.classList.contains('open');
+      faqItems.forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
