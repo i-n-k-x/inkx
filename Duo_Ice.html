@@ -1040,7 +1040,7 @@
         if (hasRedirected) return;
         hasRedirected = true;
         closeReviewModal();
-        window.open(GOOGLE_REVIEW_URL, '_blank', 'noopener,noreferrer');
+        window.location.href = GOOGLE_REVIEW_URL;
       }
 
       // Abre o modal ao clicar no botão "Avalie no Google"
