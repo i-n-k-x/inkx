@@ -27,13 +27,31 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html,
-    body {
+    html, body {
       height: 100%;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #000000;
       color: #ffffff;
       overflow-x: hidden;
+    }
+
+    /* ===== BACKGROUND DECORATIVO ===== */
+    body {
+      position: relative;
+      isolation: isolate;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("assets/background_zm.png");
+      background-repeat: repeat;
+      background-size: 227px 454px;
+      background-position: center top;
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: -1;
     }
 
     /* ===== CONTAINER PRINCIPAL ===== */
@@ -48,16 +66,17 @@
       margin: 0 auto;
     }
 
-    /* ===== LOGO (topo) – encosta nas margens ===== */
+    /* ===== LOGO (topo) ===== */
     .logo {
       margin-top: 0;
-      margin-bottom: 0px;
+      margin-bottom: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       width: 70%;
       padding: 0;
     }
+
     .logo img {
       width: 100%;
       height: auto;
@@ -139,6 +158,9 @@
       font-weight: 600;
       text-decoration: none;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
     }
 
     .btn-social:active {
@@ -215,19 +237,36 @@
     }
 
     .review-arrow {
-      font-size: 18px;
-      color: #d4af37;
-      line-height: 1;
+      width: 22px;
+      height: 24px;
+      fill: #d4af37;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
       animation: bounce 1.6s ease-in-out infinite;
       align-self: center;
     }
 
-    .review-text {
-      font-size: 13.5px;
-      font-weight: 500;
+    .review-labels {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      text-align: right;
+    }
+
+    .review-title {
+      font-size: 14px;
+      font-weight: 600;
       color: #ffffff;
       letter-spacing: 0.2px;
-      opacity: 0.85;
+      line-height: 1.05;
+    }
+
+    .review-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.2px;
+      opacity: 0.95;
+      line-height: 1.05;
     }
 
     .review-stars {
@@ -240,13 +279,8 @@
     }
 
     @keyframes bounce {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-4px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
     }
 
     /* ===== RODAPÉ ===== */
@@ -281,6 +315,431 @@
       font-size: 9px;
       color: rgba(255, 255, 255, 0.5);
       line-height: 1.4;
+    }
+
+    /* ===== MODAL DE LOCALIZAÇÃO ===== */
+    .location-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(10, 10, 10, 0.72);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .location-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .location-modal-card {
+      width: min(100%, 370px);
+      padding: 27px 22px 22px;
+      border-radius: 28px;
+      background: rgba(255, 250, 247, 0.97);
+      color: #3a2528;
+      box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.45),
+        0 5px 24px rgba(255, 255, 255, 0.08);
+      transform: translateY(24px) scale(0.94);
+      opacity: 0;
+      transition:
+        transform 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .location-modal.is-open .location-modal-card {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .location-modal-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #d4af37, #f6e6b0, #d4af37);
+    }
+
+    .location-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.15);
+      color: #7c5a20;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .location-modal-close:active {
+      transform: scale(0.9);
+    }
+
+    .location-modal-icon {
+      width: 58px;
+      height: 58px;
+      margin: 2px auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #d4af37, #f6e6b0);
+      color: #1a1408;
+      box-shadow: 0 8px 22px rgba(212, 175, 55, 0.35);
+    }
+
+    .location-modal-icon svg {
+      width: 29px;
+      height: 29px;
+      fill: currentColor;
+    }
+
+    .location-modal-title {
+      text-align: center;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      margin-bottom: 5px;
+    }
+
+    .location-modal-subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: #806a6d;
+      margin-bottom: 19px;
+    }
+
+    .location-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .location-option {
+      width: 100%;
+      min-height: 64px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: none;
+      border-radius: 18px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    }
+
+    .location-option:active {
+      transform: scale(0.97);
+    }
+
+    .location-option svg,
+    .location-option img {
+      display: block;
+      flex-shrink: 0;
+    }
+
+    /* Waze - azul oficial */
+    .location-option-waze {
+      background: #33CCFF;
+      color: #ffffff;
+      box-shadow:
+        0 0 22px rgba(51, 204, 255, 0.45),
+        0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .location-option-waze img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    /* Uber - preto */
+    .location-option-uber {
+      background: #000000;
+      color: #ffffff;
+      box-shadow:
+        0 0 18px rgba(0, 0, 0, 0.35),
+        0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .location-option-uber svg {
+      width: 72px;
+      height: 24px;
+    }
+
+    /* Google Maps */
+    .location-option-maps {
+      background: #FAEEDE;
+      color: #333333;
+      border: 1px solid #e0e0e0;
+      box-shadow:
+        0 0 18px rgba(255, 255, 255, 0.22),
+        0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    .location-option-maps svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* ===== MODAL DE AVALIAÇÃO (DISCLAIMER) ===== */
+    .review-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(10, 10, 10, 0.72);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .review-modal.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .review-modal-card {
+      width: min(100%, 340px);
+      padding: 28px 22px 24px;
+      border-radius: 28px;
+      background: rgba(255, 250, 247, 0.97);
+      color: #3a2528;
+      box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.45),
+        0 5px 24px rgba(255, 255, 255, 0.08);
+      transform: translateY(24px) scale(0.94);
+      opacity: 0;
+      transition:
+        transform 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.35s ease;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .review-modal.is-open .review-modal-card {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .review-modal-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #d4af37, #f6e6b0, #d4af37);
+    }
+
+    .review-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.15);
+      color: #7c5a20;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .review-modal-close:active {
+      transform: scale(0.9);
+    }
+
+    /* T-shirt que preenche de branco para preto */
+    .tshirt-progress {
+      width: 80px;
+      height: 80px;
+      margin: 10px auto 18px;
+      position: relative;
+    }
+
+    .tshirt-progress svg {
+      width: 80px;
+      height: 80px;
+      display: block;
+    }
+
+    .tshirt-outline {
+      position: absolute;
+      inset: 0;
+      fill: #ffffff;
+      stroke: #1a1a1a;
+      stroke-width: 2;
+    }
+
+    .tshirt-fill-wrapper {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      overflow: hidden;
+      transition: height 6s linear;
+    }
+
+    .tshirt-fill-wrapper.is-filling {
+      height: 100%;
+    }
+
+    .tshirt-fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      fill: #1a1a1a;
+      stroke: #1a1a1a;
+      stroke-width: 2;
+    }
+
+    .review-modal-title {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: #3a2528;
+      line-height: 1.4;
+      margin: 0 0 10px;
+      letter-spacing: -0.2px;
+    }
+
+    .review-modal-stars {
+      font-size: 22px;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+
+    .btn-ir-avaliacao {
+      display: block;
+      width: 100%;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #1a1408;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(212, 175, 55, 0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-ir-avaliacao:active {
+      transform: scale(0.97);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .location-modal,
+      .location-modal-card,
+      .location-option,
+      .review-modal,
+      .review-modal-card,
+      .tshirt-fill-wrapper {
+        transition: none;
+      }
+    }
+
+    /* ===== ANIMAÇÕES PREMIUM - SOMENTE MOBILE ===== */
+    @media (max-width: 768px) {
+      /* Estado inicial (invisível + levemente deslocado) */
+      .logo,
+      .btn-whatsapp,
+      .social-title,
+      .btn-social,
+      .encomende-area,
+      .review-area {
+        opacity: 0;
+        transform: translateY(32px) scale(0.96);
+        will-change: transform, opacity;
+      }
+
+      /* Quando a animação de entrada é ativada */
+      .logo.animate-in,
+      .btn-whatsapp.animate-in,
+      .social-title.animate-in,
+      .btn-social.animate-in,
+      .encomende-area.animate-in,
+      .review-area.animate-in {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        transition:
+          opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.15s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Delays sequenciais */
+      .logo.animate-in            { transition-delay: 0.10s; }
+      .btn-whatsapp.animate-in    { transition-delay: 0.40s; }
+      .social-title.animate-in    { transition-delay: 0.60s; }
+
+      .btn-instagram.animate-in   { transition-delay: 0.80s; }
+      .btn-google-maps.animate-in { transition-delay: 0.95s; }
+      .btn-catalogo.animate-in    { transition-delay: 1.10s; }
+      .btn-avaliar.animate-in     { transition-delay: 1.25s; }
+
+      .encomende-area.animate-in  { transition-delay: 1.40s; }
+      .review-area.animate-in     { transition-delay: 1.55s; }
+
+      /* ===== LOGO FLUTUANTE CONTÍNUA ===== */
+      .logo.animate-in {
+        perspective: 900px;
+      }
+
+      .logo.animate-in img {
+        transform-origin: center center;
+        transform-style: preserve-3d;
+        will-change: transform;
+        animation: logoFloat 5.8s ease-in-out infinite;
+        animation-delay: 1.5s;
+      }
+    }
+
+    /* Movimento contínuo sutil da logo */
+    @keyframes logoFloat {
+      0% {
+        transform: rotateY(-5.5deg) translateY(0);
+      }
+      50% {
+        transform: rotateY(5.5deg) translateY(-5px);
+      }
+      100% {
+        transform: rotateY(-5.5deg) translateY(0);
+      }
     }
   </style>
 </head>
@@ -321,10 +780,8 @@
           Instagram
         </a>
 
-        <!-- Localização -->
-        <a class="btn-social btn-google-maps"
-           href="https://maps.app.goo.gl/LHmJ742jzwMdxuXH7"
-           target="_blank" rel="noopener noreferrer">
+        <!-- Localização (abre modal) -->
+        <button class="btn-social btn-google-maps" id="locationButton" type="button" aria-haspopup="dialog" aria-controls="locationModal">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -332,9 +789,9 @@
             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
           </svg>
           Localização
-        </a>
+        </button>
 
-        <!-- Catálogo Tênis (texto alterado) -->
+        <!-- Catálogo Tênis -->
         <a class="btn-social btn-catalogo"
            href="https://drive.google.com/drive/folders/1ZRBsaHEfZvHrPo34hpzjUtzqgr1Dn1ib"
            target="_blank" rel="noopener noreferrer">
@@ -344,7 +801,7 @@
           Catálogo Tênis
         </a>
 
-        <!-- Avalie no Google -->
+        <!-- Avalie no Google (abre modal) -->
         <a class="btn-social btn-avaliar"
            href="https://g.page/r/CWq6SHiDG4jOEBM/review"
            target="_blank" rel="noopener noreferrer">
@@ -359,14 +816,21 @@
 
         <!-- Área "Encomende o Seu !" (esquerda) -->
         <div class="encomende-area">
-          <div class="review-arrow" aria-hidden="true">↑</div>
+          <svg class="review-arrow" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4l8 8h-5v8h-6v-8H4z"/>
+          </svg>
           <p class="review-text">Encomende o Seu !</p>
         </div>
 
-        <!-- Área de avaliação (direita) -->
+        <!-- Área de avaliação (direita) - igual Duo Ice -->
         <div class="review-area">
-          <div class="review-arrow" aria-hidden="true">↑</div>
-          <p class="review-text">Avalie-nos com</p>
+          <svg class="review-arrow" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4l8 8h-5v8h-6v-8H4z"/>
+          </svg>
+          <div class="review-labels">
+            <p class="review-title">Nos conhece?</p>
+            <p class="review-text">Avalie-nos com</p>
+          </div>
           <div class="review-stars" aria-label="5 estrelas">
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
@@ -376,6 +840,94 @@
 
     </div>
 
+
+    <!-- ==================== MODAL DE LOCALIZAÇÃO ==================== -->
+    <div class="location-modal" id="locationModal" role="dialog" aria-modal="true" aria-labelledby="locationModalTitle" aria-hidden="true">
+      <div class="location-modal-card" role="document">
+        <button class="location-modal-close" id="locationModalClose" type="button" aria-label="Fechar">×</button>
+
+        <div class="location-modal-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C7.59 2 4 5.59 4 10c0 5.55 7.09 11.34 7.39 11.58a.94.94 0 0 0 1.22 0C12.91 21.34 20 15.55 20 10c0-4.41-3.59-8-8-8zm0 11.1a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2z"/>
+          </svg>
+        </div>
+
+        <h2 class="location-modal-title" id="locationModalTitle">Como você quer chegar?</h2>
+        <p class="location-modal-subtitle">Escolha seu aplicativo de navegação</p>
+
+        <div class="location-options">
+
+          <!-- Waze -->
+          <a class="location-option location-option-waze"
+             href="https://waze.com/ul?ll=-22.8819924,-47.1691223&navigate=yes"
+             target="_blank" rel="noopener noreferrer">
+            <img src="assets/waze.png" alt="Waze">
+            Waze
+          </a>
+
+          <!-- Uber -->
+          <a class="location-option location-option-uber"
+             href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]=-22.8819924&dropoff[longitude]=-47.1691223&dropoff[nickname]=Moda%20masculina%20ZM%20Grifes"
+             target="_blank" rel="noopener noreferrer">
+            <svg width="72" height="24" viewBox="0 0 72 24" aria-hidden="true">
+              <text x="36" y="17.5" text-anchor="middle"
+                    font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+                    font-size="18" font-weight="700" letter-spacing="-0.5" fill="#FFFFFF">Uber</text>
+            </svg>
+          </a>
+
+          <!-- Google Maps -->
+          <a class="location-option location-option-maps"
+             href="https://maps.app.goo.gl/LHmJ742jzwMdxuXH7"
+             target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Google Maps
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ==================== MODAL DE AVALIAÇÃO (DISCLAIMER) ==================== -->
+    <div class="review-modal" id="reviewModal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="review-modal-card" role="document">
+        <button class="review-modal-close" id="reviewModalClose" type="button" aria-label="Fechar">×</button>
+
+        <!-- T-shirt que preenche de branco para preto -->
+        <div class="tshirt-progress">
+          <!-- Contorno branco -->
+          <svg class="tshirt-outline" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M44 12.09c3.92 1.62 12 12 12 12l-8 8-4-4v24H20v-24l-4 4-8-8s8.08-10.38 12-12c.92-.39 4 0 4 0 0 4 4 8 8 8s8-4 8-8c0 0 3.08-.39 4 0z"/>
+          </svg>
+
+          <!-- Preenchimento preto (sobe de baixo para cima) -->
+          <div class="tshirt-fill-wrapper" id="tshirtFill">
+            <svg class="tshirt-fill" viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M44 12.09c3.92 1.62 12 12 12 12l-8 8-4-4v24H20v-24l-4 4-8-8s8.08-10.38 12-12c.92-.39 4 0 4 0 0 4 4 8 8 8s8-4 8-8c0 0 3.08-.39 4 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <h2 class="review-modal-title">
+          Ajude-nos a continuar fazendo o nosso melhor.<br>
+          Avalie com responsabilidade e, se gostou, nos presenteie com 5 estrelas!
+        </h2>
+
+        <div class="review-modal-stars">⭐⭐⭐⭐⭐</div>
+
+        <button class="btn-ir-avaliacao" id="btnIrAvaliacao" type="button">
+          Ir para avaliação
+        </button>
+      </div>
+    </div>
+
+
     <a class="footer" href="https://inkx.com.br/parcerias" target="_blank" rel="noopener noreferrer">
       <div class="footer-brand"><span class="inkx">INKX</span> | parcerias</div>
       <div class="footer-link">criado e mantido por inkx.com.br • 2026 • todos os direitos reservados</div>
@@ -384,7 +936,147 @@
   </div>
 
   <script>
-    document.querySelectorAll('a[class*="btn"]').forEach(btn => {
+    // Animações premium - somente em dispositivos móveis
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const elements = [
+            '.logo',
+            '.btn-whatsapp',
+            '.social-title',
+            '.btn-instagram',
+            '.btn-google-maps',
+            '.btn-catalogo',
+            '.btn-avaliar',
+            '.encomende-area',
+            '.review-area'
+          ];
+
+          elements.forEach(selector => {
+            const el = document.querySelector(selector);
+            if (el) el.classList.add('animate-in');
+          });
+        }, 80);
+      });
+    }
+
+
+    // Modal de localização
+    (() => {
+      const modal = document.getElementById('locationModal');
+      const openButton = document.getElementById('locationButton');
+      const closeButton = document.getElementById('locationModalClose');
+      if (!modal || !openButton || !closeButton) return;
+
+      let lastFocusedElement = null;
+
+      function openLocationModal() {
+        lastFocusedElement = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => closeButton.focus(), 80);
+      }
+
+      function closeLocationModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (lastFocusedElement) lastFocusedElement.focus();
+      }
+
+      openButton.addEventListener('click', openLocationModal);
+      closeButton.addEventListener('click', closeLocationModal);
+
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeLocationModal();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+          closeLocationModal();
+        }
+      });
+    })();
+
+
+    // ===== Modal de Avaliação (Disclaimer) =====
+    (() => {
+      const GOOGLE_REVIEW_URL = 'https://g.page/r/CWq6SHiDG4jOEBM/review';
+      const DURATION = 6000; // 6 segundos
+
+      const modal = document.getElementById('reviewModal');
+      const closeBtn = document.getElementById('reviewModalClose');
+      const goBtn = document.getElementById('btnIrAvaliacao');
+      const tshirtFill = document.getElementById('tshirtFill');
+      const avaliarBtn = document.querySelector('.btn-avaliar');
+
+      if (!modal || !avaliarBtn) return;
+
+      let timer = null;
+      let hasRedirected = false;
+
+      function openReviewModal(e) {
+        e.preventDefault();
+        hasRedirected = false;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // Reinicia a t-shirt
+        tshirtFill.classList.remove('is-filling');
+        void tshirtFill.offsetWidth; // força reflow
+        tshirtFill.classList.add('is-filling');
+
+        // Timer de 6 segundos
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          goToReview();
+        }, DURATION);
+      }
+
+      function closeReviewModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        clearTimeout(timer);
+        tshirtFill.classList.remove('is-filling');
+      }
+
+      function goToReview() {
+        if (hasRedirected) return;
+        hasRedirected = true;
+        closeReviewModal();
+        window.location.href = GOOGLE_REVIEW_URL;
+      }
+
+      // Abre o modal ao clicar no botão "Avalie no Google"
+      avaliarBtn.addEventListener('click', openReviewModal);
+
+      // Botão "Ir para avaliação"
+      goBtn.addEventListener('click', goToReview);
+
+      // Fechar pelo X (apenas fecha, sem ir para avaliação)
+      closeBtn.addEventListener('click', closeReviewModal);
+
+      // Clicar fora da modal → vai para a avaliação
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          goToReview();
+        }
+      });
+
+      // ESC fecha a modal (sem ir para avaliação)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+          closeReviewModal();
+        }
+      });
+    })();
+
+
+    // Feedback de toque nos botões
+    document.querySelectorAll('a[class*="btn"], button[class*="btn"]').forEach(btn => {
       btn.addEventListener('touchstart', () => {
         btn.style.opacity = '0.9';
       }, { passive: true });
