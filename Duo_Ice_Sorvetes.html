@@ -314,6 +314,203 @@
     line-height: 1.4;
   }
 
+
+  /* ===== MODAL DE LOCALIZAÇÃO ===== */
+  .location-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    background: rgba(35, 10, 18, 0.58);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+
+  .location-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .location-modal-card {
+    width: min(100%, 370px);
+    padding: 27px 22px 22px;
+    border-radius: 28px;
+    background: rgba(255, 250, 247, 0.97);
+    color: #3a2528;
+    box-shadow:
+      0 24px 70px rgba(40, 8, 16, 0.38),
+      0 5px 24px rgba(255, 255, 255, 0.16);
+    transform: translateY(24px) scale(0.94);
+    opacity: 0;
+    transition:
+      transform 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .location-modal.is-open .location-modal-card {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  .location-modal-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff8692, #ffb0b8, #ff8692);
+  }
+
+  .location-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 134, 146, 0.12);
+    color: #7c4a50;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .location-modal-close:active {
+    transform: scale(0.9);
+  }
+
+  .location-modal-icon {
+    width: 58px;
+    height: 58px;
+    margin: 2px auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #ff8692, #ffb0b8);
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(255, 100, 120, 0.28);
+  }
+
+  .location-modal-icon svg {
+    width: 29px;
+    height: 29px;
+    fill: currentColor;
+  }
+
+  .location-modal-title {
+    text-align: center;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    margin-bottom: 5px;
+  }
+
+  .location-modal-subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: #806a6d;
+    margin-bottom: 19px;
+  }
+
+  .location-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .location-option {
+    width: 100%;
+    min-height: 64px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: none;
+    border-radius: 18px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  }
+
+  .location-option:active {
+    transform: scale(0.97);
+  }
+
+  .location-option svg,
+  .location-option img {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* Waze - azul oficial, logo central */
+  .location-option-waze {
+    background: #33CCFF;
+    color: #ffffff;
+    box-shadow:
+      0 0 22px rgba(51, 204, 255, 0.45),
+      0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .location-option-waze img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  /* Uber - totalmente preto, logo branco */
+  .location-option-uber {
+    background: #000000;
+    color: #ffffff;
+    box-shadow:
+      0 0 18px rgba(0, 0, 0, 0.35),
+      0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .location-option-uber svg {
+    width: 72px;
+    height: 24px;
+  }
+
+  /* Google Maps - idêntico ao botão da página principal */
+  .location-option-maps {
+    background: #FAEEDE;
+    color: #333333;
+    border: 1px solid #e0e0e0;
+    box-shadow:
+      0 0 18px rgba(255, 255, 255, 0.22),
+      0 4px 14px rgba(0, 0, 0, 0.2);
+  }
+
+  .location-option-maps svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .location-modal,
+    .location-modal-card,
+    .location-option {
+      transition: none;
+    }
+  }
+
   /* ===== ANIMAÇÕES PREMIUM - SOMENTE MOBILE ===== */
   @media (max-width: 768px) {
     /* Estado inicial (invisível + levemente deslocado) */
@@ -436,9 +633,7 @@
         </a>
 
         <!-- Localização -->
-        <a class="btn-social btn-google-maps" 
-           href="https://maps.app.goo.gl/xX9XniseoN54Mrcs8" 
-           target="_blank" rel="noopener noreferrer">
+        <button class="btn-social btn-google-maps" id="locationButton" type="button" aria-haspopup="dialog" aria-controls="locationModal">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -446,7 +641,7 @@
             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
           </svg>
           Localização
-        </a>
+        </button>
 
         <!-- Avalie no Google -->
         <a class="btn-social btn-avaliar" 
@@ -477,6 +672,59 @@
 
       </div>
 
+    </div>
+
+
+    <!-- ==================== MODAL DE LOCALIZAÇÃO ==================== -->
+    <div class="location-modal" id="locationModal" role="dialog" aria-modal="true" aria-labelledby="locationModalTitle" aria-hidden="true">
+      <div class="location-modal-card" role="document">
+        <button class="location-modal-close" id="locationModalClose" type="button" aria-label="Fechar">×</button>
+
+        <div class="location-modal-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C7.59 2 4 5.59 4 10c0 5.55 7.09 11.34 7.39 11.58a.94.94 0 0 0 1.22 0C12.91 21.34 20 15.55 20 10c0-4.41-3.59-8-8-8zm0 11.1a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2z"/>
+          </svg>
+        </div>
+
+        <h2 class="location-modal-title" id="locationModalTitle">Como você quer chegar?</h2>
+        <p class="location-modal-subtitle">Escolha seu aplicativo de navegação</p>
+
+        <div class="location-options">
+
+          <!-- Waze - botão azul oficial com imagem PNG -->
+          <a class="location-option location-option-waze"
+             href="https://waze.com/ul?ll=-22.8819664,-47.1689785&navigate=yes"
+             target="_blank" rel="noopener noreferrer">
+            <img src="assets/waze.png" alt="Waze">
+            Waze
+          </a>
+
+          <!-- Uber - botão preto + wordmark oficial -->
+          <a class="location-option location-option-uber"
+             href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff%5Blatitude%5D=-22.8819664&dropoff%5Blongitude%5D=-47.1689785&dropoff%5Bnickname%5D=Duo%20Ice%20sorvetes%20artesanais"
+             target="_blank" rel="noopener noreferrer">
+            <svg width="72" height="24" viewBox="0 0 72 24" aria-hidden="true">
+              <text x="36" y="17.5" text-anchor="middle"
+                    font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+                    font-size="18" font-weight="700" letter-spacing="-0.5" fill="#FFFFFF">Uber</text>
+            </svg>
+          </a>
+
+          <!-- Google Maps - idêntico ao botão da página principal -->
+          <a class="location-option location-option-maps"
+             href="https://maps.app.goo.gl/xX9XniseoN54Mrcs8"
+             target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Google Maps
+          </a>
+
+        </div>
+      </div>
     </div>
 
     <a class="footer" href="https://inkx.com.br/parcerias" target="_blank" rel="noopener noreferrer">
@@ -511,6 +759,45 @@
         }, 80);
       });
     }
+
+
+    // Modal de localização
+    (() => {
+      const modal = document.getElementById('locationModal');
+      const openButton = document.getElementById('locationButton');
+      const closeButton = document.getElementById('locationModalClose');
+      if (!modal || !openButton || !closeButton) return;
+
+      let lastFocusedElement = null;
+
+      function openLocationModal() {
+        lastFocusedElement = document.activeElement;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => closeButton.focus(), 80);
+      }
+
+      function closeLocationModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (lastFocusedElement) lastFocusedElement.focus();
+      }
+
+      openButton.addEventListener('click', openLocationModal);
+      closeButton.addEventListener('click', closeLocationModal);
+
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeLocationModal();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+          closeLocationModal();
+        }
+      });
+    })();
 
     // Feedback de toque nos botões
     document.querySelectorAll('a[class*="btn"]').forEach(btn => {
