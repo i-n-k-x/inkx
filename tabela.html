@@ -67,7 +67,7 @@
   .block-head h2{font-size:1.55rem;font-weight:700;}
   .block-head p{color:var(--ink-dim);margin-top:6px;font-size:.95rem;}
 
-  /* Flip card - cartão de visita */
+  /* ===== Flip card ===== */
   .flip-stage{
     perspective:1400px;
     width:280px;
@@ -75,23 +75,41 @@
     aspect-ratio:88/48;
     margin:0 auto 36px;
   }
+  /* Fallback para navegadores sem aspect-ratio */
+  @supports not (aspect-ratio: 1 / 1){
+    .flip-stage{height:calc(280px * 48 / 88);}
+    .flip-stage.flyer{height:calc(150px * 15 / 10);}
+  }
   .flip-stage.flyer{
     width:150px;
     aspect-ratio:10/15;
   }
-  .flip-card-link{display:block;text-decoration:none;outline-offset:6px;}
+
+  /* ESSENCIAL: <a> precisa ocupar 100% do stage para o inner herdar a altura */
+  .flip-card-link{
+    display:block;
+    text-decoration:none;
+    outline-offset:6px;
+    width:100%;
+    height:100%;
+  }
+
   .flip-inner{
     position:relative;
     width:100%;
     height:100%;
     transform-style:preserve-3d;
+    -webkit-transform-style:preserve-3d;
     border-radius:10px;
     box-shadow:0 18px 40px -14px rgba(0,0,0,.6);
     animation:autoflip 7s ease-in-out infinite;
   }
+
   .flip-face{
-    position:absolute;inset:0;
+    position:absolute;
+    inset:0;
     backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
     border-radius:10px;
     overflow:hidden;
     border:1px solid var(--line);
@@ -99,11 +117,13 @@
   }
   .flip-face img{width:100%;height:100%;object-fit:cover;}
   .flip-back{transform:rotateY(180deg);}
+
   @keyframes autoflip{
-    0%,42%{transform:rotateY(0deg);}
-    50%,92%{transform:rotateY(180deg);}
-    100%{transform:rotateY(360deg);}
+    0%,42%   {transform:rotateY(0deg);}
+    50%,92%  {transform:rotateY(180deg);}
+    100%     {transform:rotateY(360deg);}
   }
+
   @media (prefers-reduced-motion:reduce){
     .flip-inner{animation:none;}
   }
@@ -185,7 +205,7 @@
 <header>
   <div class="wrap">
     <a class="brand" href="https://inkx.com.br/">
-      <img src="assets/logo.png" alt="Ink X">
+      <img src="https://inkx.com.br/assets/logo.png" alt="Ink X">
       <span>Ink X</span>
     </a>
     <a class="top-cta" href="https://inkx.com.br/formulario">Pedir orçamento</a>
@@ -288,8 +308,8 @@
     <div class="flip-stage flyer">
       <a class="flip-card-link" href="https://inkx.com.br/formulario" aria-label="Ver panfleto e pedir orçamento">
         <div class="flip-inner">
-          <div class="flip-face"><img src="assets/fly.webp" alt="Panfleto Ink X - frente" loading="lazy"></div>
-          <div class="flip-face flip-back"><img src="assets/fly1.webp" alt="Panfleto Ink X - verso" loading="lazy"></div>
+          <div class="flip-face"><img src="https://inkx.com.br/assets/fly.webp" alt="Panfleto Ink X - frente" loading="lazy"></div>
+          <div class="flip-face flip-back"><img src="https://inkx.com.br/assets/fly1.webp" alt="Panfleto Ink X - verso" loading="lazy"></div>
         </div>
       </a>
     </div>
