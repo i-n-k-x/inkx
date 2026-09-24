@@ -2,12 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Tabela de Preços | Ink X</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
+    /* ============ MOBILE-FIRST (base = celular) ============ */
     :root {
       --bg: #0a0a0a;
       --bg-card: #141414;
@@ -19,13 +20,15 @@
       --text-muted: #a3a3a3;
       --border: #262626;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.5;
       min-height: 100vh;
+      font-size: 16px;
     }
 
     header {
@@ -33,70 +36,88 @@
       background: rgba(10, 10, 10, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 0.9rem 1.5rem;
+      padding: calc(0.85rem + env(safe-area-inset-top, 0px)) 1rem 0.85rem;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; display: flex; align-items: center; gap: 0.35rem; text-decoration: none; color: var(--text); }
+    .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; display: flex; align-items: center; gap: 0.35rem; text-decoration: none; color: var(--text); }
     .logo span { color: var(--yellow); }
-    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1.15rem; border-radius: 9999px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.2s ease; cursor: pointer; border: none; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      padding: 0.65rem 1.1rem; min-height: 44px;
+      border-radius: 9999px; font-weight: 600; font-size: 0.88rem;
+      text-decoration: none; transition: all 0.2s ease; cursor: pointer; border: none;
+    }
     .btn-primary { background: var(--yellow); color: #0a0a0a; }
-    .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-1px); }
+    .btn-primary:active { background: var(--yellow-dark); }
 
-    .hero { text-align: center; padding: 3.5rem 1.5rem 2.5rem; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(250, 204, 21, 0.15), transparent); }
-    .hero h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; letter-spacing: -0.8px; margin-bottom: 0.75rem; }
+    .hero { text-align: center; padding: 2.25rem 1.25rem 1.75rem; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(250, 204, 21, 0.15), transparent); }
+    .hero h1 { font-size: clamp(1.6rem, 7vw, 2.6rem); font-weight: 800; letter-spacing: -0.6px; margin-bottom: 0.65rem; line-height: 1.15; }
     .hero h1 span { color: var(--yellow); }
-    .hero p { color: var(--text-muted); max-width: 520px; margin: 0 auto 1.5rem; font-size: 1.05rem; }
-    .badge { display: inline-block; background: var(--yellow-soft); color: var(--yellow); font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.85rem; border-radius: 9999px; letter-spacing: 0.5px; margin-bottom: 1.25rem; }
+    .hero p { color: var(--text-muted); max-width: 480px; margin: 0 auto 1.25rem; font-size: 0.98rem; }
+    .badge { display: inline-block; background: var(--yellow-soft); color: var(--yellow); font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 9999px; letter-spacing: 0.5px; margin-bottom: 1rem; }
 
-    .tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; padding: 0 1.5rem 2rem; max-width: 900px; margin: 0 auto; }
-    .tab-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted); padding: 0.55rem 1.1rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
-    .tab-btn:hover, .tab-btn.active { background: var(--yellow); color: #0a0a0a; border-color: var(--yellow); }
+    .tabs { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 0.5rem; padding: 0 1rem 1.5rem; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted);
+      padding: 0.65rem 1.05rem; min-height: 44px; border-radius: 9999px;
+      font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .tab-btn.active { background: var(--yellow); color: #0a0a0a; border-color: var(--yellow); }
 
-    main { max-width: 960px; margin: 0 auto; padding: 0 1.25rem 4rem; }
-    .section { display: none; animation: fadeIn 0.35s ease; }
+    main { max-width: 640px; margin: 0 auto; padding: 0 1rem 3rem; }
+    .section { display: none; animation: fadeIn 0.3s ease; }
     .section.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 1.75rem; }
-    .card-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
-    .card-header h2 { font-size: 1.15rem; font-weight: 700; }
-    .card-header .specs { font-size: 0.8rem; color: var(--text-muted); }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem; }
+    .card-header { padding: 1.1rem 1.25rem; border-bottom: 1px solid var(--border); }
+    .card-header h2 { font-size: 1.05rem; font-weight: 700; }
+    .card-header .specs { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
 
-    .table-wrapper { overflow-x: auto; }
+    /* Tabela -> lista de cartões no celular (sem scroll horizontal) */
     table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-    th { text-align: left; padding: 0.9rem 1.25rem; background: rgba(250, 204, 21, 0.06); color: var(--yellow); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.4px; white-space: nowrap; }
-    td { padding: 0.95rem 1.25rem; border-top: 1px solid var(--border); white-space: nowrap; }
-    tr:hover td { background: var(--bg-card-hover); }
+    thead { display: none; }
+    tbody { display: block; }
+    tr { display: block; padding: 0.85rem 1.25rem; border-top: 1px solid var(--border); }
+    tbody tr:first-child { border-top: none; }
+    td { display: flex; align-items: center; justify-content: space-between; padding: 0.3rem 0; border: none; white-space: normal; }
+    td::before { content: attr(data-label); color: var(--text-muted); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
     .price { font-weight: 700; color: var(--yellow); font-size: 1.05rem; }
-    .qty { font-weight: 500; color: var(--text); }
+    .qty { font-weight: 600; color: var(--text); }
 
-    /* Legenda de cores */
-    .legend { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; padding: 1rem 1.5rem; background: rgba(250, 204, 21, 0.04); border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted); }
-    .legend-item { display: flex; align-items: center; gap: 0.4rem; }
-    .legend-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; }
+    .legend { display: flex; flex-direction: column; gap: 0.55rem; padding: 1rem 1.25rem; background: rgba(250, 204, 21, 0.04); border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted); }
+    .legend-item { display: flex; align-items: flex-start; gap: 0.5rem; }
+    .legend-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; margin-top: 0.4rem; }
     .legend strong { color: var(--yellow); }
 
-    .extras { padding: 1.25rem 1.5rem; background: rgba(250, 204, 21, 0.04); border-top: 1px solid var(--border); }
-    .extras h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--text-muted); }
-    .extras ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; }
+    .extras { padding: 1.1rem 1.25rem; background: rgba(250, 204, 21, 0.04); border-top: 1px solid var(--border); }
+    .extras h3 { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.55rem; color: var(--text-muted); }
+    .extras ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
     .extras li strong { color: var(--yellow); }
 
-    .note { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 1.5rem; padding: 0 1rem; }
+    .note { text-align: center; color: var(--text-muted); font-size: 0.82rem; margin-top: 1.25rem; }
 
-    .cta-box { background: linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(250, 204, 21, 0.04)); border: 1px solid rgba(250, 204, 21, 0.25); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; margin-top: 2.5rem; }
-    .cta-box h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .cta-box p { color: var(--text-muted); margin-bottom: 1.25rem; }
+    .cta-box { background: linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(250, 204, 21, 0.04)); border: 1px solid rgba(250, 204, 21, 0.25); border-radius: 14px; padding: 1.75rem 1.25rem; text-align: center; margin-top: 2rem; }
+    .cta-box h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .cta-box p { color: var(--text-muted); margin-bottom: 1.1rem; font-size: 0.9rem; }
+    .cta-box .btn { width: 100%; }
 
-    footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+    footer { border-top: 1px solid var(--border); padding: 1.75rem 1.25rem calc(1.75rem + env(safe-area-inset-bottom, 0px)); text-align: center; color: var(--text-muted); font-size: 0.82rem; }
     footer a { color: var(--yellow); text-decoration: none; }
 
-    .whatsapp-float { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 99; transition: transform 0.2s; }
-    .whatsapp-float:hover { transform: scale(1.08); }
-    .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+    .whatsapp-float {
+      position: fixed; bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)); right: 1.25rem;
+      width: 54px; height: 54px; background: #25d366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 99;
+    }
+    .whatsapp-float svg { width: 26px; height: 26px; fill: white; }
 
-    /* Cartão / panfleto em flip (imagem frente/verso) */
-    .flip-stage { perspective: 1400px; width: 260px; max-width: 65vw; aspect-ratio: 88 / 48; margin: 0 auto 1.5rem; }
-    .flip-stage.flyer { width: 220px; max-width: 55vw; aspect-ratio: 10 / 15; }
+    /* Cartão / panfleto em flip */
+    .flip-stage { perspective: 1400px; width: 220px; max-width: 62vw; aspect-ratio: 88 / 48; margin: 0 auto 1.25rem; }
+    .flip-stage.flyer { width: 180px; max-width: 50vw; aspect-ratio: 10 / 15; }
     .flip-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; border-radius: 10px; box-shadow: 0 16px 36px -14px rgba(0,0,0,.6); animation: autoflip 7s ease-in-out infinite; }
     .flip-face { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); }
     .flip-face img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -104,11 +125,53 @@
     @keyframes autoflip { 0%,42% { transform: rotateY(0deg); } 50%,92% { transform: rotateY(180deg); } 100% { transform: rotateY(360deg); } }
     @media (prefers-reduced-motion: reduce) { .flip-inner { animation: none; } }
 
-    @media (max-width: 600px) {
-      .card-header { flex-direction: column; align-items: flex-start; }
-      th, td { padding: 0.75rem 1rem; font-size: 0.9rem; }
-      .hero { padding: 2.5rem 1rem 1.5rem; }
-      .legend { flex-direction: column; gap: 0.5rem; }
+    /* ============ "SE DER, BOM NO PC" — camada de melhoria acima de 640px ============ */
+    @media (min-width: 641px) {
+      header { padding: 0.9rem 1.5rem; }
+      .logo { font-size: 1.4rem; }
+      .btn { padding: 0.55rem 1.15rem; min-height: auto; }
+      .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-1px); }
+
+      .hero { padding: 3.5rem 1.5rem 2.5rem; }
+      .hero h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); margin-bottom: 0.75rem; }
+      .hero p { max-width: 520px; font-size: 1.05rem; }
+
+      .tabs { flex-wrap: wrap; justify-content: center; overflow-x: visible; max-width: 900px; margin: 0 auto; padding: 0 1.5rem 2rem; }
+      .tab-btn { padding: 0.55rem 1.1rem; min-height: auto; }
+      .tab-btn:hover { background: var(--yellow); color: #0a0a0a; border-color: var(--yellow); }
+
+      main { max-width: 960px; padding: 0 1.25rem 4rem; }
+      .card { border-radius: 16px; margin-bottom: 1.75rem; }
+      .card-header { padding: 1.25rem 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+      .card-header h2 { font-size: 1.15rem; }
+      .card-header .specs { font-size: 0.8rem; margin-top: 0; }
+
+      /* Tabela volta ao formato de tabela tradicional */
+      thead { display: table-header-group; }
+      tbody { display: table-row-group; }
+      tr { display: table-row; padding: 0; border-top: 1px solid var(--border); }
+      th { text-align: left; padding: 0.9rem 1.25rem; background: rgba(250, 204, 21, 0.06); color: var(--yellow); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.4px; white-space: nowrap; }
+      td { display: table-cell; padding: 0.95rem 1.25rem; border-top: 1px solid var(--border); white-space: nowrap; }
+      td::before { content: none; }
+      tr:hover td { background: var(--bg-card-hover); }
+
+      .legend { flex-direction: row; flex-wrap: wrap; gap: 0.6rem 1.4rem; padding: 1rem 1.5rem; }
+      .legend-item { align-items: center; }
+      .legend-dot { margin-top: 0; }
+
+      .extras { padding: 1.25rem 1.5rem; }
+      .extras ul { flex-direction: row; flex-wrap: wrap; gap: 0.75rem 1.5rem; }
+
+      .cta-box { padding: 2rem 1.5rem; margin-top: 2.5rem; }
+      .cta-box h3 { font-size: 1.35rem; }
+      .cta-box p { font-size: 1rem; }
+      .cta-box .btn { width: auto; }
+
+      .flip-stage { width: 300px; max-width: 65vw; margin-bottom: 1.5rem; }
+      .flip-stage.flyer { width: 240px; max-width: 55vw; }
+
+      .note { font-size: 0.85rem; }
+      footer { padding: 2rem 1.5rem; font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -157,11 +220,11 @@
           <table>
             <thead><tr><th>Quantidade</th><th>4x4</th><th>4x1</th><th>4x0</th></tr></thead>
             <tbody>
-              <tr><td class="qty">100</td><td class="price">R$ 95</td><td class="price">R$ 90</td><td class="price">R$ 85</td></tr>
-              <tr><td class="qty">250</td><td class="price">R$ 110</td><td class="price">R$ 105</td><td class="price">R$ 100</td></tr>
-              <tr><td class="qty">500</td><td class="price">R$ 125</td><td class="price">R$ 120</td><td class="price">R$ 115</td></tr>
-              <tr><td class="qty">1.000</td><td class="price">R$ 130</td><td class="price">R$ 125</td><td class="price">R$ 120</td></tr>
-              <tr><td class="qty">3.000</td><td class="price">R$ 350</td><td class="price">R$ 330</td><td class="price">R$ 310</td></tr>
+              <tr><td class="qty" data-label="Quantidade">100</td><td class="price" data-label="4x4">R$ 95</td><td class="price" data-label="4x1">R$ 90</td><td class="price" data-label="4x0">R$ 85</td></tr>
+              <tr><td class="qty" data-label="Quantidade">250</td><td class="price" data-label="4x4">R$ 110</td><td class="price" data-label="4x1">R$ 105</td><td class="price" data-label="4x0">R$ 100</td></tr>
+              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="4x4">R$ 125</td><td class="price" data-label="4x1">R$ 120</td><td class="price" data-label="4x0">R$ 115</td></tr>
+              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="4x4">R$ 130</td><td class="price" data-label="4x1">R$ 125</td><td class="price" data-label="4x0">R$ 120</td></tr>
+              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="4x4">R$ 350</td><td class="price" data-label="4x1">R$ 330</td><td class="price" data-label="4x0">R$ 310</td></tr>
             </tbody>
           </table>
         </div>
@@ -193,10 +256,10 @@
           <table>
             <thead><tr><th>Quantidade</th><th>Preço de Venda</th></tr></thead>
             <tbody>
-              <tr><td class="qty">250</td><td class="price">R$ 220</td></tr>
-              <tr><td class="qty">500</td><td class="price">R$ 290</td></tr>
-              <tr><td class="qty">1.000</td><td class="price">R$ 390</td></tr>
-              <tr><td class="qty">3.000</td><td class="price">R$ 1.690</td></tr>
+              <tr><td class="qty" data-label="Quantidade">250</td><td class="price" data-label="Preço">R$ 220</td></tr>
+              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="Preço">R$ 290</td></tr>
+              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="Preço">R$ 390</td></tr>
+              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="Preço">R$ 1.690</td></tr>
             </tbody>
           </table>
         </div>
@@ -223,9 +286,9 @@
           <table>
             <thead><tr><th>Quantidade</th><th>Preço de Venda</th></tr></thead>
             <tbody>
-              <tr><td class="qty">500</td><td class="price">R$ 260</td></tr>
-              <tr><td class="qty">1.000</td><td class="price">R$ 430</td></tr>
-              <tr><td class="qty">3.000</td><td class="price">R$ 890</td></tr>
+              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="Preço">R$ 260</td></tr>
+              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="Preço">R$ 430</td></tr>
+              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="Preço">R$ 890</td></tr>
             </tbody>
           </table>
         </div>
@@ -252,9 +315,9 @@
           <table>
             <thead><tr><th>Quantidade</th><th>Preço de Venda</th></tr></thead>
             <tbody>
-              <tr><td class="qty">500</td><td class="price">R$ 490</td></tr>
-              <tr><td class="qty">1.000</td><td class="price">R$ 720</td></tr>
-              <tr><td class="qty">3.000</td><td class="price">R$ 1.350</td></tr>
+              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="Preço">R$ 490</td></tr>
+              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="Preço">R$ 720</td></tr>
+              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="Preço">R$ 1.350</td></tr>
             </tbody>
           </table>
         </div>
@@ -289,9 +352,9 @@
           <table>
             <thead><tr><th>Quantidade</th><th>4x0</th><th>4x4</th></tr></thead>
             <tbody>
-              <tr><td class="qty">500</td><td class="price">R$ 120</td><td class="price">R$ 150</td></tr>
-              <tr><td class="qty">1.000</td><td class="price">R$ 160</td><td class="price">R$ 200</td></tr>
-              <tr><td class="qty">3.000</td><td class="price">R$ 320</td><td class="price">R$ 420</td></tr>
+              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="4x0">R$ 120</td><td class="price" data-label="4x4">R$ 150</td></tr>
+              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="4x0">R$ 160</td><td class="price" data-label="4x4">R$ 200</td></tr>
+              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="4x0">R$ 320</td><td class="price" data-label="4x4">R$ 420</td></tr>
             </tbody>
           </table>
         </div>
@@ -312,9 +375,9 @@
           <table>
             <thead><tr><th>Quantidade</th><th>Preço de Venda</th></tr></thead>
             <tbody>
-              <tr><td class="qty">1.000</td><td class="price">R$ 210</td></tr>
-              <tr><td class="qty">2.500</td><td class="price">R$ 380</td></tr>
-              <tr><td class="qty">3.000</td><td class="price">R$ 430</td></tr>
+              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="Preço">R$ 210</td></tr>
+              <tr><td class="qty" data-label="Quantidade">2.500</td><td class="price" data-label="Preço">R$ 380</td></tr>
+              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="Preço">R$ 430</td></tr>
             </tbody>
           </table>
         </div>
@@ -356,6 +419,7 @@
         btn.classList.add('active');
         const target = document.getElementById(btn.dataset.tab);
         if (target) target.classList.add('active');
+        btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       });
     });
   </script>
