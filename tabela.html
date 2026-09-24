@@ -41,9 +41,8 @@
     border-bottom:1px solid var(--line);
   }
   header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-  .brand img{height:32px;width:auto;}
-  .brand span{font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.01em;}
+  .brand{display:flex;align-items:center;text-decoration:none;}
+  .brand img{height:45px;width:auto;}
   .top-cta{
     font-size:.85rem;
     font-weight:600;
@@ -75,14 +74,21 @@
     aspect-ratio:88/48;
     margin:0 auto 36px;
   }
+
+  /* Panfleto: quase toda a largura, sem cantos arredondados,
+     mas limitado pela altura da tela (max-height) para não estourar */
+  .flip-stage.flyer{
+    width:100%;
+    max-width:860px;
+    max-height:80vh;
+    aspect-ratio:10/15;
+    margin:0 auto 36px;
+  }
+
   /* Fallback para navegadores sem aspect-ratio */
   @supports not (aspect-ratio: 1 / 1){
     .flip-stage{height:calc(280px * 48 / 88);}
-    .flip-stage.flyer{height:calc(150px * 15 / 10);}
-  }
-  .flip-stage.flyer{
-    width:150px;
-    aspect-ratio:10/15;
+    .flip-stage.flyer{height:calc(860px * 15 / 10);}
   }
 
   /* ESSENCIAL: <a> precisa ocupar 100% do stage para o inner herdar a altura */
@@ -117,6 +123,12 @@
   }
   .flip-face img{width:100%;height:100%;object-fit:cover;}
   .flip-back{transform:rotateY(180deg);}
+
+  /* Zera o arredondamento só no panfleto (o cartão continua arredondado) */
+  .flip-stage.flyer .flip-inner,
+  .flip-stage.flyer .flip-face{
+    border-radius:0;
+  }
 
   @keyframes autoflip{
     0%,42%   {transform:rotateY(0deg);}
@@ -206,7 +218,6 @@
   <div class="wrap">
     <a class="brand" href="https://inkx.com.br/">
       <img src="https://inkx.com.br/assets/logo.png" alt="Ink X">
-      <span>Ink X</span>
     </a>
     <a class="top-cta" href="https://inkx.com.br/formulario">Pedir orçamento</a>
   </div>
