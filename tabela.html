@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    /* ============ MOBILE-FIRST (base = celular) ============ */
     :root {
       --bg: #0a0a0a;
       --bg-card: #141414;
@@ -16,6 +15,7 @@
       --yellow: #facc15;
       --yellow-dark: #eab308;
       --yellow-soft: rgba(250, 204, 21, 0.12);
+      --red: #dc2626;
       --text: #f5f5f5;
       --text-muted: #a3a3a3;
       --border: #262626;
@@ -53,22 +53,57 @@
     .hero { text-align: center; padding: 2.25rem 1.25rem 1.75rem; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(250, 204, 21, 0.15), transparent); }
     .hero h1 { font-size: clamp(1.6rem, 7vw, 2.6rem); font-weight: 800; letter-spacing: -0.6px; margin-bottom: 0.65rem; line-height: 1.15; }
     .hero h1 span { color: var(--yellow); }
-    .hero p { color: var(--text-muted); max-width: 480px; margin: 0 auto 1.25rem; font-size: 0.98rem; }
+    .hero p { color: var(--text-muted); max-width: 520px; margin: 0 auto 1rem; font-size: 0.98rem; }
     .badge { display: inline-block; background: var(--yellow-soft); color: var(--yellow); font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 9999px; letter-spacing: 0.5px; margin-bottom: 1rem; }
+    .hero-feature {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(250, 204, 21, 0.08);
+      border: 1px solid rgba(250, 204, 21, 0.25);
+      color: var(--yellow);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin-top: 0.25rem;
+    }
+    .hero-feature .check {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--yellow); color: #0a0a0a;
+      font-size: 0.65rem; font-weight: 800;
+    }
 
-    .tabs { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 0.5rem; padding: 0 1rem 1.5rem; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    /* ===== TABS PRINCIPAIS ===== */
+    .tabs { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 0.5rem; padding: 0 1rem 1.25rem; -webkit-overflow-scrolling: touch; scrollbar-width: none; justify-content: center; }
     .tabs::-webkit-scrollbar { display: none; }
     .tab-btn {
       background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted);
-      padding: 0.65rem 1.05rem; min-height: 44px; border-radius: 9999px;
-      font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s;
+      padding: 0.75rem 1.5rem; min-height: 48px; border-radius: 9999px;
+      font-size: 0.92rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
       white-space: nowrap; flex-shrink: 0;
     }
     .tab-btn.active { background: var(--yellow); color: #0a0a0a; border-color: var(--yellow); }
 
+    /* ===== SUB-TABS (só para cartões) ===== */
+    .subtabs {
+      display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 0.4rem;
+      padding: 0 0 1.25rem;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    .subtabs::-webkit-scrollbar { display: none; }
+    .subtab-btn {
+      background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+      padding: 0.55rem 1rem; min-height: 40px; border-radius: 9999px;
+      font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.2s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .subtab-btn.active { background: var(--yellow-soft); color: var(--yellow); border-color: rgba(250, 204, 21, 0.4); }
+
     main { max-width: 640px; margin: 0 auto; padding: 0 1rem 3rem; }
     .section { display: none; animation: fadeIn 0.3s ease; }
     .section.active { display: block; }
+    .sub-section { display: none; animation: fadeIn 0.3s ease; }
+    .sub-section.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
     .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem; }
@@ -76,7 +111,7 @@
     .card-header h2 { font-size: 1.05rem; font-weight: 700; }
     .card-header .specs { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
 
-    /* Tabela -> lista de cartões no celular (sem scroll horizontal) */
+    /* ===== TABELA (mobile = cartões empilhados) ===== */
     table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
     thead { display: none; }
     tbody { display: block; }
@@ -87,7 +122,63 @@
     .price { font-weight: 700; color: var(--yellow); font-size: 1.05rem; }
     .qty { font-weight: 600; color: var(--text); }
 
-    .legend { display: flex; flex-direction: column; gap: 0.55rem; padding: 1rem 1.25rem; background: rgba(250, 204, 21, 0.04); border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted); }
+    /* ===== LINHA CAMPEÃ ===== */
+    tr.best-seller {
+      background: linear-gradient(90deg, rgba(250, 204, 21, 0.1), transparent 85%);
+      box-shadow: inset 3px 0 0 var(--yellow);
+      padding-left: calc(1.25rem - 3px);
+    }
+    tr.best-seller td.qty { flex-wrap: wrap; }
+    .best-badge {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      background: var(--yellow); color: #0a0a0a;
+      font-size: 0.62rem; font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+    }
+    tr.best-seller td.qty .best-badge {
+      flex: 1 0 100%;
+      margin-top: 0.4rem;
+      justify-content: center;
+    }
+    .promo-badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.6rem; font-weight: 800;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+
+    /* ===== BANNER PROMO ===== */
+    .promo-banner {
+      background: linear-gradient(135deg, rgba(250, 204, 21, 0.16), rgba(250, 204, 21, 0.04));
+      border-bottom: 1px solid rgba(250, 204, 21, 0.25);
+      padding: 0.85rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      line-height: 1.4;
+    }
+    .promo-banner .trophy { font-size: 1.1rem; }
+    .promo-banner strong { color: var(--yellow); }
+
+    /* ===== LEGENDA (explicação de cores) ===== */
+    .legend {
+      display: flex; flex-direction: column; gap: 0.55rem;
+      padding: 1rem 1.25rem;
+      background: rgba(250, 204, 21, 0.04);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem; color: var(--text-muted);
+    }
     .legend-item { display: flex; align-items: flex-start; gap: 0.5rem; }
     .legend-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; margin-top: 0.4rem; }
     .legend strong { color: var(--yellow); }
@@ -115,9 +206,8 @@
     }
     .whatsapp-float svg { width: 26px; height: 26px; fill: white; }
 
-    /* Cartão / panfleto em flip */
+    /* ===== FLIP CARTÃO ===== */
     .flip-stage { perspective: 1400px; width: 220px; max-width: 62vw; aspect-ratio: 88 / 48; margin: 0 auto 1.25rem; }
-    .flip-stage.flyer { width: 180px; max-width: 50vw; aspect-ratio: 10 / 15; }
     .flip-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; border-radius: 10px; box-shadow: 0 16px 36px -14px rgba(0,0,0,.6); animation: autoflip 7s ease-in-out infinite; }
     .flip-face { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); }
     .flip-face img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -125,7 +215,15 @@
     @keyframes autoflip { 0%,42% { transform: rotateY(0deg); } 50%,92% { transform: rotateY(180deg); } 100% { transform: rotateY(360deg); } }
     @media (prefers-reduced-motion: reduce) { .flip-inner { animation: none; } }
 
-    /* ============ "SE DER, BOM NO PC" — camada de melhoria acima de 640px ============ */
+    /* ===== FLYER (sem flip, sem arredondado) ===== */
+    .flyer-flat {
+      width: 200px; max-width: 55vw;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 12px 30px -12px rgba(0,0,0,.6);
+    }
+    .flyer-flat img { width: 100%; height: auto; display: block; border-radius: 0; }
+
+    /* ============ DESKTOP (>640px) ============ */
     @media (min-width: 641px) {
       header { padding: 0.9rem 1.5rem; }
       .logo { font-size: 1.4rem; }
@@ -134,11 +232,15 @@
 
       .hero { padding: 3.5rem 1.5rem 2.5rem; }
       .hero h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); margin-bottom: 0.75rem; }
-      .hero p { max-width: 520px; font-size: 1.05rem; }
+      .hero p { max-width: 620px; font-size: 1.05rem; }
 
-      .tabs { flex-wrap: wrap; justify-content: center; overflow-x: visible; max-width: 900px; margin: 0 auto; padding: 0 1.5rem 2rem; }
-      .tab-btn { padding: 0.55rem 1.1rem; min-height: auto; }
+      .tabs { flex-wrap: wrap; justify-content: center; overflow-x: visible; max-width: 900px; margin: 0 auto; padding: 0 1.5rem 1.5rem; }
+      .tab-btn { padding: 0.7rem 1.6rem; min-height: auto; }
       .tab-btn:hover { background: var(--yellow); color: #0a0a0a; border-color: var(--yellow); }
+
+      .subtabs { justify-content: center; flex-wrap: wrap; overflow-x: visible; padding: 0 0 1.5rem; }
+      .subtab-btn { padding: 0.55rem 1.1rem; min-height: auto; }
+      .subtab-btn:hover { background: var(--yellow); color: #0a0a0a; border-color: var(--yellow); }
 
       main { max-width: 960px; padding: 0 1.25rem 4rem; }
       .card { border-radius: 16px; margin-bottom: 1.75rem; }
@@ -146,7 +248,6 @@
       .card-header h2 { font-size: 1.15rem; }
       .card-header .specs { font-size: 0.8rem; margin-top: 0; }
 
-      /* Tabela volta ao formato de tabela tradicional */
       thead { display: table-header-group; }
       tbody { display: table-row-group; }
       tr { display: table-row; padding: 0; border-top: 1px solid var(--border); }
@@ -155,9 +256,15 @@
       td::before { content: none; }
       tr:hover td { background: var(--bg-card-hover); }
 
+      tr.best-seller { box-shadow: inset 4px 0 0 var(--yellow); }
+      tr.best-seller:hover td { background: rgba(250, 204, 21, 0.08); }
+      tr.best-seller td.qty .best-badge { flex: initial; margin-top: 0; margin-left: 0.5rem; }
+
       .legend { flex-direction: row; flex-wrap: wrap; gap: 0.6rem 1.4rem; padding: 1rem 1.5rem; }
       .legend-item { align-items: center; }
       .legend-dot { margin-top: 0; }
+
+      .promo-banner { padding: 0.9rem 1.5rem; font-size: 0.9rem; }
 
       .extras { padding: 1.25rem 1.5rem; }
       .extras ul { flex-direction: row; flex-wrap: wrap; gap: 0.75rem 1.5rem; }
@@ -168,7 +275,7 @@
       .cta-box .btn { width: auto; }
 
       .flip-stage { width: 300px; max-width: 65vw; margin-bottom: 1.5rem; }
-      .flip-stage.flyer { width: 240px; max-width: 55vw; }
+      .flyer-flat { width: 240px; margin-bottom: 1.75rem; }
 
       .note { font-size: 0.85rem; }
       footer { padding: 2rem 1.5rem; font-size: 0.85rem; }
@@ -187,158 +294,181 @@
   <section class="hero">
     <div class="badge">TABELA DE PREÇOS 2026</div>
     <h1>Cartões de Visita <span>&</span> Panfletos</h1>
-    <p>Preços com arte inclusa. Qualidade profissional, entrega rápida e atendimento humano.</p>
+    <p>Preços com arte inclusa. A gente ajusta sua arte até ela ficar 100% alinhada com a sua expectativa — só imprimimos quando você aprovar.</p>
+    <div class="hero-feature">
+      <span class="check">✓</span> Arte ajustada até você dizer "ficou perfeito"
+    </div>
   </section>
 
-  <nav class="tabs" id="tabs">
+  <nav class="tabs" id="main-tabs">
     <button class="tab-btn active" data-tab="cartoes">Cartões de Visita</button>
-    <button class="tab-btn" data-tab="holografico">Holográfico</button>
-    <button class="tab-btn" data-tab="arredondados">Arredondados</button>
-    <button class="tab-btn" data-tab="hotstamp">Hot Stamping</button>
     <button class="tab-btn" data-tab="panfletos">Panfletos</button>
   </nav>
 
   <main>
-    <!-- 1. Cartões de Visita -->
+    <!-- ============ CARTÕES DE VISITA ============ -->
     <div class="section active" id="cartoes">
 
-      <div class="flip-stage">
-        <div class="flip-inner">
-          <div class="flip-face"><img src="https://inkx.com.br/assets/card.webp" alt="Cartão de visita Ink X - frente" loading="lazy" /></div>
-          <div class="flip-face flip-back"><img src="https://inkx.com.br/assets/card1.webp" alt="Cartão de visita Ink X - verso" loading="lazy" /></div>
+      <nav class="subtabs" id="sub-tabs">
+        <button class="subtab-btn active" data-subtab="cartoes-trad">Tradicional</button>
+        <button class="subtab-btn" data-subtab="cartoes-holo">Holográfico</button>
+        <button class="subtab-btn" data-subtab="cartoes-arr">Arredondado</button>
+        <button class="subtab-btn" data-subtab="cartoes-hot">Hot Stamping</button>
+      </nav>
+
+      <!-- Tradicional -->
+      <div class="sub-section active" id="cartoes-trad">
+        <div class="flip-stage">
+          <div class="flip-inner">
+            <div class="flip-face"><img src="https://inkx.com.br/assets/card.webp" alt="Cartão de visita Ink X - frente" loading="lazy" /></div>
+            <div class="flip-face flip-back"><img src="https://inkx.com.br/assets/card1.webp" alt="Cartão de visita Ink X - verso" loading="lazy" /></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2>Cartões de Visita</h2>
+              <div class="specs">Couchê 250g • UV Total Frente • 8,8 × 4,8 cm</div>
+            </div>
+          </div>
+
+          <div class="legend">
+            <div class="legend-item"><span class="legend-dot"></span><strong>4x4</strong> = colorido nos dois lados</div>
+            <div class="legend-item"><span class="legend-dot"></span><strong>4x1</strong> = colorido na frente, preto e branco no verso</div>
+            <div class="legend-item"><span class="legend-dot"></span><strong>4x0</strong> = colorido só na frente</div>
+          </div>
+
+          <div class="promo-banner">
+            <span class="trophy">🏆</span>
+            <span><strong>Campeão de vendas:</strong> 1.000 cartões 4x4 por <strong>R$ 130</strong> — preço promocional por tempo limitado</span>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th>Quantidade</th><th>4x4</th><th>4x1</th><th>4x0</th></tr></thead>
+              <tbody>
+                <tr class="best-seller">
+                  <td class="qty" data-label="Quantidade">
+                    1.000
+                    <span class="best-badge">🏆 Campeão de Vendas</span>
+                  </td>
+                  <td class="price" data-label="4x4"><span class="promo-badge">PROMO</span>R$ 130</td>
+                  <td class="price" data-label="4x1">R$ 125</td>
+                  <td class="price" data-label="4x0">R$ 120</td>
+                </tr>
+                <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="4x4">R$ 350</td><td class="price" data-label="4x1">R$ 330</td><td class="price" data-label="4x0">R$ 310</td></tr>
+                <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="4x4">R$ 125</td><td class="price" data-label="4x1">R$ 120</td><td class="price" data-label="4x0">R$ 115</td></tr>
+                <tr><td class="qty" data-label="Quantidade">250</td><td class="price" data-label="4x4">R$ 110</td><td class="price" data-label="4x1">R$ 105</td><td class="price" data-label="4x0">R$ 100</td></tr>
+                <tr><td class="qty" data-label="Quantidade">100</td><td class="price" data-label="4x4">R$ 95</td><td class="price" data-label="4x1">R$ 90</td><td class="price" data-label="4x0">R$ 85</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="extras">
+            <h3>Acabamentos Opcionais</h3>
+            <ul>
+              <li>Refile (tamanho menor) → <strong>+ R$ 20</strong></li>
+              <li>Corte Especial + Vinco → <strong>+ R$ 40</strong></li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2>Cartões de Visita</h2>
-            <div class="specs">Couchê 250g • UV Total Frente • 8,8 × 4,8 cm</div>
+      <!-- Holográfico -->
+      <div class="sub-section" id="cartoes-holo">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2>Cartões Holográfico</h2>
+              <div class="specs">Couchê 300g • Laminação Holográfica • 8,8 × 5,08 cm</div>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th>Quantidade</th><th>Preço de Venda</th></tr></thead>
+              <tbody>
+                <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="Preço">R$ 390</td></tr>
+                <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="Preço">R$ 1.690</td></tr>
+                <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="Preço">R$ 290</td></tr>
+                <tr><td class="qty" data-label="Quantidade">250</td><td class="price" data-label="Preço">R$ 220</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="extras">
+            <h3>Acabamentos Opcionais</h3>
+            <ul>
+              <li>Refile (tamanho menor) → <strong>+ R$ 20</strong></li>
+              <li>Corte Especial + Vinco → <strong>+ R$ 40</strong></li>
+            </ul>
           </div>
         </div>
-        <div class="table-wrapper">
-          <table>
-            <thead><tr><th>Quantidade</th><th>4x4</th><th>4x1</th><th>4x0</th></tr></thead>
-            <tbody>
-              <tr><td class="qty" data-label="Quantidade">100</td><td class="price" data-label="4x4">R$ 95</td><td class="price" data-label="4x1">R$ 90</td><td class="price" data-label="4x0">R$ 85</td></tr>
-              <tr><td class="qty" data-label="Quantidade">250</td><td class="price" data-label="4x4">R$ 110</td><td class="price" data-label="4x1">R$ 105</td><td class="price" data-label="4x0">R$ 100</td></tr>
-              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="4x4">R$ 125</td><td class="price" data-label="4x1">R$ 120</td><td class="price" data-label="4x0">R$ 115</td></tr>
-              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="4x4">R$ 130</td><td class="price" data-label="4x1">R$ 125</td><td class="price" data-label="4x0">R$ 120</td></tr>
-              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="4x4">R$ 350</td><td class="price" data-label="4x1">R$ 330</td><td class="price" data-label="4x0">R$ 310</td></tr>
-            </tbody>
-          </table>
+      </div>
+
+      <!-- Arredondados -->
+      <div class="sub-section" id="cartoes-arr">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2>Cartões Arredondados</h2>
+              <div class="specs">Couchê 300g • Laminação Fosca + UV Localizado • 8,8 × 5,08 cm</div>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th>Quantidade</th><th>Preço de Venda</th></tr></thead>
+              <tbody>
+                <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="Preço">R$ 430</td></tr>
+                <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="Preço">R$ 890</td></tr>
+                <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="Preço">R$ 260</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="extras">
+            <h3>Acabamentos Opcionais</h3>
+            <ul>
+              <li>Refile (tamanho menor) → <strong>+ R$ 20</strong></li>
+              <li>Corte Especial + Vinco → <strong>+ R$ 40</strong></li>
+            </ul>
+          </div>
         </div>
-        <div class="legend">
-          <div class="legend-item"><span class="legend-dot"></span><strong>4x4</strong> = colorido nos dois lados</div>
-          <div class="legend-item"><span class="legend-dot"></span><strong>4x1</strong> = colorido na frente, preto e branco no verso</div>
-          <div class="legend-item"><span class="legend-dot"></span><strong>4x0</strong> = colorido só na frente</div>
-        </div>
-        <div class="extras">
-          <h3>Acabamentos Opcionais</h3>
-          <ul>
-            <li>Refile (tamanho menor) → <strong>+ R$ 20</strong></li>
-            <li>Corte Especial + Vinco → <strong>+ R$ 40</strong></li>
-          </ul>
+      </div>
+
+      <!-- Hot Stamping -->
+      <div class="sub-section" id="cartoes-hot">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2>Verniz Localizado + Hot Stamping</h2>
+              <div class="specs">Couchê 300g • 8,8 × 5,08 cm</div>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th>Quantidade</th><th>Preço de Venda</th></tr></thead>
+              <tbody>
+                <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="Preço">R$ 720</td></tr>
+                <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="Preço">R$ 1.350</td></tr>
+                <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="Preço">R$ 490</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="extras">
+            <h3>Acabamentos Opcionais</h3>
+            <ul>
+              <li>Refile (tamanho menor) → <strong>+ R$ 20</strong></li>
+              <li>Corte Especial + Vinco → <strong>+ R$ 40</strong></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 2. Holográfico -->
-    <div class="section" id="holografico">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2>Cartões Holográfico</h2>
-            <div class="specs">Couchê 300g • Laminação Holográfica • 8,8 × 5,08 cm</div>
-          </div>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead><tr><th>Quantidade</th><th>Preço de Venda</th></tr></thead>
-            <tbody>
-              <tr><td class="qty" data-label="Quantidade">250</td><td class="price" data-label="Preço">R$ 220</td></tr>
-              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="Preço">R$ 290</td></tr>
-              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="Preço">R$ 390</td></tr>
-              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="Preço">R$ 1.690</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="extras">
-          <h3>Acabamentos Opcionais</h3>
-          <ul>
-            <li>Refile (tamanho menor) → <strong>+ R$ 20</strong></li>
-            <li>Corte Especial + Vinco → <strong>+ R$ 40</strong></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. Arredondados -->
-    <div class="section" id="arredondados">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2>Cartões Arredondados</h2>
-            <div class="specs">Couchê 300g • Laminação Fosca + UV Localizado • 8,8 × 5,08 cm</div>
-          </div>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead><tr><th>Quantidade</th><th>Preço de Venda</th></tr></thead>
-            <tbody>
-              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="Preço">R$ 260</td></tr>
-              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="Preço">R$ 430</td></tr>
-              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="Preço">R$ 890</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="extras">
-          <h3>Acabamentos Opcionais</h3>
-          <ul>
-            <li>Refile (tamanho menor) → <strong>+ R$ 20</strong></li>
-            <li>Corte Especial + Vinco → <strong>+ R$ 40</strong></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. Hot Stamping -->
-    <div class="section" id="hotstamp">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2>Verniz Localizado + Hot Stamping</h2>
-            <div class="specs">Couchê 300g • 8,8 × 5,08 cm</div>
-          </div>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead><tr><th>Quantidade</th><th>Preço de Venda</th></tr></thead>
-            <tbody>
-              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="Preço">R$ 490</td></tr>
-              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="Preço">R$ 720</td></tr>
-              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="Preço">R$ 1.350</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="extras">
-          <h3>Acabamentos Opcionais</h3>
-          <ul>
-            <li>Refile (tamanho menor) → <strong>+ R$ 20</strong></li>
-            <li>Corte Especial + Vinco → <strong>+ R$ 40</strong></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. Panfletos -->
+    <!-- ============ PANFLETOS ============ -->
     <div class="section" id="panfletos">
 
-      <div class="flip-stage flyer">
-        <div class="flip-inner">
-          <div class="flip-face"><img src="https://inkx.com.br/assets/fly.webp" alt="Panfleto Ink X - frente" loading="lazy" /></div>
-          <div class="flip-face flip-back"><img src="https://inkx.com.br/assets/fly1.webp" alt="Panfleto Ink X - verso" loading="lazy" /></div>
-        </div>
+      <div class="flyer-flat">
+        <img src="https://inkx.com.br/assets/fly.webp" alt="Panfleto Ink X" loading="lazy" />
       </div>
 
       <div class="card">
@@ -348,19 +478,19 @@
             <div class="specs">Couchê 120g • Sem Verniz</div>
           </div>
         </div>
+        <div class="legend">
+          <div class="legend-item"><span class="legend-dot"></span><strong>4x0</strong> = colorido só na frente</div>
+          <div class="legend-item"><span class="legend-dot"></span><strong>4x4</strong> = colorido nos dois lados</div>
+        </div>
         <div class="table-wrapper">
           <table>
             <thead><tr><th>Quantidade</th><th>4x0</th><th>4x4</th></tr></thead>
             <tbody>
-              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="4x0">R$ 120</td><td class="price" data-label="4x4">R$ 150</td></tr>
               <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="4x0">R$ 160</td><td class="price" data-label="4x4">R$ 200</td></tr>
               <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="4x0">R$ 320</td><td class="price" data-label="4x4">R$ 420</td></tr>
+              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="4x0">R$ 120</td><td class="price" data-label="4x4">R$ 150</td></tr>
             </tbody>
           </table>
-        </div>
-        <div class="legend">
-          <div class="legend-item"><span class="legend-dot"></span><strong>4x0</strong> = colorido só na frente</div>
-          <div class="legend-item"><span class="legend-dot"></span><strong>4x4</strong> = colorido nos dois lados</div>
         </div>
       </div>
 
@@ -376,8 +506,8 @@
             <thead><tr><th>Quantidade</th><th>Preço de Venda</th></tr></thead>
             <tbody>
               <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="Preço">R$ 210</td></tr>
-              <tr><td class="qty" data-label="Quantidade">2.500</td><td class="price" data-label="Preço">R$ 380</td></tr>
               <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="Preço">R$ 430</td></tr>
+              <tr><td class="qty" data-label="Quantidade">2.500</td><td class="price" data-label="Preço">R$ 380</td></tr>
             </tbody>
           </table>
         </div>
@@ -386,7 +516,7 @@
 
     <div class="cta-box">
       <h3>Pronto para encomendar?</h3>
-      <p>Arte inclusa • Entrega rápida • Atendimento humano</p>
+      <p>Arte inclusa e ajustada até você aprovar 100% • Entrega rápida • Atendimento humano</p>
       <a href="https://wa.me/5519982560907?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20cart%C3%B5es%20%2F%20panfletos." class="btn btn-primary" target="_blank">
         Solicitar orçamento no WhatsApp
       </a>
@@ -410,6 +540,7 @@
   </a>
 
   <script>
+    // Tabs principais
     const tabButtons = document.querySelectorAll('.tab-btn');
     const sections = document.querySelectorAll('.section');
     tabButtons.forEach(btn => {
@@ -418,6 +549,20 @@
         sections.forEach(s => s.classList.remove('active'));
         btn.classList.add('active');
         const target = document.getElementById(btn.dataset.tab);
+        if (target) target.classList.add('active');
+        btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    });
+
+    // Sub-tabs (só dentro de Cartões de Visita)
+    const subButtons = document.querySelectorAll('.subtab-btn');
+    const subSections = document.querySelectorAll('.sub-section');
+    subButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        subButtons.forEach(b => b.classList.remove('active'));
+        subSections.forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        const target = document.getElementById(btn.dataset.subtab);
         if (target) target.classList.add('active');
         btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       });
