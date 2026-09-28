@@ -309,6 +309,7 @@
   <nav class="tabs" id="main-tabs">
     <button class="tab-btn active" data-tab="cartoes">Cartões de Visita</button>
     <button class="tab-btn" data-tab="panfletos">Panfletos</button>
+    <a class="tab-btn tab-link" href="https://inkx.com.br/tabela_banner">Banner</a>
   </nav>
 
   <main>
@@ -553,7 +554,7 @@
   </a>
 
   <script>
-    const tabButtons  = document.querySelectorAll('.tab-btn');
+    const tabButtons  = document.querySelectorAll('.tab-btn:not(.tab-link)');
     const sections    = document.querySelectorAll('.section');
     const subButtons  = document.querySelectorAll('.subtab-btn');
     const subSections = document.querySelectorAll('.sub-section');
