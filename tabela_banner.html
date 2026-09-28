@@ -10,7 +10,12 @@
 <style>
   :root{
     --bg:#0a0a0a; --card:#141414; --card-h:#1a1a1a;
-    --yellow:#facc15; --yellow-d:#eab308; --yellow-soft:rgba(250,204,21,.12);
+    --yellow:#facc15;              /* amarelo atual — botões, destaques */
+    --yellow-d:#eab308;
+    --yellow-light:#fef08a;        /* amarelinho claro — cifrões + Só impressão */
+    --green-neon:#4ade80;          /* verde claro quase neon — Completo */
+    --gray-light:#e5e5e5;          /* NOVO: cinzinha quase branco — tamanhos */
+    --yellow-soft:rgba(250,204,21,.12);
     --text:#f5f5f5; --muted:#a3a3a3; --border:#262626;
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -119,7 +124,7 @@
   .legend strong{color:var(--yellow)}
 
   /* ==========================================================
-     TABELA — agora é REALMENTE tabular em qualquer tela
+     TABELA — tabular em qualquer tela
      Mobile: 3 colunas (Tamanho, Só impressão, Completo)
      Desktop: 4 colunas (Cód., Tamanho, Só impressão, Completo)
      ========================================================== */
@@ -147,11 +152,26 @@
   /* Coluna do código — escondida no mobile */
   .cod-col{display:none}
 
-  /* Células específicas */
-  td.size{font-weight:700;color:var(--text);font-size:.85rem}
-  td.price{color:var(--yellow);font-weight:700}
+  /* ---- CÉLULAS — CORES FINAIS ---- */
+  td.size{
+    font-weight:700;
+    font-size:.85rem;
+    color:var(--gray-light);     /* tamanhos em cinzinha quase branco */
+  }
+  td.size a{color:inherit}
+
   td.price a{color:inherit}
   td.price a:hover{text-decoration:underline}
+
+  /* Símbolo R$ — amarelinho claro */
+  .rs{color:var(--yellow-light)}
+
+  /* Só impressão — número na MESMA cor dos cifrões */
+  td.price-so{color:var(--yellow-light);font-weight:700}
+
+  /* Completo — verde claro quase neon (inalterado) */
+  td.price-full{color:var(--green-neon);font-weight:700}
+
   tbody tr:last-child td{border-bottom:none}
   tbody tr:active{background:var(--card-h)}
 
@@ -202,7 +222,6 @@
     html{scroll-behavior:auto}
   }
 
-  /* TELA MUITO ESTREITA (<340px) — aperta um pouco */
   @media (max-width:340px){
     th,td{padding:.5rem .35rem}
     td.size{font-size:.78rem}
@@ -233,7 +252,6 @@
     th{font-size:.75rem}
     th small{font-size:.7rem}
 
-    /* Mostra a coluna Cód. no desktop */
     .cod-col{display:table-cell;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-weight:600}
     .cod-col a{color:inherit}
 
@@ -437,7 +455,12 @@ const DADOS = {
    RENDER
 ------------------------------------------------------------------ */
 const WA = "https://wa.me/5519982560907?text=";
-const brl = v => "R$ " + v.toFixed(2).replace(".", ",");
+
+/* Número formatado em BRL — sem o "R$" (que virá em <span>) */
+const num = v => v.toFixed(2).replace(".", ",");
+
+/* "R$" envolvido em span para receber cor própria (amarelinho claro) */
+const RS = '<span class="rs">R$</span> ';
 
 /* Mensagem: tamanho entre asteriscos -> sai em NEGRITO no WhatsApp */
 function waLink(cod, size){
@@ -451,8 +474,8 @@ function renderRows(tbody, items){
     return `<tr>
       <td class="cod-col"><a href="${url}" target="_blank" rel="noopener">${cod}</a></td>
       <td class="size"><a href="${url}" target="_blank" rel="noopener">${size}</a></td>
-      <td class="price"><a href="${url}" target="_blank" rel="noopener">${brl(so)}</a></td>
-      <td class="price"><a href="${url}" target="_blank" rel="noopener">${brl(full)}</a></td>
+      <td class="price price-so"><a href="${url}" target="_blank" rel="noopener">${RS}${num(so)}</a></td>
+      <td class="price price-full"><a href="${url}" target="_blank" rel="noopener">${RS}${num(full)}</a></td>
     </tr>`;
   }).join("");
 }
@@ -488,8 +511,8 @@ function filtrar(){
   sections.forEach(sec => {
     let visiveis = 0;
     sec.querySelectorAll("tbody tr").forEach(tr => {
-      const cod  = norm(tr.cells[0].textContent);   // .cod-col
-      const size = norm(tr.cells[1].textContent);   // .size
+      const cod  = norm(tr.cells[0].textContent);
+      const size = norm(tr.cells[1].textContent);
       const ok = !v || cod.startsWith(v) || size.includes(v);
       tr.style.display = ok ? "" : "none";
       if (ok) visiveis++;
