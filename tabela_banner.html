@@ -247,10 +247,6 @@
   }
   .finder-best .prices .so{color:var(--yellow-light);font-weight:700}
   .finder-best .prices .full{color:var(--green-neon);font-weight:700}
-  .finder-best .meta{
-    font-size:.8rem;color:var(--muted);line-height:1.5;
-  }
-  .finder-best .meta strong{color:var(--text)}
 
   .finder-more-btn{
     display:inline-flex;align-items:center;gap:.35rem;
@@ -272,7 +268,6 @@
   .finder-alt .prices{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-size:.85rem;margin-bottom:.3rem}
   .finder-alt .prices .so{color:var(--yellow-light);font-weight:600}
   .finder-alt .prices .full{color:var(--green-neon);font-weight:600}
-  .finder-alt .meta{font-size:.78rem;color:var(--muted)}
 
   .finder-empty{
     display:none;padding:1rem;text-align:center;color:var(--muted);font-size:.88rem;
@@ -676,52 +671,6 @@ function parseSizeToCm(sizeStr){
   return [a, b];
 }
 
-function formatCm(cm){
-  if (cm >= 100 && cm % 100 === 0) return (cm / 100) + "m";
-  if (cm >= 100) {
-    const m = cm / 100;
-    return (Number.isInteger(m) ? m : m.toFixed(1).replace(".", ",")) + "m";
-  }
-  return Math.round(cm) + "cm";
-}
-
-function areaM2(wCm, hCm){
-  return (wCm / 100) * (hCm / 100);
-}
-
-function pricePerM2(price, wCm, hCm){
-  const a = areaM2(wCm, hCm);
-  if (a <= 0) return null;
-  return price / a;
-}
-
-function formatDiff(reqW, reqH, candW, candH){
-  const dw = candW - reqW;
-  const dh = candH - reqH;
-  const parts = [];
-  if (Math.abs(dw) < 0.5 && Math.abs(dh) < 0.5) {
-    return "Tamanho exato";
-  }
-  if (Math.abs(dw) >= 0.5) {
-    parts.push(dw > 0
-      ? `+${formatCm(dw)} na largura`
-      : `${formatCm(Math.abs(dw))} a menos na largura`);
-  }
-  if (Math.abs(dh) >= 0.5) {
-    parts.push(dh > 0
-      ? `+${formatCm(dh)} na altura`
-      : `${formatCm(Math.abs(dh))} a menos na altura`);
-  }
-  const areaDiffPct = ((candW * candH) / (reqW * reqH) - 1) * 100;
-  let areaNote = "";
-  if (Math.abs(areaDiffPct) >= 1) {
-    areaNote = areaDiffPct > 0
-      ? ` · área ~${Math.round(areaDiffPct)}% maior`
-      : ` · área ~${Math.round(Math.abs(areaDiffPct))}% menor`;
-  }
-  return parts.join(", ") + areaNote;
-}
-
 function scoreCandidate(reqW, reqH, item){
   const dims = parseSizeToCm(item[1]);
   if (!dims) return null;
@@ -773,14 +722,9 @@ function findClosest(reqW, reqH, list){
   return scored;
 }
 
-function renderFinderResult(c, reqW, reqH, isBest){
+function renderFinderResult(c, isBest){
   const url = waLink(c.cod, c.size);
   const orientNote = c.swapped ? ' <span style="color:var(--muted);font-weight:500">(orientação invertida)</span>' : "";
-  const ppm2So = pricePerM2(c.so, c.cw, c.ch);
-  const ppm2Full = pricePerM2(c.full, c.cw, c.ch);
-  const ppm2Txt = (ppm2So != null)
-    ? `~R$ ${num(ppm2So)}/m² (só impr.) · ~R$ ${num(ppm2Full)}/m² (completo)`
-    : "";
   const containsBadge = c.contains
     ? ""
     : ' <span style="color:#f87171;font-size:.75rem;font-weight:600">não cobre totalmente</span>';
@@ -793,7 +737,6 @@ function renderFinderResult(c, reqW, reqH, isBest){
         <span class="so">${RS}${num(c.so)} <small style="font-weight:500;opacity:.85">só impressão</small></span>
         <span class="full">${RS}${num(c.full)} <small style="font-weight:500;opacity:.85">completo</small></span>
       </div>
-      ${ppm2Txt ? `<div class="meta">${ppm2Txt}</div>` : ""}
     `;
   }
   return `
@@ -802,7 +745,6 @@ function renderFinderResult(c, reqW, reqH, isBest){
       <span class="so">${RS}${num(c.so)}</span>
       <span class="full">${RS}${num(c.full)}</span>
     </div>
-    ${ppm2Txt ? `<div class="meta">${ppm2Txt}</div>` : ""}
   `;
 }
 
@@ -840,8 +782,8 @@ function runFinder(){
   const best = ranked[0];
   const alts = ranked.slice(1, 4);
 
-  bestEl.innerHTML = renderFinderResult(best, fw, fh, true);
-  altsEl.innerHTML = alts.map(c => `<div class="finder-alt">${renderFinderResult(c, fw, fh, false)}</div>`).join("");
+  bestEl.innerHTML = renderFinderResult(best, true);
+  altsEl.innerHTML = alts.map(c => `<div class="finder-alt">${renderFinderResult(c, false)}</div>`).join("");
   altsEl.classList.remove("show");
   moreBtn.hidden = alts.length === 0;
   moreBtn.setAttribute("aria-expanded", "false");
