@@ -118,38 +118,55 @@
   .legend-dot{width:9px;height:9px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:.4rem}
   .legend strong{color:var(--yellow)}
 
-  /* TABLE */
-  table{width:100%;border-collapse:collapse;font-size:.95rem}
-  thead{display:none}
-  tbody{display:block}
-  tr{display:block;padding:.85rem 1.25rem;border-top:1px solid var(--border);transition:background .15s}
-  tbody tr:first-child{border-top:none}
-  td{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:.3rem 0;border:none;white-space:normal;
+  /* ==========================================================
+     TABELA — agora é REALMENTE tabular em qualquer tela
+     Mobile: 3 colunas (Tamanho, Só impressão, Completo)
+     Desktop: 4 colunas (Cód., Tamanho, Só impressão, Completo)
+     ========================================================== */
+  table{width:100%;border-collapse:collapse;font-size:.8rem;font-variant-numeric:tabular-nums}
+  thead{display:table-header-group;position:sticky;top:0;z-index:1}
+  tbody{display:table-row-group}
+  tr{display:table-row}
+  th,td{
+    display:table-cell;
+    padding:.6rem .5rem;
+    border-bottom:1px solid var(--border);
+    vertical-align:middle;
+    text-align:left;
+    white-space:nowrap;
   }
-  td::before{
-    content:attr(data-label);color:var(--muted);font-size:.72rem;
-    font-weight:600;text-transform:uppercase;letter-spacing:.4px
+  th{
+    font-size:.65rem;font-weight:600;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.4px;
+    background:var(--card);line-height:1.2;
   }
-  /* CORREÇÃO CRÍTICA: links dentro da tabela herdam cor da célula */
-  td a{color:inherit;text-decoration:none}
-  td a:hover{text-decoration:underline}
-  td.qty a{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;font-size:.85rem}
-  td.size{color:var(--text);font-weight:600}
-  td.price{color:var(--yellow);font-weight:700;font-size:1.02rem}
+  th small{display:block;font-weight:400;text-transform:none;letter-spacing:0;font-size:.62rem;color:var(--muted);opacity:.75}
+  th:first-child,td:first-child{padding-left:.85rem}
+  th:last-child,td:last-child{padding-right:.85rem;padding-right:calc(.85rem + 2px)}
+
+  /* Coluna do código — escondida no mobile */
+  .cod-col{display:none}
+
+  /* Células específicas */
+  td.size{font-weight:700;color:var(--text);font-size:.85rem}
+  td.price{color:var(--yellow);font-weight:700}
+  td.price a{color:inherit}
+  td.price a:hover{text-decoration:underline}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:active{background:var(--card-h)}
+
+  /* EMPTY */
+  .empty{
+    display:none;padding:2rem 1.25rem;text-align:center;color:var(--muted);font-size:.9rem;
+  }
+  .empty.show{display:block}
+  .empty a{font-weight:600}
 
   /* EXTRAS */
   .extras{padding:1.1rem 1.25rem;background:rgba(250,204,21,.04);border-top:1px solid var(--border)}
   .extras h3{font-size:.8rem;font-weight:600;margin-bottom:.55rem;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
   .extras ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;font-size:.9rem;color:var(--muted)}
   .extras li strong{color:var(--yellow)}
-
-  /* EMPTY */
-  #empty{
-    display:none;padding:2rem 1.25rem;text-align:center;color:var(--muted);font-size:.9rem;
-  }
-  #empty.show{display:block}
 
   /* CTA */
   .cta-box{
@@ -185,6 +202,13 @@
     html{scroll-behavior:auto}
   }
 
+  /* TELA MUITO ESTREITA (<340px) — aperta um pouco */
+  @media (max-width:340px){
+    th,td{padding:.5rem .35rem}
+    td.size{font-size:.78rem}
+    th{font-size:.6rem}
+  }
+
   /* DESKTOP */
   @media (min-width:641px){
     header{padding:.9rem 1.5rem}
@@ -204,17 +228,17 @@
     .card-header h2{font-size:1.15rem}
     .card-header .specs{font-size:.8rem;margin-top:0;max-width:70%}
 
-    thead{display:table-header-group}
-    tbody{display:table-row-group}
-    tr{display:table-row;padding:0}
-    th{
-      text-align:left;padding:.9rem 1.25rem;background:rgba(250,204,21,.06);
-      color:var(--yellow);font-weight:600;font-size:.78rem;
-      text-transform:uppercase;letter-spacing:.4px;white-space:nowrap
-    }
-    td{display:table-cell;padding:.9rem 1.25rem;border-top:1px solid var(--border);white-space:nowrap;font-size:.9rem}
-    td::before{content:none}
-    tr:hover td{background:var(--card-h)}
+    table{font-size:.9rem}
+    th,td{padding:.85rem 1.25rem}
+    th{font-size:.75rem}
+    th small{font-size:.7rem}
+
+    /* Mostra a coluna Cód. no desktop */
+    .cod-col{display:table-cell;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-weight:600}
+    .cod-col a{color:inherit}
+
+    td.size{font-size:1rem}
+    tbody tr:hover td{background:var(--card-h)}
 
     .legend{flex-direction:row;flex-wrap:wrap;gap:.6rem 1.5rem;padding:1rem 1.5rem}
     .legend-item{align-items:center}
@@ -257,7 +281,7 @@
   <div class="search-wrap">
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
     <input id="q" type="search" inputmode="search" autocomplete="off"
-           placeholder="Buscar código (B045) ou tamanho (2m × 1m)" aria-label="Buscar">
+           placeholder="Buscar por tamanho (2m × 1m) ou código (B045)" aria-label="Buscar">
   </div>
 
   <div class="section active" id="geral">
@@ -274,11 +298,16 @@
       </div>
       <table>
         <thead>
-          <tr><th>Cód.</th><th>Tamanho</th><th>Só impressão</th><th>Completo</th></tr>
+          <tr>
+            <th class="cod-col">Cód.</th>
+            <th>Tamanho</th>
+            <th>Só impressão<small>arte pronta</small></th>
+            <th>Completo<small>arte inclusa</small></th>
+          </tr>
         </thead>
         <tbody id="tbody-geral"></tbody>
       </table>
-      <div id="empty" class="empty">Nenhum tamanho encontrado. <a href="https://wa.me/5519982560907?text=Ol%C3%A1!%20Preciso%20de%20um%20banner%20sob%20medida." target="_blank" rel="noopener">Pedir sob medida</a></div>
+      <div class="empty">Nenhum tamanho encontrado. <a href="https://wa.me/5519982560907?text=Ol%C3%A1!%20Preciso%20de%20um%20banner%20sob%20medida." target="_blank" rel="noopener">Pedir sob medida</a></div>
       <div class="extras">
         <h3>Acabamentos opcionais</h3>
         <ul>
@@ -304,10 +333,16 @@
       </div>
       <table>
         <thead>
-          <tr><th>Cód.</th><th>Tamanho</th><th>Só impressão</th><th>Completo</th></tr>
+          <tr>
+            <th class="cod-col">Cód.</th>
+            <th>Tamanho</th>
+            <th>Só impressão<small>arte pronta</small></th>
+            <th>Completo<small>arte inclusa</small></th>
+          </tr>
         </thead>
         <tbody id="tbody-lona440"></tbody>
       </table>
+      <div class="empty">Nenhum tamanho encontrado. <a href="https://wa.me/5519982560907?text=Ol%C3%A1!%20Preciso%20de%20uma%20lona%20440g%20sob%20medida." target="_blank" rel="noopener">Pedir sob medida</a></div>
       <div class="extras">
         <h3>Acabamentos opcionais</h3>
         <ul>
@@ -346,8 +381,7 @@
 
 <script>
 /* ------------------------------------------------------------------
-   DADOS — edite aqui para mudar preços ou adicionar itens.
-   [codigo, tamanho, preco_so_impressao, preco_completo]
+   DADOS — [codigo, tamanho, preco_so_impressao, preco_completo]
 ------------------------------------------------------------------ */
 const DADOS = {
   geral: [
@@ -400,29 +434,31 @@ const DADOS = {
 };
 
 /* ------------------------------------------------------------------
-   RENDERIZAÇÃO
+   RENDER
 ------------------------------------------------------------------ */
 const WA = "https://wa.me/5519982560907?text=";
 const brl = v => "R$ " + v.toFixed(2).replace(".", ",");
 
+/* Mensagem: tamanho entre asteriscos -> sai em NEGRITO no WhatsApp */
 function waLink(cod, size){
-  return WA + encodeURIComponent("Olá! Quero o banner " + cod + " — " + size);
+  const msg = "Olá! Quero o banner " + cod + " — *" + size + "*";
+  return WA + encodeURIComponent(msg);
 }
 
 function renderRows(tbody, items){
   tbody.innerHTML = items.map(([cod,size,so,full]) => {
     const url = waLink(cod, size);
     return `<tr>
-      <td class="qty" data-label="Cód."><a href="${url}" target="_blank" rel="noopener">${cod}</a></td>
-      <td class="size" data-label="Tamanho">${size}</td>
-      <td class="price" data-label="Só impressão"><a href="${url}" target="_blank" rel="noopener">${brl(so)}</a></td>
-      <td class="price" data-label="Completo"><a href="${url}" target="_blank" rel="noopener">${brl(full)}</a></td>
+      <td class="cod-col"><a href="${url}" target="_blank" rel="noopener">${cod}</a></td>
+      <td class="size"><a href="${url}" target="_blank" rel="noopener">${size}</a></td>
+      <td class="price"><a href="${url}" target="_blank" rel="noopener">${brl(so)}</a></td>
+      <td class="price"><a href="${url}" target="_blank" rel="noopener">${brl(full)}</a></td>
     </tr>`;
   }).join("");
 }
 
-const tGeral    = document.getElementById("tbody-geral");
-const tLona440  = document.getElementById("tbody-lona440");
+const tGeral   = document.getElementById("tbody-geral");
+const tLona440 = document.getElementById("tbody-lona440");
 renderRows(tGeral,   DADOS.geral);
 renderRows(tLona440, DADOS.lona440);
 
@@ -436,7 +472,6 @@ tabs.forEach(btn => btn.addEventListener("click", () => {
   sections.forEach(s => s.classList.remove("active"));
   btn.classList.add("active");
   document.getElementById(btn.dataset.tab).classList.add("active");
-  // limpa busca ao trocar de aba
   const q = document.getElementById("q");
   if (q.value) { q.value = ""; filtrar(); }
 }));
@@ -450,24 +485,17 @@ const norm = s => s.toLowerCase()
 
 function filtrar(){
   const v = norm(q.value);
-  let total = 0;
   sections.forEach(sec => {
     let visiveis = 0;
     sec.querySelectorAll("tbody tr").forEach(tr => {
-      const cod  = norm(tr.cells[0].textContent);
-      const size = norm(tr.cells[1].textContent);
+      const cod  = norm(tr.cells[0].textContent);   // .cod-col
+      const size = norm(tr.cells[1].textContent);   // .size
       const ok = !v || cod.startsWith(v) || size.includes(v);
       tr.style.display = ok ? "" : "none";
       if (ok) visiveis++;
     });
-    total += visiveis;
-    // se a seção ativa ficou vazia, ainda mostramos o card (com o aviso)
     const emptyEl = sec.querySelector(".empty");
     if (emptyEl) emptyEl.classList.toggle("show", visiveis === 0);
-  });
-  // se nenhuma linha casar em NENHUMA seção, avisa nas duas
-  document.querySelectorAll(".section .empty").forEach(el => {
-    if (total === 0) el.classList.add("show");
   });
 }
 q.addEventListener("input", filtrar);
