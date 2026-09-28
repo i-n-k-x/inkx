@@ -49,6 +49,16 @@
   .btn-primary{background:var(--yellow);color:#0a0a0a}
   .btn-primary:hover,.btn-primary:active{background:var(--yellow-d)}
 
+  /* VOLTAR (ao lado das abas) */
+  .tab-back{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:transparent;border:1px solid var(--yellow);color:var(--yellow);
+    padding:.75rem 1.5rem;min-height:48px;border-radius:9999px;
+    font-size:.92rem;font-weight:600;white-space:nowrap;flex-shrink:0;
+    text-decoration:none;transition:all .2s;
+  }
+  .tab-back:hover,.tab-back:active{background:var(--yellow-soft);text-decoration:none}
+
   /* HERO */
   .hero{text-align:center;padding:2.25rem 1.25rem 1.5rem;
     background:radial-gradient(ellipse 80% 55% at 50% -20%,rgba(250,204,21,.15),transparent)}
@@ -239,7 +249,7 @@
     .hero h1{font-size:clamp(1.9rem,5vw,2.6rem)}
 
     .tabs{flex-wrap:wrap;overflow-x:visible;padding:0 1.5rem 1.5rem}
-    .tab-btn{padding:.7rem 1.6rem;min-height:auto}
+    .tab-btn,.tab-back{padding:.7rem 1.6rem;min-height:auto}
 
     main{max-width:960px;padding:0 1.25rem 3rem}
     .card{border-radius:16px;margin-bottom:1.75rem}
@@ -282,6 +292,7 @@
      class="btn btn-primary" target="_blank" rel="noopener">Orçamento</a>
 </header>
 
+
 <section class="hero">
   <div class="badge">TABELA DE PREÇOS 2026</div>
   <h1>Banners, Faixas <span>&amp;</span> Lonas</h1>
@@ -293,6 +304,7 @@
 <nav class="tabs" id="tabs" aria-label="Categorias de material">
   <button class="tab-btn active" data-tab="geral" type="button">Lona / Adesivo</button>
   <button class="tab-btn" data-tab="lona440" type="button">Lona 440g</button>
+  <a href="tabela.html" class="tab-back" aria-label="Voltar para Cartões e Panfletos">← Cartões e Panfletos</a>
 </nav>
 
 <main>
