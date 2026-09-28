@@ -158,38 +158,7 @@
     .qty { font-weight: 600; color: var(--text); }
 
     tr:hover td { background: var(--bg-card-hover); }
-
-    tr.best-seller {
-      background: linear-gradient(90deg, rgba(250, 204, 21, 0.1), transparent 85%);
-      box-shadow: inset 3px 0 0 var(--yellow);
-      padding-left: calc(1.25rem - 3px);
-    }
     tr.best-seller td.qty { flex-wrap: wrap; }
-    .best-badge {
-      display: inline-flex; align-items: center; gap: 0.25rem;
-      background: var(--yellow); color: #0a0a0a;
-      font-size: 0.62rem; font-weight: 800;
-      padding: 0.2rem 0.55rem;
-      border-radius: 9999px;
-      letter-spacing: 0.4px;
-      white-space: nowrap;
-    }
-    tr.best-seller td.qty .best-badge {
-      flex: 1 0 100%;
-      margin-top: 0.4rem;
-      justify-content: center;
-    }
-    .promo-badge {
-      display: inline-block;
-      background: var(--red);
-      color: #fff;
-      font-size: 0.6rem; font-weight: 800;
-      padding: 0.15rem 0.4rem;
-      border-radius: 4px;
-      letter-spacing: 0.5px;
-      margin-right: 0.35rem;
-      vertical-align: middle;
-    }
 
     .legend {
       display: flex; flex-direction: column; gap: 0.55rem;
@@ -271,6 +240,33 @@
     }
     @media (prefers-reduced-motion: reduce) { .flip-inner { animation: none; } }
 
+
+    /* Mobile: 4 colunas dos cartões de visita sempre visíveis */
+    @media (max-width: 640px) {
+      .table-wrapper { overflow-x: visible; }
+      table {
+        min-width: 0;
+        width: 100%;
+        table-layout: fixed;
+        font-size: 0.82rem;
+      }
+      th, td { padding-left: 0.35rem; padding-right: 0.35rem; }
+      th {
+        font-size: 0.65rem;
+        letter-spacing: 0;
+        text-align: center;
+      }
+      td { font-size: 0.82rem; text-align: center; }
+      td.qty { text-align: left; }
+      .price { font-size: 0.84rem; }
+
+      /* Quantidade + 4x4 + 4x1 + 4x0 */
+      table:has(th:nth-child(4)) th:first-child,
+      table:has(th:nth-child(4)) td:first-child { width: 27%; }
+      table:has(th:nth-child(4)) th:not(:first-child),
+      table:has(th:nth-child(4)) td:not(:first-child) { width: 24.33%; }
+    }
+
     /* ============ DESKTOP (>640px) ============ */
     @media (min-width: 641px) {
       header { padding: 0.9rem 1.5rem; }
@@ -299,29 +295,6 @@
       th { padding: 0.9rem 1.25rem; }
       td { padding: 0.95rem 1.25rem; }
       .table-wrapper { overflow-x: visible; }
-
-      tr.best-seller { box-shadow: inset 4px 0 0 var(--yellow); }
-      tr.best-seller:hover td { background: rgba(250, 204, 21, 0.08); }
-      tr.best-seller td.qty .best-badge { flex: initial; margin-top: 0; margin-left: 0.5rem; }
-
-      .legend { flex-direction: row; flex-wrap: wrap; gap: 0.6rem 1.4rem; padding: 1rem 1.5rem; }
-      .legend-item { align-items: center; }
-      .legend-dot { margin-top: 0; }
-
-      .extras { padding: 1.25rem 1.5rem; }
-      .extras ul { flex-direction: row; flex-wrap: wrap; gap: 0.75rem 1.5rem; }
-
-      .cta-box { padding: 2rem 1.5rem; margin-top: 2.5rem; }
-      .cta-box h3 { font-size: 1.35rem; }
-      .cta-box p { font-size: 1rem; }
-      .cta-box .btn { width: auto; }
-
-      .flip-stage { width: 300px; max-width: 65vw; margin-bottom: 1.5rem; }
-      .flip-stage--flyer { width: 240px; max-width: 60vw; margin-bottom: 1.75rem; }
-
-      .note { font-size: 0.85rem; }
-      footer { padding: 2rem 1.5rem; font-size: 0.85rem; }
-    }
   </style>
 </head>
 <body>
@@ -389,12 +362,12 @@
             <table>
               <thead><tr><th>Quantidade</th><th>4x4</th><th>4x1</th><th>4x0</th></tr></thead>
               <tbody>
-                <tr class="best-seller">
+                <tr>
                   <td class="qty" data-label="Quantidade">
                     1.000
-                    <span class="best-badge">🏆 Campeão de Vendas</span>
+                    
                   </td>
-                  <td class="price" data-label="4x4"><span class="promo-badge">PROMO</span>R$ 130</td>
+                  <td class="price" data-label="4x4">R$ 130</td>
                   <td class="price" data-label="4x1">R$ 125</td>
                   <td class="price" data-label="4x0">R$ 120</td>
                 </tr>
@@ -533,11 +506,11 @@
         </div>
         <div class="table-wrapper">
           <table>
-            <thead><tr><th>Quantidade</th><th>4x0</th><th>4x4</th></tr></thead>
+            <thead><tr><th>Quantidade</th><th>4x4</th><th>4x0</th></tr></thead>
             <tbody>
-              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="4x0">R$ 160</td><td class="price" data-label="4x4">R$ 200</td></tr>
-              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="4x0">R$ 320</td><td class="price" data-label="4x4">R$ 420</td></tr>
-              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="4x0">R$ 120</td><td class="price" data-label="4x4">R$ 150</td></tr>
+              <tr><td class="qty" data-label="Quantidade">1.000</td><td class="price" data-label="4x4">R$ 200</td><td class="price" data-label="4x0">R$ 160</td></tr>
+              <tr><td class="qty" data-label="Quantidade">3.000</td><td class="price" data-label="4x4">R$ 420</td><td class="price" data-label="4x0">R$ 320</td></tr>
+              <tr><td class="qty" data-label="Quantidade">500</td><td class="price" data-label="4x4">R$ 150</td><td class="price" data-label="4x0">R$ 120</td></tr>
             </tbody>
           </table>
         </div>
