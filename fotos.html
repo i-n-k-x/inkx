@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d0d">
+<title>Tabela de Preços | Foto Ink X — Impressão Fotográfica Premium</title>
+<meta name="description" content="Impressão de fotografias em papel fotográfico termolaminado. Tamanhos de 7,5cm a 30×40cm. Qualidade profissional, cores vivas e preço justo. Peça pelo WhatsApp!">
+<style>
+  :root{
+    --amarelo:#FFC933;
+    --amarelo-escuro:#E0A800;
+    --preto:#0d0d0d;
+    --cinza:#171717;
+    --cinza-2:#242424;
+    --borda:#2e2e2e;
+    --texto:#f5f5f5;
+    --texto-cinza:#b3b3b3;
+    --safe-b: env(safe-area-inset-bottom, 0px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Segoe UI', Arial, Helvetica, sans-serif;
+    background:var(--preto);
+    color:var(--texto);
+    line-height:1.6;
+    overflow-x:hidden;
+    padding-bottom:calc(76px + var(--safe-b)); /* espaço p/ botão flutuante */
+  }
+  img{max-width:100%;display:block;}
+
+  /* ---------- TOPO ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(13,13,13,.94);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--amarelo);
+  }
+  .topo{
+    max-width:1100px;margin:0 auto;padding:12px 16px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .logo{font-size:20px;font-weight:900;letter-spacing:2px;color:var(--amarelo);text-transform:uppercase;text-decoration:none;}
+  .logo span{color:var(--texto);font-weight:400;}
+  .btn-whats-top{
+    background:var(--amarelo);color:var(--preto);font-weight:700;
+    padding:9px 16px;border-radius:50px;text-decoration:none;font-size:13px;
+  }
+  .btn-whats-top:active{background:var(--texto);}
+
+  /* botão voltar */
+  .topo-esq{display:flex;align-items:center;gap:10px;min-width:0;}
+  .btn-voltar{
+    display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;
+    border:1.5px solid var(--amarelo);color:var(--amarelo);background:transparent;
+    font-weight:700;font-size:13px;text-decoration:none;
+    padding:8px 14px;border-radius:50px;transition:.2s;
+  }
+  .btn-voltar svg{width:14px;height:14px;}
+  .btn-voltar:hover,.btn-voltar:active{background:var(--amarelo);color:var(--preto);}
+  @media(max-width:380px){
+    .logo{font-size:16px;letter-spacing:1px;}
+    .btn-voltar{padding:8px 11px;}
+    .btn-whats-top{padding:9px 13px;}
+  }
+
+  /* ---------- HERO (mobile: coluna única, foto primeiro) ---------- */
+  .hero{padding:36px 16px 30px;text-align:center;}
+  .hero-foto{
+    max-width:320px;margin:0 auto 26px;
+    border-radius:16px;overflow:hidden;
+    box-shadow:0 16px 44px rgba(255,201,51,.2);
+    border:1px solid rgba(255,201,51,.35);
+  }
+  .hero h1{
+    font-size:clamp(30px,9vw,54px);line-height:1.08;font-weight:900;
+    text-transform:uppercase;letter-spacing:.5px;
+  }
+  .hero h1 em{color:var(--amarelo);font-style:normal;}
+  .hero p{margin:16px auto 24px;color:var(--texto-cinza);font-size:15.5px;max-width:520px;}
+  .hero .selos{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:22px;}
+  .selo{
+    border:1px solid var(--amarelo);color:var(--amarelo);
+    padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;
+    letter-spacing:1px;text-transform:uppercase;
+  }
+
+  .btn-gigante{
+    display:inline-block;background:var(--amarelo);color:var(--preto);
+    font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:1px;
+    padding:17px 38px;border-radius:60px;text-decoration:none;
+    width:100%;max-width:380px;
+  }
+  .btn-gigante:active{background:var(--texto);}
+
+  /* ---------- SEÇÕES ---------- */
+  section{padding:46px 16px;max-width:1100px;margin:0 auto;}
+  .titulo-secao{
+    text-align:center;margin-bottom:12px;
+    font-size:clamp(24px,7vw,40px);font-weight:900;text-transform:uppercase;line-height:1.15;
+  }
+  .titulo-secao em{color:var(--amarelo);font-style:normal;}
+  .sub-secao{text-align:center;color:var(--texto-cinza);font-size:14.5px;max-width:600px;margin:0 auto 36px;}
+
+  /* ---------- BENEFÍCIOS (mobile: lista empilhada) ---------- */
+  .beneficios{display:grid;grid-template-columns:1fr;gap:14px;}
+  .card-benef{
+    background:var(--cinza);border:1px solid var(--borda);border-radius:14px;
+    padding:20px;display:flex;gap:16px;align-items:flex-start;
+  }
+  .card-benef .ico{
+    flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:var(--amarelo);
+    display:flex;align-items:center;justify-content:center;font-size:21px;
+  }
+  .card-benef h3{font-size:16px;margin-bottom:3px;}
+  .card-benef p{color:var(--texto-cinza);font-size:13.5px;}
+
+  /* ---------- TABELA (mobile: vira lista de cards) ---------- */
+  .lista-precos{display:grid;grid-template-columns:1fr;gap:12px;}
+  .item-preco{
+    background:var(--cinza);border:1px solid var(--borda);border-radius:14px;
+    padding:18px;display:flex;justify-content:space-between;align-items:center;gap:14px;
+  }
+  .item-preco .info h3{font-size:16px;text-transform:uppercase;letter-spacing:.5px;}
+  .item-preco .info .dim{color:var(--texto-cinza);font-size:13px;}
+  .item-preco .info .min{margin-top:6px;}
+  .tag-min{
+    background:rgba(255,201,51,.12);color:var(--amarelo);
+    font-size:11px;font-weight:700;padding:3px 10px;border-radius:50px;white-space:nowrap;
+  }
+  .item-preco .preco{font-weight:900;color:var(--amarelo);font-size:18px;text-align:right;white-space:nowrap;line-height:1.35;}
+  .item-preco .preco small{font-size:12px;color:var(--texto-cinza);font-weight:400;}
+
+  /* tabela clássica só no desktop */
+  .tabela-desktop{display:none;}
+
+  /* ---------- CARDS DE TAMANHO ---------- */
+  .grade-fotos{display:grid;grid-template-columns:1fr;gap:16px;}
+  .card-foto{
+    background:var(--cinza);border-radius:16px;overflow:hidden;
+    border:1px solid var(--borda);display:flex;
+  }
+  .card-foto .foto-ex{
+    flex:0 0 128px;background-image:url('https://inkx.me/fotot.webp');
+    background-size:cover;background-position:center top;position:relative;
+  }
+  .card-foto .foto-ex .tam-tag{
+    position:absolute;top:10px;left:10px;
+    background:var(--amarelo);color:var(--preto);
+    font-weight:900;font-size:12px;padding:5px 12px;border-radius:50px;letter-spacing:1px;
+  }
+  .card-foto .corpo{padding:18px;flex:1;}
+  .card-foto h3{font-size:17px;text-transform:uppercase;letter-spacing:1px;}
+  .card-foto .dim{color:var(--texto-cinza);font-size:13px;margin:2px 0 10px;}
+  .card-foto .valor{font-size:22px;font-weight:900;color:var(--amarelo);}
+  .card-foto .valor small{font-size:12.5px;color:var(--texto-cinza);font-weight:400;}
+  .card-foto .min{margin-top:8px;font-size:12px;color:var(--texto-cinza);}
+  .card-foto .min b{color:var(--amarelo);}
+
+  /* ---------- CALCULADORA ---------- */
+  .calc{
+    background:var(--cinza);border:2px solid var(--amarelo);border-radius:18px;
+    padding:24px 18px;display:grid;grid-template-columns:1fr;gap:18px;
+  }
+  .calc label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--texto-cinza);margin-bottom:8px;}
+  .calc select,.calc input{
+    width:100%;background:var(--preto);color:var(--texto);
+    border:1px solid #3a3a3a;border-radius:12px;padding:15px 16px;
+    font-size:17px;outline:none;
+  }
+  .calc select:focus,.calc input:focus{border-color:var(--amarelo);}
+  .calc-result{background:var(--preto);border-radius:14px;padding:20px;text-align:center;}
+  .calc-result .total{font-size:34px;font-weight:900;color:var(--amarelo);}
+  .calc-result .det{font-size:12.5px;color:var(--texto-cinza);margin-top:6px;}
+  .nota-calc{text-align:center;color:var(--texto-cinza);font-size:12px;margin-top:12px;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{text-align:center;}
+
+  footer{
+    border-top:1px solid var(--borda);text-align:center;
+    padding:28px 16px;color:var(--texto-cinza);font-size:12px;
+  }
+  footer b{color:var(--amarelo);}
+
+  /* ---------- BOTÃO FLUTUANTE WHATSAPP ---------- */
+  .whats-flutuante{
+    position:fixed;right:16px;bottom:calc(16px + var(--safe-b));z-index:200;
+    display:flex;align-items:center;gap:10px;
+    background:#25D366;color:#fff;font-weight:800;font-size:15px;
+    padding:15px 22px;border-radius:60px;text-decoration:none;
+    box-shadow:0 8px 28px rgba(37,211,102,.45);
+  }
+  .whats-flutuante:active{transform:scale(.96);}
+  .whats-flutuante svg{width:24px;height:24px;flex:0 0 auto;}
+
+  /* ---------- DESKTOP (progressive enhancement) ---------- */
+  @media(min-width:768px){
+    body{padding-bottom:0;}
+    .hero{
+      max-width:1100px;margin:0 auto;padding:70px 20px 50px;
+      display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;text-align:left;
+    }
+    .hero .selos{justify-content:flex-start;}
+    .btn-gigante{width:auto;}
+    .btn-gigante:hover{transform:scale(1.04);}
+    .hero-foto{max-width:none;transform:rotate(2deg);transition:.4s;margin:0;}
+    .hero-foto:hover{transform:rotate(0) scale(1.02);}
+    .beneficios{grid-template-columns:repeat(4,1fr);}
+    .card-benef{flex-direction:column;padding:28px 22px;}
+    .lista-precos{display:none;}
+    .tabela-wrap{display:block;overflow-x:auto;border-radius:16px;border:1px solid var(--borda);}
+    table{width:100%;border-collapse:collapse;background:var(--cinza);}
+    th{background:var(--amarelo);color:var(--preto);text-transform:uppercase;font-size:13px;letter-spacing:1px;padding:16px 14px;text-align:left;}
+    td{padding:16px 14px;border-bottom:1px solid var(--borda);font-size:15px;}
+    tr:last-child td{border-bottom:none;}
+    tbody tr{transition:.2s;}
+    tbody tr:hover{background:var(--cinza-2);}
+    .grade-fotos{grid-template-columns:repeat(3,1fr);}
+    .card-foto{flex-direction:column;}
+    .card-foto .foto-ex{flex:none;height:220px;}
+    .card-foto:hover{transform:translateY(-8px);border-color:var(--amarelo);box-shadow:0 16px 40px rgba(255,201,51,.15);}
+    .calc{grid-template-columns:1fr 1fr 1fr;align-items:end;padding:36px 30px;}
+    .whats-flutuante:hover{transform:scale(1.06);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topo">
+    <div class="topo-esq">
+      <a class="btn-voltar" href="https://inkx.com.br/tabela.html" aria-label="Voltar para a tabela de preços">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        Voltar
+      </a>
+      <a class="logo" href="#">FOTO <span>✦</span> INKX</a>
+    </div>
+    <a class="btn-whats-top" href="https://wa.me/5500000000000" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Suas memórias <em>merecem</em> sair da tela.</h1>
+    <p>Impressão fotográfica em papel <strong>termolaminado</strong> — cores vivas, brilho intenso e proteção que faz sua foto durar anos. Do polaroid ao poster A3.</p>
+    <a class="btn-gigante" href="#precos">Ver preços ↓</a>
+    <div class="selos">
+      <span class="selo">✦ Termolaminado</span>
+      <span class="selo">✦ Alta definição</span>
+      <span class="selo">✦ Cores vivas</span>
+    </div>
+  </div>
+  <div class="hero-foto">
+    <img src="https://inkx.me/fotot.webp" alt="Exemplo de foto impressa com qualidade Ink X" loading="eager" fetchpriority="high">
+  </div>
+</div>
+
+<!-- BENEFÍCIOS -->
+<section id="porque">
+  <h2 class="titulo-secao">Por que a <em>Ink X</em>?</h2>
+  <p class="sub-secao">Mais do que papel e tinta: é a sua história impressa com o cuidado que ela merece.</p>
+  <div class="beneficios">
+    <div class="card-benef">
+      <div class="ico">🖨️</div>
+      <div><h3>Qualidade profissional</h3><p>Alta definição em papel fotográfico premium, nitidez de estúdio em cada detalhe.</p></div>
+    </div>
+    <div class="card-benef">
+      <div class="ico">🛡️</div>
+      <div><h3>Papel termolaminado</h3><p>Proteção contra umidade, riscos e desbotamento. Bonita por muito mais tempo.</p></div>
+    </div>
+    <div class="card-benef">
+      <div class="ico">⚡</div>
+      <div><h3>Rapidez no pedido</h3><p>Envie pelo WhatsApp, escolha o tamanho e retire pronto. Sem complicação.</p></div>
+    </div>
+    <div class="card-benef">
+      <div class="ico">💛</div>
+      <div><h3>Preço justo</h3><p>A partir de R$ 4,00, com promoção por quantidade. Memória boa não custa caro.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PREÇOS -->
+<section id="precos">
+  <h2 class="titulo-secao">Tabela de <em>preços</em></h2>
+  <p class="sub-secao">Todos em papel fotográfico termolaminado. Na 3/4, quanto mais você leva, mais barata sai cada foto!</p>
+
+  <!-- versão mobile: cards -->
+  <div class="lista-precos">
+    <div class="item-preco">
+      <div class="info">
+        <h3>Foto A7</h3>
+        <p class="dim">7,5 × 10 cm · tipo polaroid</p>
+        <p class="min"><span class="tag-min">mín. 8 unidades</span></p>
+      </div>
+      <div class="preco">R$ 4,00<br><small>/unidade</small></div>
+    </div>
+    <div class="item-preco">
+      <div class="info">
+        <h3>Foto A6</h3>
+        <p class="dim">10 × 15 cm</p>
+        <p class="min"><span class="tag-min">mín. 4 unidades</span></p>
+      </div>
+      <div class="preco">R$ 5,00<br><small>/unidade</small></div>
+    </div>
+    <div class="item-preco">
+      <div class="info">
+        <h3>Foto 3/4</h3>
+        <p class="dim">10 × 15 cm · promoção</p>
+        <p class="min"><span class="tag-min">pacote promocional</span></p>
+      </div>
+      <div class="preco">R$ 10,00 <small>/4un</small><br>R$ 15,00 <small>/8un</small></div>
+    </div>
+    <div class="item-preco">
+      <div class="info">
+        <h3>Foto A5</h3>
+        <p class="dim">15 × 20 cm</p>
+        <p class="min"><span class="tag-min">mín. 2 unidades</span></p>
+      </div>
+      <div class="preco">R$ 8,00<br><small>/unidade</small></div>
+    </div>
+    <div class="item-preco">
+      <div class="info">
+        <h3>Foto A4</h3>
+        <p class="dim">20 × 30 cm</p>
+        <p class="min"><span class="tag-min">ideal p/ molduras</span></p>
+      </div>
+      <div class="preco">R$ 12,00<br><small>/unidade</small></div>
+    </div>
+    <div class="item-preco">
+      <div class="info">
+        <h3>Foto A3</h3>
+        <p class="dim">30 × 40 cm · formato poster</p>
+        <p class="min"><span class="tag-min">tamanho parede</span></p>
+      </div>
+      <div class="preco">R$ 20,00<br><small>/unidade</small></div>
+    </div>
+  </div>
+
+  <!-- versão desktop: tabela -->
+  <div class="tabela-wrap tabela-desktop">
+    <table>
+      <thead>
+        <tr><th>Formato</th><th>Tamanho</th><th>Preço</th><th>Condição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Foto A7</strong> (tipo polaroid)</td><td>7,5 × 10 cm</td><td class="preco" style="color:var(--amarelo);font-weight:800;">R$ 4,00</td><td><span class="tag-min">mínimo 8 unidades</span></td></tr>
+        <tr><td><strong>Foto A6</strong></td><td>10 × 15 cm</td><td style="color:var(--amarelo);font-weight:800;">R$ 5,00</td><td><span class="tag-min">mínimo 4 unidades</span></td></tr>
+        <tr><td><strong>Foto A5</strong></td><td>15 × 20 cm</td><td style="color:var(--amarelo);font-weight:800;">R$ 8,00</td><td><span class="tag-min">mínimo 2 unidades</span></td></tr>
+        <tr><td><strong>Foto A4</strong></td><td>20 × 30 cm</td><td style="color:var(--amarelo);font-weight:800;">R$ 12,00</td><td>—</td></tr>
+        <tr><td><strong>Foto 3/4</strong></td><td>10 × 15 cm</td><td style="color:var(--amarelo);font-weight:800;">R$ 10,00 <small>/4un</small> · R$ 15,00 <small>/8un</small></td><td><span class="tag-min">promoção por quantidade</span></td></tr>
+        <tr><td><strong>Foto A3</strong></td><td>30 × 40 cm</td><td style="color:var(--amarelo);font-weight:800;">R$ 20,00</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CARROSSEL / CARDS DE TAMANHO -->
+<section>
+  <h2 class="titulo-secao">Escolha o seu <em>tamanho</em></h2>
+  <p class="sub-secao">Do polaroid para a carteira ao poster A3 — tem tamanho para cada memória.</p>
+  <div class="grade-fotos">
+    <div class="card-foto">
+      <div class="foto-ex"><span class="tam-tag">A7</span></div>
+      <div class="corpo">
+        <h3>Foto A7</h3>
+        <p class="dim">7,5 × 10 cm · estilo polaroid</p>
+        <p class="valor">R$ 4,00 <small>/un</small></p>
+        <p class="min">Pedido mínimo: <b>8 unidades</b></p>
+      </div>
+    </div>
+    <div class="card-foto">
+      <div class="foto-ex"><span class="tam-tag">A6</span></div>
+      <div class="corpo">
+        <h3>Foto A6</h3>
+        <p class="dim">10 × 15 cm</p>
+        <p class="valor">R$ 5,00 <small>/un</small></p>
+        <p class="min">Pedido mínimo: <b>4 unidades</b></p>
+      </div>
+    </div>
+    <div class="card-foto">
+      <div class="foto-ex"><span class="tam-tag">3/4</span></div>
+      <div class="corpo">
+        <h3>Foto 3/4</h3>
+        <p class="dim">10 × 15 cm · pacote promocional</p>
+        <p class="valor">R$ 10,00 <small>/4un</small><br>R$ 15,00 <small>/8un</small></p>
+        <p class="min">Quanto mais, <b>mais barato sai cada foto!</b></p>
+      </div>
+    </div>
+    <div class="card-foto">
+      <div class="foto-ex"><span class="tam-tag">A5</span></div>
+      <div class="corpo">
+        <h3>Foto A5</h3>
+        <p class="dim">15 × 20 cm</p>
+        <p class="valor">R$ 8,00 <small>/un</small></p>
+        <p class="min">Pedido mínimo: <b>2 unidades</b></p>
+      </div>
+    </div>
+    <div class="card-foto">
+      <div class="foto-ex"><span class="tam-tag">A4</span></div>
+      <div class="corpo">
+        <h3>Foto A4</h3>
+        <p class="dim">20 × 30 cm</p>
+        <p class="valor">R$ 12,00 <small>/un</small></p>
+        <p class="min">Ideal para <b>molduras e presentes</b></p>
+      </div>
+    </div>
+    <div class="card-foto">
+      <div class="foto-ex"><span class="tam-tag">A3</span></div>
+      <div class="corpo">
+        <h3>Foto A3</h3>
+        <p class="dim">30 × 40 cm · formato poster</p>
+        <p class="valor">R$ 20,00 <small>/un</small></p>
+        <p class="min">O tamanho <b>parede de quarto</b> ✦</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULADORA -->
+<section>
+  <h2 class="titulo-secao">Calcule o seu <em>pedido</em></h2>
+  <p class="sub-secao">Simule o valor antes de chamar no WhatsApp. Rápido e sem surpresa.</p>
+  <div class="calc">
+    <div>
+      <label for="selFormato">Formato</label>
+      <select id="selFormato">
+        <option value="4|8|Foto A7 (mín. 8 un)">Foto A7 — 7,5×10 (mín. 8 un)</option>
+        <option value="5|4|Foto A6 (mín. 4 un)">Foto A6 — 10×15 (mín. 4 un)</option>
+        <option value="8|2|Foto A5 (mín. 2 un)">Foto A5 — 15×20 (mín. 2 un)</option>
+        <option value="12|1|Foto A4">Foto A4 — 20×30</option>
+        <option value="20|1|Foto A3">Foto A3 — 30×40</option>
+      </select>
+    </div>
+    <div>
+      <label for="inpQtd">Quantidade</label>
+      <input type="number" id="inpQtd" min="1" value="8" inputmode="numeric">
+    </div>
+    <div class="calc-result">
+      <div class="total" id="outTotal">R$ 32,00</div>
+      <div class="det" id="outDet">8 un × R$ 4,00</div>
+    </div>
+  </div>
+  <p class="nota-calc">* Foto 3/4 é promocional: 4 un por R$ 10,00 ou 8 un por R$ 15,00.</p>
+</section>
+
+<!-- CTA -->
+<section class="cta-final">
+  <h2 class="titulo-secao">Bora imprimir suas <em>memórias</em>?</h2>
+  <p class="sub-secao">Chama no WhatsApp, envie suas fotos e receba tudo pronto com a qualidade Ink X. Presenteie alguém — ou a si mesmo — com algo que a tela nunca dá: uma foto de verdade, na mão.</p>
+  <a class="btn-gigante" href="https://wa.me/5500000000000" target="_blank" rel="noopener">Pedir agora no WhatsApp</a>
+</section>
+
+<footer>
+  <b>FOTO ✦ INKX</b> — Impressão fotográfica em papel termolaminado.<br>
+  Preços válidos para arte pronta enviada pelo cliente. Valores sujeitos a alteração sem aviso prévio.
+</footer>
+
+<!-- BOTÃO FLUTUANTE -->
+<a class="whats-flutuante" href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="Pedir pelo WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.5c1.3.7 2.7 1 4.1 1h.1c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.2 0-2.4-.3-3.5-.9l-.8-.4-4.9.9 1-4.7-.5-.8c-.7-1.2-1.1-2.6-1.1-4C6.2 9.7 10.7 5.2 16 5.2S25.8 9.7 25.8 15 21.3 24.8 16 24.8zm4.6-7.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.4-1.8-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg>
+  Pedir agora
+</a>
+
+<script>
+  const sel = document.getElementById('selFormato');
+  const qtd = document.getElementById('inpQtd');
+  const outTotal = document.getElementById('outTotal');
+  const outDet = document.getElementById('outDet');
+
+  function moeda(v){
+    return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  }
+
+  function calcular(){
+    const [preco, min, nome] = sel.value.split('|');
+    const p = parseFloat(preco), m = parseInt(min);
+    let q = parseInt(qtd.value);
+    if (isNaN(q) || q < 1) q = 1;
+    let aviso = '';
+    if (q < m){
+      aviso = ` ⚠️ mínimo de ${m} un — ajustado`;
+      q = m;
+      qtd.value = q;
+    }
+    outTotal.textContent = moeda(p * q);
+    outDet.textContent = `${q} un × ${moeda(p)} · ${nome}${aviso}`;
+  }
+
+  sel.addEventListener('change', calcular);
+  qtd.addEventListener('input', calcular);
+  calcular();
+
+  // entrada suave dos cards (só quando visíveis)
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        observer.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+  document.querySelectorAll('.card-benef, .item-preco, .card-foto').forEach((el,i)=>{
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = `opacity .45s ${Math.min(i*0.05,.4)}s, transform .45s ${Math.min(i*0.05,.4)}s`;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
